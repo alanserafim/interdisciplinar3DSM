@@ -62,14 +62,17 @@ _Agendamento_
 **REQ01** - *Cadastrar usuário*
 
   Como – usuário
+  
   Eu quero – realizar meu cadastro na plataforma
-  De maneira que – seja possível visualizar cursos em andamento e realizar 
-  matrículas em novos cursos disponíveis na plataforma.
+  
+  De maneira que – seja possível visualizar cursos em andamento e realizar matrículas em novos cursos disponíveis na plataforma.
 
 **REQ02** - *Consultar Perfil do Usuário*
   
   Como – usuário
+  
   Eu quero – visualizar as informações que cadastrei no meu perfil
+  
   De maneira que – seja possível visualizar se há informações inconsistentes
 
 
