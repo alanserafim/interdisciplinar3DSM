@@ -17,11 +17,8 @@ Para executar o projeto, utilize as ferramentas descritas na sessão *Ferramenta
 
 ## Introdução
 
-> É interessante colocar aqui uma visão bem geral, aquilo que você falaria em uma reunião rápida.  
-> Vai ser a resposta que você da pra sua tia quando ela pergunta o que está fazendo da vida.
-
-Este projeto possui o objetivo principal **implementar uma plataforma de cursos online**.  
-Com os objetivos gerais de gerenciamento cursos voltados para o nivelamente de alunos de ingressantes da graduação. 
+Este projeto possui o objetivo principal **implementar uma plataforma de cursos online da Fatec Zona Leste**.  
+Com os objetivos gerais de gerenciamento cursos voltados para o nivelamento de alunos de ingressantes da graduação. 
 
 ## Análise técnica
 
