@@ -8,12 +8,12 @@
 Para executar o projeto, utilize as ferramentas descritas na sessão *Ferramentas*.
 
 ## Ferramentas
-* [IntelliJ](https://www.jetbrains.com/idea/) - IDE para desenvolvimento.
+* Spring Boot - Spring Tools for Eclipse IDE (https://spring.io/projects/spring-boot) - IDE para desenvolvimento.
 
 ## Links importantes
 * [Spring Boot Rest API](https://medium.com/better-programming/building-a-spring-boot-rest-api-a-php-developers-view-part-i-6add2e794646) -  API com Spring Boot.
 
-# < projectName >
+# FatecEdu
 
 ## Introdução
 
