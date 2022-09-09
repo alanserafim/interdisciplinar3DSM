@@ -57,13 +57,23 @@ _Agendamento_
 
 > As regras de negócio estão relacionadas as dependencias do sistema, por exemplo "depois de x tempo" ou "para clientes de x perfil".
 
-## Casos de Uso
+## Especificação de Requisitos: Estórias de usuário
 
-**UC1** - *Login no sistema*
+**REQ01** - *Cadastrar usuário*
 
-Ao entrar no sistema pela primeira vez o usuário deve cadastrar suas informações. O usuário deverá informar seu perfil.
+  Como – usuário
+  Eu quero – realizar meu cadastro na plataforma
+  De maneira que – seja possível visualizar cursos em andamento e realizar 
+  matrículas em novos cursos disponíveis na plataforma.
 
-<img src="https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/examples/flowchart-templates/system-flowchart.svg">
+**REQ02** - *Consultar Perfil do Usuário*
+  
+  Como – usuário
+  Eu quero – visualizar as informações que cadastrei no meu perfil
+  De maneira que – seja possível visualizar se há informações inconsistentes
+
+
+
 
 > Imagine que fosse necessário enviar um email sempre que realizado o login, esse email deveria estar no fluxograma. Esse fluxograma pode ser mais simples, apenas com o objetivo de validar com o cliente que as dependências de negócio estão validadas em cada caso de negócio.
 
