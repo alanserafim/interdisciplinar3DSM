@@ -44,11 +44,9 @@ Os requisitos devem ser validados com a cliente e aprovados.
 ### Requisitos Funcionais
 Respeitando a proposta, o sistema deverá atender os seguintes requisitos:
 
-* **RF1** - Requisito funcional 1.
-* **RF2** - Requisito funcional 2.
-* **RF3** - Requisito funcional 3.
-
-> O requisito funcional está relacinado as funcionalidades citadas. Por exemplo "Geração de relatório de determinado período de vendas". [Verifique mais detalhes aqui](https://codificar.com.br/requisitos-funcionais-nao-funcionais/).
+* **RF1** - O usuário deve poder realizar as operações de cadastro, consulta, alteração e exclusão de seus dados.
+* **RF2** - O instrutor deve poder cadastrar, consultar, alterar ou excluir cursos.
+* **RF3** - O usuário deve poder se matricular, cancelar matrícula e acompanhar seu progresso nos cursos disponíveis.
 
 ## Regras de Negócio
 
