@@ -60,6 +60,7 @@ _Agendamento_
 ## Especificação de Requisitos: Estórias de usuário
 
 **REQ01** - *Cadastrar usuário*
+
     Como – usuário<br>
     Eu quero – realizar meu cadastro na plataforma<br>
     De maneira que – seja possível visualizar cursos em andamento e realizar matrículas em novos cursos disponíveis na plataforma.
