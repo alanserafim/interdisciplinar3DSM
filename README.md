@@ -11,14 +11,16 @@ Para executar o projeto, utilize as ferramentas descritas na sessão *Ferramenta
 * Spring Boot - Spring Tools for Eclipse IDE (https://spring.io/projects/spring-boot) - IDE para desenvolvimento.
 
 ## Links importantes
-* [Spring Boot Rest API](https://medium.com/better-programming/building-a-spring-boot-rest-api-a-php-developers-view-part-i-6add2e794646) -  API com Spring Boot.
+* [Spring Boot Rest API](https://medium.com/better-programming/building-a-spring-boot-rest-api-a-php-developers-view-part-i-6add2e794646) -  API com Spring Boot - camada servidor.
 
-# FatecEdu
+* [Angular Framework](https://angular.io/) - camada cliente.
+
+# FatecFlix
 
 ## Introdução
 
 Este projeto possui o objetivo principal **implementar uma plataforma de cursos online da Fatec Zona Leste**.  
-Com os objetivos gerais de gerenciamento cursos voltados para o nivelamento de alunos de ingressantes da graduação. 
+Com os objetivos gerais de gerenciamento cursos voltados para o nivelamento de alunos ingressantes da graduação. 
 
 ## Análise técnica
 
