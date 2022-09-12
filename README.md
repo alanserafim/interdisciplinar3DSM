@@ -74,6 +74,19 @@ _Agendamento_
     De maneira que – seja possível visualizar se há informações inconsistentes
 
 
+**REQ03** - *Atualizar informações do usuário*
+
+    Como – usuário
+    Eu quero – alterar os meus dados
+    De maneira que – seja possível atualizar informações inconsistentes
+ 
+ 
+**REQ04** - *Atualizar informações do usuário*
+
+    Como – usuário
+    Eu quero –  excluir o meu perfil
+    De maneira que – os dados sejam deletados permanentemente do sistema
+    
 
 
 > Imagine que fosse necessário enviar um email sempre que realizado o login, esse email deveria estar no fluxograma. Esse fluxograma pode ser mais simples, apenas com o objetivo de validar com o cliente que as dependências de negócio estão validadas em cada caso de negócio.
