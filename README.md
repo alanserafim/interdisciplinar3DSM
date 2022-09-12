@@ -87,6 +87,48 @@ _Agendamento_
     Eu quero –  excluir o meu perfil
     De maneira que – os dados sejam deletados permanentemente do sistema
     
+    
+**REQ05** - *Cadastrar curso*
+
+    Como – instrutor
+    Eu quero –  criar um curso
+    De maneira que –  seja possível para outros usuários matricularem-se e visualizar a trilha do curso
+    
+    
+**REQ06** - *Consultar curso*
+
+    Como – usuário
+    Eu quero –  consultar um curso
+    De maneira que –  seja possível obter informações para saber as aulas que compõe o curso
+
+
+**REQ07** - *Atualizar informações do curso*
+
+    Como – instrutor
+    Eu quero –  alterar as informações de um curso
+    De maneira que –  seja possível atualizar informações do curso e adicionar novas aulas
+
+
+**REQ08** - *Excluir curso*
+
+    Como – instrutor
+    Eu quero –  realizar matrícula nos cursos disponíveis na plataforma
+    De maneira que –  o curso seja deletado permanentemente do sistema
+    
+    
+**REQ09** - *Realizar matrícula*
+
+    Como – usuário
+    Eu quero –   realizar matrícula nos cursos disponíveis na plataforma
+    De maneira que –  seja possível assistir as aulas, concluir as trilhas e receber o certificado de conclusão
+
+
+**REQ10** - *Realizar Login*
+
+    Como – usuário
+    Eu quero –   realizar login na plataforma
+    De maneira que –  – seja possível ter acesso a página principal da aplicação
+
 
 
 > Imagine que fosse necessário enviar um email sempre que realizado o login, esse email deveria estar no fluxograma. Esse fluxograma pode ser mais simples, apenas com o objetivo de validar com o cliente que as dependências de negócio estão validadas em cada caso de negócio.
