@@ -81,7 +81,7 @@ _Agendamento_
     De maneira que – seja possível atualizar informações inconsistentes
  
  
-**REQ04** - *Atualizar informações do usuário*
+**REQ04** - * Excluir perfil*
 
     Como – usuário
     Eu quero –  excluir o meu perfil
