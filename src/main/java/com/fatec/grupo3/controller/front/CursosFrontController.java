@@ -37,7 +37,7 @@ public class CursosFrontController {
     }
 
     @GetMapping("/curso")
-    public ModelAndView retornaFormDeCadastroDe(Curso curso) {
+    public ModelAndView retornaFormDeCadastroDeCurso(Curso curso) {
         ModelAndView mv = new ModelAndView("cadastrarCurso");
         mv.addObject("curso", curso);
         return mv;
@@ -45,7 +45,7 @@ public class CursosFrontController {
 
 
     @GetMapping("/cursos/{titulo}")
-    public ModelAndView retornaFormParaEditarCliente(@PathVariable("titulo") String titulo) {
+    public ModelAndView retornaFormParaEditarCurso(@PathVariable("titulo") String titulo) {
         ModelAndView mv = new ModelAndView("atualizarCurso");
 
         Optional<Curso> curso = service.consultaPorTitulo(titulo);
