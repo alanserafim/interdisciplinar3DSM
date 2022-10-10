@@ -44,11 +44,11 @@ public class CursosFrontController {
     }
 
 
-    @GetMapping("/cursos/{titulo}")
-    public ModelAndView retornaFormParaEditarCurso(@PathVariable("titulo") String titulo) {
+    @GetMapping("/cursos/{id}")
+    public ModelAndView retornaFormParaEditarCurso(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView("atualizarCurso");
 
-        Optional<Curso> curso = service.consultaPorTitulo(titulo);
+        Optional<Curso> curso = service.consultarPorId(id);
 
         if(curso.isPresent()) {
             mv.addObject("curso", curso.get());

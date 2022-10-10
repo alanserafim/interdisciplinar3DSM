@@ -12,4 +12,6 @@ public interface CursosService {
     Optional<Curso> save(Curso curso);
     void delete (Long id);
     Optional<Curso> atualiza (Curso curso);
+
+    Optional<Curso> consultarPorId(Long id);
 }

@@ -73,4 +73,9 @@ public class CursosServiceImpl implements CursosService {
         }
     }
 
+    @Override
+    public Optional<Curso> consultarPorId(Long id) {
+        return repository.findById(id);
+    }
+
 }
