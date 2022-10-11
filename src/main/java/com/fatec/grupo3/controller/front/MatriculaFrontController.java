@@ -30,22 +30,22 @@ public class MatriculaFrontController {
         return mv;
     }
 
-    @GetMapping("/curso")
+    @GetMapping("/matriculas")
     public ModelAndView retornaFormDeCadastroDeMatricula(Matricula matricula) {
         ModelAndView mv = new ModelAndView("cadastrarMatricula");
-        mv.addObject("curso", matricula);
+        mv.addObject("matricula", matricula);
         return mv;
     }
 
 
-    @GetMapping("/cursos/{id}")
+    @GetMapping("/matriculas/{id}")
     public ModelAndView retornaFormParaEditarMatricula(@PathVariable("id") Long id) {
-        ModelAndView mv = new ModelAndView("atualizarCurso");
+        ModelAndView mv = new ModelAndView("atualizarMatricula");
 
         Optional<Matricula> curso = service.consultaPorId(id);
 
         if(curso.isPresent()) {
-            mv.addObject("curso", curso.get());
+            mv.addObject("matricula", curso.get());
         } else {
             return new ModelAndView("paginaMenu");
         }
@@ -59,24 +59,24 @@ public class MatriculaFrontController {
 
         logger.info(">>>>>>>>> servico de exclusão chamado para o id => " + id);
         ModelAndView mv = new ModelAndView("consultarCurso");
-        mv.addObject("cursos", service.consultaTodos());
+        mv.addObject("matriculas", service.consultaTodos());
 
         return mv;
     }
 
-    @PostMapping("/cursos")
+    @PostMapping("/matriculas")
     public ModelAndView save(@Valid Matricula matricula, BindingResult result) {
         ModelAndView mv = new ModelAndView("consultarMatricula");
 
         if(result.hasErrors()) {
-            mv.setViewName("cadastrarCurso");
+            mv.setViewName("cadastrarMatricula");
         } else {
             if (service.save(matricula).isPresent()) {
                 logger.info(">>>>>> controller chamou cadastrar e consultar todos");
                 mv.addObject("cursos", service.consultaTodos());
             } else {
                 logger.info(">>>>>> controller cadastrar com dados invalidos");
-                mv.setViewName("cadastrarCurso");
+                mv.setViewName("cadastrarMatricula");
                 mv.addObject("message", "Dados invalidos");
             }
         }
@@ -84,7 +84,7 @@ public class MatriculaFrontController {
         return mv;
     }
 
-    @PostMapping("/cursos/id/{id}")
+    @PostMapping("/matriculas/id/{id}")
     public ModelAndView atualizaCurso(@PathVariable("id") Long id, @Valid Matricula matricula, BindingResult result) {
         ModelAndView mv = new ModelAndView("consultaMatricula");
         logger.info(">>>>>> servico para atualizacao de dados chamado para o id => " + id);
@@ -97,7 +97,7 @@ public class MatriculaFrontController {
         } else {
             service.atualiza(matricula);
 
-            mv.addObject("cursos", service.consultaTodos());
+            mv.addObject("matriculas", service.consultaTodos());
         }
 
         return mv;
