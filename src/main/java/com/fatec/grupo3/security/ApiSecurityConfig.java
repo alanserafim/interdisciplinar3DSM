@@ -21,7 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebApiSecurityConfig extends WebSecurityConfigurerAdapter{
+public class ApiSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Autowired
     private AuthService authService;
