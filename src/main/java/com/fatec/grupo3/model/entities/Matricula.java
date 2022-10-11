@@ -37,6 +37,13 @@ public class Matricula {
         this.avaliacaoCurso = avaliacaoCurso;
     }
 
+    public long getMatriculaId() {
+        return matriculaId;
+    }
+
+    public void setMatriculaId(long matriculaId) {
+        this.matriculaId = matriculaId;
+    }
 
     public Usuario getUsuario() {
         return usuario;

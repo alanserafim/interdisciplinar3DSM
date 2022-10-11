@@ -11,6 +11,7 @@ public interface MatriculasService {
 
     List<Matricula> consultaTodos();
     Optional<Matricula> consultaPorUsuario(String cpf);
+    Optional<Matricula> consultaPorId(Long id);
     Optional<Matricula> save(Matricula matricula);
     void delete (Long id);
     Optional<Matricula> atualiza(Matricula matricula);

@@ -63,6 +63,11 @@ public class MatriculasServiceImpl implements MatriculasService {
     }
 
     @Override
+    public Optional<Matricula> consultaPorId(Long id) {
+        return repository.findById(id);
+    }
+
+    @Override
     public Optional<Matricula> atualiza(Matricula matricula) {
         logger.info(">>>>>> servico atualiza chamado ");
         Optional<Matricula> umMatricula = consultaPorUsuario(matricula.getUsuario().getCpf());
