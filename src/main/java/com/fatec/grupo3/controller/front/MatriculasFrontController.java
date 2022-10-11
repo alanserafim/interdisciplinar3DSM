@@ -16,8 +16,8 @@ import java.util.Optional;
 @Controller
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "/grupo3")
-public class MatriculaFrontController {
-    Logger logger = LogManager.getLogger(MatriculaFrontController.class);
+public class MatriculasFrontController {
+    Logger logger = LogManager.getLogger(MatriculasFrontController.class);
 
     @Autowired
     MatriculasService service;
@@ -30,7 +30,7 @@ public class MatriculaFrontController {
         return mv;
     }
 
-    @GetMapping("/matriculas")
+    @GetMapping("/matricula")
     public ModelAndView retornaFormDeCadastroDeMatricula(Matricula matricula) {
         ModelAndView mv = new ModelAndView("cadastrarMatricula");
         mv.addObject("matricula", matricula);
@@ -58,7 +58,7 @@ public class MatriculaFrontController {
         service.delete(id);
 
         logger.info(">>>>>>>>> servico de exclusão chamado para o id => " + id);
-        ModelAndView mv = new ModelAndView("consultarCurso");
+        ModelAndView mv = new ModelAndView("consultarMatricula");
         mv.addObject("matriculas", service.consultaTodos());
 
         return mv;
@@ -73,7 +73,7 @@ public class MatriculaFrontController {
         } else {
             if (service.save(matricula).isPresent()) {
                 logger.info(">>>>>> controller chamou cadastrar e consultar todos");
-                mv.addObject("cursos", service.consultaTodos());
+                mv.addObject("matriculas", service.consultaTodos());
             } else {
                 logger.info(">>>>>> controller cadastrar com dados invalidos");
                 mv.setViewName("cadastrarMatricula");
