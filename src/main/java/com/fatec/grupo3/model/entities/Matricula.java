@@ -18,62 +18,73 @@ public class Matricula {
     @Column
     private String status;
     @Column
-    private int progresso;
+    private Double progresso;
     @Column
-    private double avaliacaoCurso;
+    private Double avaliacaoCurso;
 
     Matricula(Usuario usuario){
         this.usuario = usuario;
         status = "Em Andamento";
-        progresso = 0;
-        avaliacaoCurso = 0;
+        progresso = 0.0;
+        avaliacaoCurso = 0.0;
     }
 
 
-    public Matricula(Usuario usuario, String status, int progresso, double avaliacaoCurso) {
+    public Matricula(Usuario usuario, String status, Double progresso, Double avaliacaoCurso) {
         this.usuario = usuario;
         this.status = status;
         this.progresso = progresso;
-        this.avaliacaoCurso = avaliacaoCurso;
+       this.avaliacaoCurso = avaliacaoCurso;
     }
 
-    public long getMatriculaId() {
-        return matriculaId;
-    }
 
-    public void setMatriculaId(long matriculaId) {
-        this.matriculaId = matriculaId;
-    }
+	public long getMatriculaId() {
+		return matriculaId;
+	}
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
+	public void setMatriculaId(long matriculaId) {
+		this.matriculaId = matriculaId;
+	}
 
-    public String getStatus() {
-        return status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+	public Usuario getUsuario() {
+		return usuario;
+	}
 
-    public int getProgresso() {
-        return progresso;
-    }
 
-    public void setProgresso(int progresso) {
-        this.progresso = progresso;
-    }
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
-    public double getAvaliacaoCurso() {
-        return avaliacaoCurso;
-    }
 
-    public void setAvaliacaoCurso(double avaliacaoCurso) {
-        this.avaliacaoCurso = avaliacaoCurso;
-    };
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Double getProgresso() {
+		return progresso;
+	}
+
+
+	public void setProgresso(Double progresso) {
+		this.progresso = progresso;
+	}
+
+
+	public Double getAvaliacaoCurso() {
+		return avaliacaoCurso;
+	}
+
+
+	public void setAvaliacaoCurso(Double avaliacaoCurso) {
+		this.avaliacaoCurso = avaliacaoCurso;
+	}
+
+   
 }
