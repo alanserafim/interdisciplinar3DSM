@@ -91,7 +91,7 @@ public class MatriculasFrontController {
 
         if (result.hasErrors()) {
             logger.info(">>>>>> servico para atualizacao de dados com erro => " + result.getFieldError().toString());
-            matricula.setMatriculaId(id);
+            matricula.setId(id);
 
             return new ModelAndView("atualizarMatricula");
         } else {

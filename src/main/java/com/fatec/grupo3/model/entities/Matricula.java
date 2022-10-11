@@ -11,40 +11,34 @@ import javax.persistence.OneToOne;
 public class Matricula {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long matriculaId;
-    @OneToOne
+    private Long id;
     private Usuario usuario;
-    //private Curso curso
-    @Column
     private String status;
-    @Column
     private Double progresso;
-    @Column
     private Double avaliacaoCurso;
-
-    Matricula(Usuario usuario){
-        this.usuario = usuario;
-        status = "Em Andamento";
-        progresso = 0.0;
-        avaliacaoCurso = 0.0;
+    //private Curso curso
+    
+    
+    public Matricula() {
+    	super();
     }
 
-
-    public Matricula(Usuario usuario, String status, Double progresso, Double avaliacaoCurso) {
-        this.usuario = usuario;
+    public Matricula(Long id, Usuario usuario, String status, Double progresso, Double avaliacaoCurso) {
+        this.id = id;
+    	this.usuario = usuario;
         this.status = status;
         this.progresso = progresso;
-       this.avaliacaoCurso = avaliacaoCurso;
+        this.avaliacaoCurso = avaliacaoCurso;
     }
 
 
-	public long getMatriculaId() {
-		return matriculaId;
+	public long getId() {
+		return id;
 	}
 
 
-	public void setMatriculaId(long matriculaId) {
-		this.matriculaId = matriculaId;
+	public void setId(long matriculaId) {
+		this.id = matriculaId;
 	}
 
 

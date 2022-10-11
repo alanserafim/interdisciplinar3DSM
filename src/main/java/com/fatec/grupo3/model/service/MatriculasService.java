@@ -1,6 +1,5 @@
 package com.fatec.grupo3.model.service;
 
-import com.fatec.grupo3.model.entities.Curso;
 import com.fatec.grupo3.model.entities.Matricula;
 import com.fatec.grupo3.model.entities.Usuario;
 
