@@ -86,7 +86,7 @@ public class MatriculasFrontController {
 
     @PostMapping("/matriculas/id/{id}")
     public ModelAndView atualizaCurso(@PathVariable("id") Long id, @Valid Matricula matricula, BindingResult result) {
-        ModelAndView mv = new ModelAndView("consultaMatricula");
+        ModelAndView mv = new ModelAndView("consultarMatricula");
         logger.info(">>>>>> servico para atualizacao de dados chamado para o id => " + id);
 
         if (result.hasErrors()) {

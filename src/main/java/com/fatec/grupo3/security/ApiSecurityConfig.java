@@ -3,7 +3,9 @@ package com.fatec.grupo3.security;
 import com.fatec.grupo3.model.repositories.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,10 +19,11 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@Order(-1)
+@Order(1)
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@ComponentScan({"com.fatec.grupo3.service"})
 public class ApiSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Autowired
@@ -46,9 +49,10 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .antMatcher("/api/**")
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/api/v1/usuarios/cadastro").permitAll()
-                .antMatchers(HttpMethod.POST,"/api/v1/usuarios/login").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/v1/usuarios/signIn").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/v1/usuarios/signUp").permitAll()
                 .and().cors()
                 .and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -57,6 +61,6 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers( "/**.html", "/swagger-ui.html", "/v2/api-docs", "/webjars/**", "/configuration/**", "/swagger-resources/**");
+        web.ignoring().antMatchers(  "/swagger-ui.html", "/v2/api-docs", "/webjars/**", "/configuration/**", "/swagger-resources/**");
     }
 }

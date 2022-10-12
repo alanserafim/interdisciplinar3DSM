@@ -1,4 +1,4 @@
-package com.fatec.grupo3.controller.rest;
+package com.fatec.grupo3.controller.rest.docs;
 
 import com.fatec.grupo3.model.entities.Login;
 import com.fatec.grupo3.model.entities.Token;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-@Api(value = "/api/v1/users",  description = "Operações relacionadas aos Usuarios")
+@Api(value = "/api/v1/usuarios",  description = "Operações relacionadas aos Usuarios")
 public interface UsuariosRestControllerDocs {
 
     @ApiOperation(value = "Cadastrar um usuario", nickname = "signUp", notes = "", response = Usuario.class, responseContainer = "object", tags = { "Users", })
