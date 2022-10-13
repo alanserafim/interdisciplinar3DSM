@@ -20,7 +20,11 @@ Para executar o projeto, utilize as ferramentas descritas na sessão *Ferramenta
 ## Introdução
 
 Este projeto possui o objetivo principal **implementar uma plataforma de cursos online da Fatec Zona Leste**.  
+<<<<<<< HEAD
 Com os objetivos gerais de gerenciamento cursos voltados para o nivelamento de alunos ingressantes da graduação.
+=======
+Com os objetivos gerais de gerenciamento cursos voltados para o nivelamento de alunos ingressantes da graduação. 
+>>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
 
 ## Análise técnica
 
@@ -36,7 +40,11 @@ O sistema é composto por um banco de dados, uma interface web e um sistema emba
 
 As ferramentas utilizadas para o desenvolvimento incluem **< linguagem para back-end >** que é uma linguagem de programação utilizada para o Back-end, para front-end foi utilizado **< linguagem para o front-end >** . **< Banco de dados >** atuando como sistema gerenciador de banco de dados relacional e **< gerenciador de container >** para utilizar o ambiente em container.
 
+<<<<<<< HEAD
 ### Levantamento de requisitos
+=======
+### Levantamento de requisitos  
+>>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
 Os requisitos devem ser validados com a cliente e aprovados.
 > Aprovar os requisitos com o cliente é o mais importante, se não for validado o documento não será válido.
 
@@ -49,6 +57,7 @@ Respeitando a proposta, o sistema deverá atender os seguintes requisitos:
 
 ## Regras de Negócio
 
+<<<<<<< HEAD
 _Solicitação_
 
 **RGN1** -  O cliente só fará a solicitação se estiver cadastrado e logado.
@@ -56,6 +65,15 @@ _Solicitação_
 _Agendamento_
 
 **RGN2** - O cliente só fará a agendamento se estiver 2 anos no sistema.
+=======
+_Solicitação_  
+
+**RGN1** -  O cliente só fará a solicitação se estiver cadastrado e logado.  
+
+_Agendamento_  
+
+**RGN2** - O cliente só fará a agendamento se estiver 2 anos no sistema.   
+>>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
 
 > As regras de negócio estão relacionadas as dependencias do sistema, por exemplo "depois de x tempo" ou "para clientes de x perfil".
 
@@ -79,22 +97,37 @@ _Agendamento_
     Como – usuário
     Eu quero – alterar os meus dados
     De maneira que – seja possível atualizar informações inconsistentes
+<<<<<<< HEAD
 
 
+=======
+ 
+ 
+>>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
 **REQ04** - *Excluir perfil*
 
     Como – usuário
     Eu quero –  excluir o meu perfil
     De maneira que – os dados sejam deletados permanentemente do sistema
+<<<<<<< HEAD
 
 
+=======
+    
+    
+>>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
 **REQ05** - *Cadastrar curso*
 
     Como – instrutor
     Eu quero –  criar um curso
     De maneira que –  seja possível para outros usuários matricularem-se e visualizar a trilha do curso
+<<<<<<< HEAD
 
 
+=======
+    
+    
+>>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
 **REQ06** - *Consultar curso*
 
     Como – usuário
@@ -114,8 +147,13 @@ _Agendamento_
     Como – instrutor
     Eu quero –  realizar matrícula nos cursos disponíveis na plataforma
     De maneira que –  o curso seja deletado permanentemente do sistema
+<<<<<<< HEAD
 
 
+=======
+    
+    
+>>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
 **REQ09** - *Realizar matrícula*
 
     Como – usuário
@@ -147,4 +185,8 @@ Rotas utilizadas pela aplicação web para executar metodos de **POST** e **GET*
 |```PUT``` /atualizaUsuario|Atualiza o usuário.|
 
 ## Conceitos básicos
+<<<<<<< HEAD
 * [Design pattern](https://www.opus-software.com.br/design-patterns/) - Design Patterns ou padrões de projetos são soluções generalistas para problemas recorrentes durante o desenvolvimento de um software. Mais informações no [catalogo de design pattern](https://refactoring.guru/design-patterns). 
+=======
+* [Design pattern](https://www.opus-software.com.br/design-patterns/) - Design Patterns ou padrões de projetos são soluções generalistas para problemas recorrentes durante o desenvolvimento de um software. Mais informações no [catalogo de design pattern](https://refactoring.guru/design-patterns). 
+>>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
