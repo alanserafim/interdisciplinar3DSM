@@ -42,10 +42,10 @@ public class MatriculasFrontController {
     public ModelAndView retornaFormParaEditarMatricula(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView("atualizarMatricula");
 
-        Optional<Matricula> curso = service.consultaPorId(id);
+        Optional<Matricula> matricula = service.consultaPorId(id);
 
-        if(curso.isPresent()) {
-            mv.addObject("matricula", curso.get());
+        if(matricula.isPresent()) {
+            mv.addObject("matricula", matricula.get());
         } else {
             return new ModelAndView("paginaMenu");
         }
