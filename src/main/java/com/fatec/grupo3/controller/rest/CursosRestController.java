@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "https://alanserafim.github.io/fatecflix-angular/")
 @RequestMapping("/api/v1")
 public class CursosRestController implements CursosRestControllerDocs {
 
