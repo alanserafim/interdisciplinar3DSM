@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@CrossOrigin(origins = "https://alanserafim.github.io/fatecflix-angular/")
+@CrossOrigin(origins = {"https://alanserafim.github.io/fatecflix-angular/", "http://localhost:4200/"})
 @RequestMapping("/api/v1/usuarios")
 public class UsuariosRestController implements UsuariosRestControllerDocs {
 
