@@ -49,7 +49,7 @@ public class MenuFrontController {
 
 
     @GetMapping("/signUp")
-    public ModelAndView signUp(Usuario usuario) {
+    public ModelAndView signUp(SignUpDTO usuario) {
         ModelAndView mv = new ModelAndView("cadastrarUsuario");
         mv.addObject("usuario", usuario);
         return mv;
