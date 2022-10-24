@@ -1,16 +1,20 @@
-package com.fatec.grupo3.model.entities;
+package com.fatec.grupo3.model.dto;
 
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
-public class Login {
+public class LoginDTO {
 
+    @ApiModelProperty(value = "Email ou username")
     private String login;
+
+    @ApiModelProperty(value = "Senha")
     private String password;
 
-    public Login() {
+    public LoginDTO() {
     }
 
-    public Login(String login, String password) {
+    public LoginDTO(String login, String password) {
         this.login = login;
         this.password = password;
     }

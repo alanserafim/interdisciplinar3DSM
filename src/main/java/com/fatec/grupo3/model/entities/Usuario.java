@@ -39,6 +39,9 @@ public class Usuario implements UserDetails {
     @Column(name = "roles_id")
     private List<String> roles;
 
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
+    private List<Matricula> matriculas;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorityList = Arrays.asList(new SimpleGrantedAuthority(roles.stream().toString()));

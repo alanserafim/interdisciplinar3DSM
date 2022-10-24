@@ -164,12 +164,12 @@ _Agendamento_
 **REQ10** - *Realizar Login*
 
     Como – usuário
-    Eu quero –   realizar login na plataforma
+    Eu quero –   realizar loginDTO na plataforma
     De maneira que –  – seja possível ter acesso a página principal da aplicação
 
 
 
-> Imagine que fosse necessário enviar um email sempre que realizado o login, esse email deveria estar no fluxograma. Esse fluxograma pode ser mais simples, apenas com o objetivo de validar com o cliente que as dependências de negócio estão validadas em cada caso de negócio.
+> Imagine que fosse necessário enviar um email sempre que realizado o loginDTO, esse email deveria estar no fluxograma. Esse fluxograma pode ser mais simples, apenas com o objetivo de validar com o cliente que as dependências de negócio estão validadas em cada caso de negócio.
 
 ### Mensagens internas
 

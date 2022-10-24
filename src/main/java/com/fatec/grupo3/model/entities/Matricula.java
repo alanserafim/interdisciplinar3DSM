@@ -1,11 +1,6 @@
 package com.fatec.grupo3.model.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Matricula {
@@ -13,24 +8,29 @@ public class Matricula {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //private Usuario usuario;
+	@ManyToOne(cascade = { CascadeType.MERGE })
+	@JoinColumn(name = "user_id", nullable = false)
+    private Usuario usuario;
     private String status;
     private Double progresso;
     private Double avaliacaoCurso;
-    //private Curso curso
+
+	@OneToOne
+	@JoinColumn(name = "curso_id", nullable = false)
+    private Curso curso;
     
     
     public Matricula() {
-
     }
 
-    public Matricula(Long id, String status, Double progresso, Double avaliacaoCurso) {
-        this.id = id;
-    	//this.usuario = usuario;
-        this.status = status;
-        this.progresso = progresso;
-        this.avaliacaoCurso = avaliacaoCurso;
-    }
+	public Matricula(Long id, Usuario usuario, String status, Double progresso, Double avaliacaoCurso, Curso curso) {
+		this.id = id;
+		this.usuario = usuario;
+		this.status = status;
+		this.progresso = progresso;
+		this.avaliacaoCurso = avaliacaoCurso;
+		this.curso = curso;
+	}
 
 	public Long getId() {
 		return id;
@@ -39,16 +39,6 @@ public class Matricula {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-/* Usuario getUsuario() {
-		return usuario;
-	}
-
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}*/
-
 
 	public String getStatus() {
 		return status;
@@ -78,5 +68,19 @@ public class Matricula {
 		this.avaliacaoCurso = avaliacaoCurso;
 	}
 
-   
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
 }

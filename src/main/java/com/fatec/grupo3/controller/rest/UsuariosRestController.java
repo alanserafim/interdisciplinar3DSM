@@ -1,13 +1,12 @@
 package com.fatec.grupo3.controller.rest;
 
 import com.fatec.grupo3.controller.rest.docs.UsuariosRestControllerDocs;
-import com.fatec.grupo3.model.entities.Login;
-import com.fatec.grupo3.model.entities.Token;
+import com.fatec.grupo3.model.dto.LoginDTO;
+import com.fatec.grupo3.model.dto.SignUpDTO;
+import com.fatec.grupo3.model.dto.TokenDTO;
 import com.fatec.grupo3.model.entities.Usuario;
 import com.fatec.grupo3.model.service.UsuariosService;
-import com.fatec.grupo3.security.Profiles;
 import com.fatec.grupo3.utils.TokenUtils;
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,21 +23,21 @@ public class UsuariosRestController implements UsuariosRestControllerDocs {
 
     @Override
     @PostMapping("/signUp")
-    public ResponseEntity<Usuario> signUp(Usuario usuario) {
-        Usuario responseBody = service.cadastrar(usuario);
+    public ResponseEntity<SignUpDTO> signUp(SignUpDTO usuarioDto) {
+        SignUpDTO responseBody = service.cadastrar(usuarioDto);
 
         return ResponseEntity.ok(responseBody);
     }
 
     @Override
     @PostMapping("/signIn")
-    public ResponseEntity<Token> signIn(Login login) {
-        return ResponseEntity.ok(service.logar(login));
+    public ResponseEntity<TokenDTO> signIn(LoginDTO loginDTO) {
+        return ResponseEntity.ok(service.logar(loginDTO));
     }
 
     @Override
     @GetMapping("/me")
-    public ResponseEntity<Usuario> me(HttpServletRequest request) {
+    public ResponseEntity<SignUpDTO> me(HttpServletRequest request) {
         String token = TokenUtils.wrapperToken(request);
 
         return ResponseEntity.ok(service.perfil(token));

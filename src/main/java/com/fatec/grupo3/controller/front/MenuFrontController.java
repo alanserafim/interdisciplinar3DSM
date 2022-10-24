@@ -1,16 +1,13 @@
 package com.fatec.grupo3.controller.front;
 
-import com.fatec.grupo3.model.entities.Cliente;
-import com.fatec.grupo3.model.entities.Login;
+import com.fatec.grupo3.model.dto.LoginDTO;
+import com.fatec.grupo3.model.dto.SignUpDTO;
 import com.fatec.grupo3.model.entities.Usuario;
 import com.fatec.grupo3.model.service.UsuariosService;
-import com.fatec.grupo3.security.Profiles;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,7 +16,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -39,9 +35,9 @@ public class MenuFrontController {
 
     @PostMapping("/")
     public String autenticacao(@RequestParam String username, @RequestParam String password, HttpServletResponse res) {
-        Login login = new Login(username, password);
+        LoginDTO loginDTO = new LoginDTO(username, password);
 
-        Cookie cookie = new Cookie("jwt_token", service.logar(login).toString());
+        Cookie cookie = new Cookie("jwt_token", service.logar(loginDTO).toString());
 
         cookie.setPath("/grupo3/");
         cookie.setMaxAge(Integer.MAX_VALUE);
@@ -60,7 +56,7 @@ public class MenuFrontController {
     }
 
     @PostMapping("/signUp")
-    public ModelAndView save(@Valid Usuario usuario, BindingResult result) {
+    public ModelAndView save(@Valid SignUpDTO usuario, BindingResult result) {
         ModelAndView mv = new ModelAndView("consultarUsuario");
         List<String> roles = new ArrayList<>();
         roles.add("ADMIN");
@@ -68,7 +64,7 @@ public class MenuFrontController {
         if (result.hasErrors()) {
             mv.setViewName("cadastrarUsuario");
         } else {
-            Usuario usuarioSaved = service.cadastrar(usuario);
+            SignUpDTO usuarioSaved = service.cadastrar(usuario);
             if (usuarioSaved != null) {
                 mv.setViewName("paginaLogin");
             } else {

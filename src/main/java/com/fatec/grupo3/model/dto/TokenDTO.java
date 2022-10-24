@@ -1,10 +1,10 @@
-package com.fatec.grupo3.model.entities;
+package com.fatec.grupo3.model.dto;
 
-public class Token {
+public class TokenDTO {
     private String token;
     private String type;
 
-    public Token(String token, String type) {
+    public TokenDTO(String token, String type) {
         this.token = token;
         this.type = type;
     }

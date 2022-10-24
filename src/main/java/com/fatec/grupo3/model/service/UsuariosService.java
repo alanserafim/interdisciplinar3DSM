@@ -1,12 +1,14 @@
 package com.fatec.grupo3.model.service;
 
-import com.fatec.grupo3.model.entities.Login;
-import com.fatec.grupo3.model.entities.Token;
+import com.fatec.grupo3.model.dto.LoginDTO;
+import com.fatec.grupo3.model.dto.ProfileDTO;
+import com.fatec.grupo3.model.dto.SignUpDTO;
+import com.fatec.grupo3.model.dto.TokenDTO;
 import com.fatec.grupo3.model.entities.Usuario;
 
 public interface UsuariosService {
 
-    Usuario cadastrar(Usuario usuario);
-    Token logar(Login login);
-    Usuario perfil(String token);
+    SignUpDTO cadastrar(SignUpDTO usuarioDto);
+    TokenDTO logar(LoginDTO loginDTO);
+    SignUpDTO perfil(String token);
 }

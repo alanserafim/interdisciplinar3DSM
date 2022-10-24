@@ -1,15 +1,15 @@
 package com.fatec.grupo3.model.service.implementation;
 
-import com.fatec.grupo3.model.entities.Login;
-import com.fatec.grupo3.model.entities.Token;
+import com.fatec.grupo3.model.dto.LoginDTO;
+import com.fatec.grupo3.model.dto.ProfileDTO;
+import com.fatec.grupo3.model.dto.SignUpDTO;
+import com.fatec.grupo3.model.dto.TokenDTO;
 import com.fatec.grupo3.model.entities.Usuario;
+import com.fatec.grupo3.model.mapper.UsuariosMapper;
 import com.fatec.grupo3.model.repositories.UsuariosRepository;
 import com.fatec.grupo3.model.service.UsuariosService;
-import com.fatec.grupo3.security.Profiles;
 import com.fatec.grupo3.security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,32 +23,38 @@ public class UsuariosServiceImpl implements UsuariosService {
     private UsuariosRepository usuariosRepository;
 
     @Autowired
-    private TokenService tokenService;
+    private UsuariosMapper mapper = UsuariosMapper.INSTANCE;
 
+    @Autowired
+    private TokenService tokenService;
     @Autowired
     private AuthenticationManager authenticationManager;
 
     @Override
-    public Usuario cadastrar(Usuario usuario) {
+    public SignUpDTO cadastrar(SignUpDTO usuarioDto) {
+        Usuario usuario = mapper.toModel(usuarioDto);
+
         String pwd = usuario.getPassword();
         usuario.setPassword(new BCryptPasswordEncoder().encode(pwd));
 
-        return usuariosRepository.save(usuario);
+        Usuario usuarioSalvo = usuariosRepository.save(usuario);
+
+        return mapper.toDTO(usuarioSalvo);
     }
 
     @Override
-    public Token logar(Login login) {
-        UsernamePasswordAuthenticationToken loginData = login.convert();
+    public TokenDTO logar(LoginDTO loginDTO) {
+        UsernamePasswordAuthenticationToken loginData = loginDTO.convert();
         Authentication auth = authenticationManager.authenticate(loginData);
         String token = tokenService.getToken(auth);
 
-        return new Token(token, "Bearer");
+        return new TokenDTO(token, "Bearer");
     }
 
     @Override
-    public Usuario perfil(String token) {
+    public SignUpDTO perfil(String token) {
         Long userId = tokenService.getUserId(token);
-
-        return usuariosRepository.getReferenceById(userId);
+        Usuario usuarioEncontrado = usuariosRepository.getReferenceById(userId);
+        return mapper.toDTO(usuarioEncontrado);
     }
 }

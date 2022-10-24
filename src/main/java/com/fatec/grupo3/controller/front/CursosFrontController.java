@@ -95,7 +95,7 @@ public class CursosFrontController {
 
         if (result.hasErrors()) {
             logger.info(">>>>>> servico para atualizacao de dados com erro => " + result.getFieldError().toString());
-            curso.setId(id);
+            curso.setCursoId(id);
 
             return new ModelAndView("atualizarCurso");
         } else {
