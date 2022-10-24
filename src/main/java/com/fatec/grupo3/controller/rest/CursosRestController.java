@@ -1,8 +1,10 @@
 package com.fatec.grupo3.controller.rest;
 
 import com.fatec.grupo3.controller.rest.docs.CursosRestControllerDocs;
+import com.fatec.grupo3.model.dto.CursoDTO;
 import com.fatec.grupo3.model.entities.Curso;
 import com.fatec.grupo3.model.service.CursosService;
+import com.fatec.grupo3.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,7 +25,8 @@ public class CursosRestController implements CursosRestControllerDocs {
 
     @Override
     @PostMapping("/cursos")
-    public ResponseEntity<Optional<Curso>> createCurso(Curso curso, HttpServletRequest request) throws Exception {
-        return ResponseEntity.ok(service.save(curso));
+    public ResponseEntity<Optional<CursoDTO>> createCurso(CursoDTO curso, HttpServletRequest request) throws Exception {
+        String token = TokenUtils.wrapperToken(request);
+        return ResponseEntity.ok(service.save(curso, token));
     }
 }

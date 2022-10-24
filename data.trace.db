@@ -830,3 +830,6 @@ alter table matricula add constraint FKif5lsh9hi508beh0pi1a6lrae foreign key (us
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
 	at com.fatec.grupo3.Grupo3Application.main(Grupo3Application.java:10)
+2022-10-24 16:00:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "USUARIO BINARY VARYING(255)": "X'aced0005737200346f72672e68696265726e6174652e70726f78792e706f6a6f2e627974656275... (1106)"; SQL statement:
+insert into curso (carga_horario, data_atualizacao, descricao, media_avaliacao, titulo, usuario, curso_id) values (?, ?, ?, ?, ?, ?, ?) [22001-214]

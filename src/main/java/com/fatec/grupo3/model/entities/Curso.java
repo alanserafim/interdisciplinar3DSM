@@ -1,13 +1,6 @@
 package com.fatec.grupo3.model.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import org.joda.time.DateTime;
-
-import com.fatec.grupo3.model.entities.Usuario;
+import javax.persistence.*;
 
 @Entity
 public class Curso {
@@ -18,7 +11,10 @@ public class Curso {
     private String titulo;
     private String descricao;
     private String cargaHorario;
-    private Usuario alunos;
+
+    @ManyToOne(cascade = { CascadeType.MERGE })
+    @JoinColumn(name = "user_id", nullable = false)
+    private Usuario usuario;
     private String dataAtualizacao;
     private Double mediaAvaliacao;
     public Long getCursoId() {
@@ -30,14 +26,14 @@ public class Curso {
     }
 
 
-    public Curso(Long cursoId, String titulo, String descricao, String cargaHorario, Usuario alunos,
+    public Curso(Long cursoId, String titulo, String descricao, String cargaHorario, Usuario usuario,
                  String dataAtualizacao, Double mediaAvaliacao) {
         super();
         this.cursoId = cursoId;
         this.titulo = titulo;
         this.descricao = descricao;
         this.cargaHorario = cargaHorario;
-        this.alunos = alunos;
+        this.usuario = usuario;
         this.dataAtualizacao = dataAtualizacao;
         this.mediaAvaliacao = mediaAvaliacao;
     }
@@ -63,11 +59,11 @@ public class Curso {
     public void setCargaHorario(String cargaHorario) {
         this.cargaHorario = cargaHorario;
     }
-    public Usuario getAlunos() {
-        return alunos;
+    public Usuario getUsuario() {
+        return usuario;
     }
-    public void setAlunos(Usuario alunos) {
-        this.alunos = alunos;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     public String getDataAtualizacao() {
         return dataAtualizacao;

@@ -1,8 +1,17 @@
 package com.fatec.grupo3.model.service.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import com.fatec.grupo3.model.dto.CursoDTO;
+import com.fatec.grupo3.model.dto.SignUpDTO;
+import com.fatec.grupo3.model.entities.Usuario;
+import com.fatec.grupo3.model.mapper.CursosMapper;
+import com.fatec.grupo3.model.mapper.UsuariosMapper;
+import com.fatec.grupo3.model.repositories.UsuariosRepository;
+import com.fatec.grupo3.security.TokenService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,61 +30,83 @@ public class CursosServiceImpl implements CursosService {
     @Autowired
     private CursosRepositories repository;
 
+    @Autowired
+    private UsuariosRepository usuariosRepository;
+
+    @Autowired
+    private TokenService tokenService;
+
+    @Autowired
+    private CursosMapper mapper = CursosMapper.INSTANCE;
+
+    @Autowired
+    private UsuariosMapper usuariosMapper = UsuariosMapper.INSTANCE;
+
     @Override
-    public List<Curso> consultaTodos() {
+    public List<CursoDTO> consultaTodos() {
         logger.info(">>>>>> servico consultaTodos chamado");
-        return repository.findAll();
+        return repository.findAll()
+                .stream()
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<Curso> consultaPorTitulo(String titulo) {
+    public Optional<CursoDTO> consultaPorTitulo(String titulo) {
         logger.info(">>>>>> servico consultaPorTitulo chamado");
-        return repository.findCursoByTitulo(titulo);
+        Optional<Curso> curso = repository.findCursoByTitulo(titulo);
+        return Optional.of(mapper.toDTO(curso.get()));
     }
 
     @Override
-    public Optional<Curso> save(Curso curso) {
+    public Optional<CursoDTO> save(CursoDTO cursoDTO, String token) {
+        Long userId = tokenService.getUserId(token);
+
+        Usuario usuario = usuariosRepository.getReferenceById(userId);
+
+        Curso curso = mapper.toModel(cursoDTO);
+        curso.setUsuario(usuario);
+        Curso cursoSalvo = repository.save(curso);
+
+        SignUpDTO usuarioLogado = usuariosMapper.toDTO(usuario);
 
         logger.info(">>>>>> servico save chamado ");
-        Optional<Curso> umCurso = consultaPorTitulo(curso.getTitulo());
 
 
-        if (umCurso.isEmpty()) {
-            logger.info(">>>>>> servico save - dados validos");
+        return Optional.ofNullable(mapper.toDTO(cursoSalvo));
+    }
 
-            return Optional.ofNullable(repository.save(curso));
-        } else {
-            return Optional.empty();
+    @Override
+    public void delete(Long id, String token) {
+        Long userId = tokenService.getUserId(token);
+        Usuario usuario = usuariosRepository.getReferenceById(userId);
+
+        if (usuario != null) {
+            repository.deleteById(id);
         }
     }
 
     @Override
-    public void delete(Long id) {
+    public Optional<CursoDTO> atualiza(CursoDTO cursoDTO, String token) {
+        Long userId = tokenService.getUserId(token);
 
-        repository.deleteById(id);
+        Usuario usuario = usuariosRepository.getReferenceById(userId);
 
-    }
+        Curso curso = mapper.toModel(cursoDTO);
+        curso.setUsuario(usuario);
+        Curso cursoSalvo = repository.save(curso);
 
-    @Override
-    public Optional<Curso> atualiza(Curso curso) {
+        SignUpDTO usuarioLogado = usuariosMapper.toDTO(usuario);
 
         logger.info(">>>>>> servico atualiza chamado ");
-        Optional<Curso> umCurso = consultaPorTitulo(curso.getTitulo());
 
-
-        if (umCurso.isEmpty()) {
-            logger.info(">>>>>> servico atualiza - dados validos");
-            //curso.setDataAtualizacao(new DateTime());
-
-            return Optional.ofNullable(repository.save(curso));
-        } else {
-            return Optional.empty();
-        }
+        return Optional.ofNullable(mapper.toDTO(cursoSalvo));
     }
 
     @Override
-    public Optional<Curso> consultarPorId(Long id) {
-        return repository.findById(id);
+    public Optional<CursoDTO> consultarPorId(Long id) {
+        Optional<Curso> curso = repository.findById(id);
+        return Optional.of(mapper.toDTO(curso.get()));
     }
 
 }

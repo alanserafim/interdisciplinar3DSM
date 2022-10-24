@@ -7,15 +7,13 @@ public class CursoDTO {
     private String titulo;
     private String descricao;
     private String cargaHorario;
-    private Usuario alunos;
     private String dataAtualizacao;
     private Double mediaAvaliacao;
 
-    public CursoDTO(String titulo, String descricao, String cargaHorario, Usuario alunos, String dataAtualizacao, Double mediaAvaliacao) {
+    public CursoDTO(String titulo, String descricao, String cargaHorario, String dataAtualizacao, Double mediaAvaliacao) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.cargaHorario = cargaHorario;
-        this.alunos = alunos;
         this.dataAtualizacao = dataAtualizacao;
         this.mediaAvaliacao = mediaAvaliacao;
     }
@@ -42,14 +40,6 @@ public class CursoDTO {
 
     public void setCargaHorario(String cargaHorario) {
         this.cargaHorario = cargaHorario;
-    }
-
-    public Usuario getAlunos() {
-        return alunos;
-    }
-
-    public void setAlunos(Usuario alunos) {
-        this.alunos = alunos;
     }
 
     public String getDataAtualizacao() {

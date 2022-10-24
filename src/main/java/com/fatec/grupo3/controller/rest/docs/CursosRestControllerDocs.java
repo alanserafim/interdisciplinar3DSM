@@ -1,5 +1,6 @@
 package com.fatec.grupo3.controller.rest.docs;
 
+import com.fatec.grupo3.model.dto.CursoDTO;
 import com.fatec.grupo3.model.entities.Curso;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,6 @@ public interface CursosRestControllerDocs {
             @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
             @ApiResponse(code = 404, message = "Usuário não encontrada") })
     @PostMapping
-    public ResponseEntity<Optional<Curso>> createCurso(@Valid @RequestBody Curso curso, HttpServletRequest request) throws Exception;
+    public ResponseEntity<Optional<CursoDTO>> createCurso(@Valid @RequestBody CursoDTO curso, HttpServletRequest request) throws Exception;
 
 }
