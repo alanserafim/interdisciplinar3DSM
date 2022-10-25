@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Atualizar cliente</title>
+	<title>Cadastrar Matrícula</title>
 	<script type="text/javascript">
 		function consulta() {
 			window.open("/grupo3/matriculas");
@@ -41,10 +41,9 @@
 						<div class="row">
 							<div class="form-group col-md-4">
 								<label for="status" class="col-form-label">Status</label>
-								<input type="text" th:field="*{status}" class="form-control" id="status"
-									placeholder="Status da matrícula">
-								<span th:if="${#fields.hasErrors('status')}" th:errors="*{status}" class="text-danger">
-								</span>
+                            <select th:field="*{status}">
+                                <option th:each="p : ${lista}" th:value="${p}" th:text="${p}"></option>
+                            </select>
 							</div>
 						</div>
 						

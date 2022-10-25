@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -33,6 +36,8 @@ public class MatriculasFrontController {
     @GetMapping("/matricula")
     public ModelAndView retornaFormDeCadastroDeMatricula(Matricula matricula) {
         ModelAndView mv = new ModelAndView("cadastrarMatricula");
+       List<String> lista = Arrays.asList("Inscrito","Em progresso","Concluído");
+       mv.addObject("lista",lista);
         mv.addObject("matricula", matricula);
         return mv;
     }
@@ -41,7 +46,8 @@ public class MatriculasFrontController {
     @GetMapping("/matriculas/{id}")
     public ModelAndView retornaFormParaEditarMatricula(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView("atualizarMatricula");
-
+         List<String> lista = Arrays.asList("Inscrito","Em progresso","Concluído");
+         mv.addObject("lista",lista);
         Optional<Matricula> curso = service.consultaPorId(id);
 
         if(curso.isPresent()) {
@@ -67,8 +73,9 @@ public class MatriculasFrontController {
     @PostMapping("/matriculas")
     public ModelAndView save(@Valid Matricula matricula, BindingResult result) {
         ModelAndView mv = new ModelAndView("consultarMatricula");
-
         if(result.hasErrors()) {
+            List<String> lista = Arrays.asList("Inscrito","Em progresso","Concluído");
+            mv.addObject("lista",lista);
             mv.setViewName("cadastrarMatricula");
         } else {
             if (service.save(matricula).isPresent()) {

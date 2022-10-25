@@ -36,7 +36,7 @@ public class ClientesFrontController {
     @GetMapping("/cliente")
     public ModelAndView retornaFormDeCadastroDe(Cliente cliente) {
         ModelAndView mv = new ModelAndView("cadastrarCliente");
-        List<String> lista = Arrays.asList("Técnico", "Advogado", "Analista");
+        List<String> lista = Arrays.asList("Aluno","Instrutor");
         mv.addObject("lista", lista);
         mv.addObject("cliente", cliente);
         return mv;
@@ -45,7 +45,7 @@ public class ClientesFrontController {
     @GetMapping("/clientes/{cpf}") // diz ao metodo que ira responder a uma requisicao do tipo get
     public ModelAndView retornaFormParaEditarCliente(@PathVariable("cpf") String cpf) {
         ModelAndView mv = new ModelAndView("atualizarCliente");
-        List<String> lista = Arrays.asList("Técnico", "Advogado", "Analista");
+        List<String> lista = Arrays.asList("Aluno","Instrutor");
         mv.addObject("lista", lista);
         Optional<Cliente> cliente = service.consultaPorCpf(cpf);
         if (cliente.isPresent()) {
@@ -69,7 +69,7 @@ public class ClientesFrontController {
     public ModelAndView save(@Valid Cliente cliente, BindingResult result) {
         ModelAndView mv = new ModelAndView("consultarCliente");
         if (result.hasErrors()) {
-            List<String> lista = Arrays.asList("Técnico", "Advogado", "Analista");
+            List<String> lista = Arrays.asList("Aluno","Instrutor");
             mv.addObject("lista", lista);
             mv.setViewName("cadastrarCliente");
         } else {

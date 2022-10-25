@@ -35,6 +35,7 @@ public class MenuFrontController {
 
     @PostMapping("/")
     public String autenticacao(@RequestParam String username, @RequestParam String password, HttpServletResponse res) {
+    	logger.info("Cheguei aqui no login");
         LoginDTO loginDTO = new LoginDTO(username, password);
 
         Cookie cookie = new Cookie("jwt_token", service.logar(loginDTO).toString());
@@ -50,6 +51,7 @@ public class MenuFrontController {
 
     @GetMapping("/signUp")
     public ModelAndView signUp(SignUpDTO usuario) {
+    	logger.info("Cheguei aqui no cadastro");
         ModelAndView mv = new ModelAndView("cadastrarUsuario");
         mv.addObject("usuario", usuario);
         return mv;
