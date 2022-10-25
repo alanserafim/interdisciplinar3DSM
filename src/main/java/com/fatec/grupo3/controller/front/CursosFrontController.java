@@ -106,7 +106,7 @@ public class CursosFrontController {
 
             return new ModelAndView("atualizarCurso");
         } else {
-            service.atualiza(curso, token);
+            service.atualiza(id, curso, token);
 
             mv.addObject("cursos", service.consultaTodos());
         }

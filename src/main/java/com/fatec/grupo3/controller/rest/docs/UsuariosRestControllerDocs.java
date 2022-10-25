@@ -2,6 +2,7 @@ package com.fatec.grupo3.controller.rest.docs;
 
 import com.fatec.grupo3.model.dto.ErrorDTO;
 import com.fatec.grupo3.model.dto.LoginDTO;
+import com.fatec.grupo3.model.dto.MatriculaDTO;
 import com.fatec.grupo3.model.dto.SignUpDTO;
 import com.fatec.grupo3.model.dto.TokenDTO;
 import com.fatec.grupo3.model.entities.Usuario;
@@ -13,8 +14,11 @@ import io.swagger.annotations.Authorization;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -22,14 +26,14 @@ import javax.validation.Valid;
 @Api(value = "/api/v1/usuarios",  description = "Operações relacionadas aos Usuarios")
 public interface UsuariosRestControllerDocs {
 
-    @ApiOperation(value = "Cadastrar um usuario", nickname = "signUp", notes = "", response = Usuario.class, responseContainer = "object", tags = { "Users", })
+    @ApiOperation(value = "Cadastrar um usuario", nickname = "signUp", notes = "", response = Usuario.class, responseContainer = "object", tags = { "Usuario", })
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Usuario Cadastrado no sistema", response = Usuario.class, responseContainer = "object"),
             @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object")})
     @PostMapping("/signUp")
     public ResponseEntity<SignUpDTO> signUp(@RequestBody @Valid SignUpDTO usuarioDto);
 
-    @ApiOperation(value = "Logar no sistema", nickname = "signIn", notes = "", response = TokenDTO.class, responseContainer = "object", tags = { "Users", })
+    @ApiOperation(value = "Logar no sistema", nickname = "signIn", notes = "", response = TokenDTO.class, responseContainer = "object", tags = { "Usuario", })
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Usuario Logado com sucesso!", response = TokenDTO.class, responseContainer = "object"),
             @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
@@ -38,7 +42,7 @@ public interface UsuariosRestControllerDocs {
     public ResponseEntity<TokenDTO> signIn(@RequestBody @Valid LoginDTO loginDTO);
 
     @ApiOperation(value = "Dados do usuario logado", nickname = "me", notes = "", response = Usuario.class, responseContainer = "object", authorizations = {
-            @Authorization(value = "Authorization") }, tags = { "Users", })
+            @Authorization(value = "Authorization") }, tags = { "Usuario", })
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Dados do usuario encontrado com sucesso!", response = Usuario.class, responseContainer = "object"),
             @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
@@ -46,4 +50,14 @@ public interface UsuariosRestControllerDocs {
             @ApiResponse(code = 404, message = "Usuário não encontrados") })
     @GetMapping("/me")
     public ResponseEntity<SignUpDTO> me(HttpServletRequest request);
+    
+    @ApiOperation(value = "Atualizar Usuario", nickname = "updateUsuario", notes = "", response = MatriculaDTO.class, responseContainer = "object", authorizations = {
+            @Authorization(value = "Authorization") }, tags = { "Usuario", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Matricula Atualizada!", response = MatriculaDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
+            @ApiResponse(code = 404, message = "Usuário não encontrada") })
+    @PostMapping
+    public ResponseEntity<Optional<MatriculaDTO>> updateMatricula(HttpServletRequest request, @RequestBody @Valid SignUpDTO usuarioDto) throws Exception;
 }

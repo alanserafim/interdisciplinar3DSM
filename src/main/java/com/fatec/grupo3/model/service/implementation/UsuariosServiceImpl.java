@@ -57,4 +57,28 @@ public class UsuariosServiceImpl implements UsuariosService {
         Usuario usuarioEncontrado = usuariosRepository.getReferenceById(userId);
         return mapper.toDTO(usuarioEncontrado);
     }
+
+	@Override
+	public SignUpDTO atualizarPerfil(String token, SignUpDTO usuarioDTO) {
+		Long userId = tokenService.getUserId(token);
+		
+		Usuario usuarioEncontrado = usuariosRepository.getReferenceById(userId);
+		Usuario usuarioAtualizado = mapper.toModel(usuarioDTO);
+		
+		usuarioEncontrado.setCpf(usuarioAtualizado.getCpf());
+		usuarioEncontrado.setName(usuarioAtualizado.getName());
+		usuarioEncontrado.setLastname(usuarioAtualizado.getLastname());
+		usuarioEncontrado.setUsername(usuarioAtualizado.getUsername());
+		usuarioEncontrado.setPassword(usuarioAtualizado.getPassword());
+		usuarioEncontrado.setDtNascimento(usuarioAtualizado.getDtNascimento());
+		usuarioEncontrado.setRa(usuarioAtualizado.getRa());
+		usuarioEncontrado.setCursoMatriculado(usuarioAtualizado.getCursoMatriculado());
+		usuarioEncontrado.setAnoIngresso(usuarioAtualizado.getAnoIngresso());
+		usuarioEncontrado.setPeriodo(usuarioAtualizado.getPeriodo());
+		usuarioEncontrado.setRoles(usuarioAtualizado.getRoles());
+		
+		Usuario usuarioSalvo = usuariosRepository.save(usuarioEncontrado);
+		
+		return mapper.toDTO(usuarioSalvo);
+	}
 }

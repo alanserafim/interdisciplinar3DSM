@@ -11,4 +11,5 @@ public interface UsuariosService {
     SignUpDTO cadastrar(SignUpDTO usuarioDto);
     TokenDTO logar(LoginDTO loginDTO);
     SignUpDTO perfil(String token);
+    SignUpDTO atualizarPerfil(String token, SignUpDTO usuarioDto);
 }

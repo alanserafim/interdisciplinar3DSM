@@ -42,7 +42,7 @@ public class CursosRestController implements CursosRestControllerDocs {
 			HttpServletRequest request) throws Exception {
 		String token = TokenUtils.wrapperToken(request);
 		
-		return ResponseEntity.ok(service.atualiza(matricula, token));
+		return ResponseEntity.ok(service.atualiza(id, matricula, token));
 	}
 
 	@Override
