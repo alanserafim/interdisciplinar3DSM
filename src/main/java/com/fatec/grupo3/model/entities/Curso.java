@@ -15,6 +15,7 @@ public class Curso {
     @ManyToOne(cascade = { CascadeType.MERGE })
     @JoinColumn(name = "user_id", nullable = false)
     private Usuario usuario;
+    
     private String dataAtualizacao;
     private Double mediaAvaliacao;
     public Long getCursoId() {

@@ -42,13 +42,13 @@ public class MatriculasFrontController {
     public ModelAndView retornaFormParaEditarMatricula(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView("atualizarMatricula");
 
-        Optional<Matricula> curso = service.consultaPorId(id);
+        /*Optional<Matricula> curso = service.consultaPorId(id);
 
         if(curso.isPresent()) {
             mv.addObject("matricula", curso.get());
         } else {
             return new ModelAndView("paginaMenu");
-        }
+        }*/
 
         return mv;
     }
@@ -68,7 +68,7 @@ public class MatriculasFrontController {
     public ModelAndView save(@Valid Matricula matricula, BindingResult result) {
         ModelAndView mv = new ModelAndView("consultarMatricula");
 
-        if(result.hasErrors()) {
+        /*if(result.hasErrors()) {
             mv.setViewName("cadastrarMatricula");
         } else {
             if (service.save(matricula).isPresent()) {
@@ -79,7 +79,7 @@ public class MatriculasFrontController {
                 mv.setViewName("cadastrarMatricula");
                 mv.addObject("message", "Dados invalidos");
             }
-        }
+        }*/
 
         return mv;
     }
@@ -89,7 +89,7 @@ public class MatriculasFrontController {
         ModelAndView mv = new ModelAndView("consultarMatricula");
         logger.info(">>>>>> servico para atualizacao de dados chamado para o id => " + id);
 
-        if (result.hasErrors()) {
+        /*if (result.hasErrors()) {
             logger.info(">>>>>> servico para atualizacao de dados com erro => " + result.getFieldError().toString());
             matricula.setId(id);
 
@@ -98,7 +98,7 @@ public class MatriculasFrontController {
             service.atualiza(matricula);
 
             mv.addObject("matriculas", service.consultaTodos());
-        }
+        }*/
 
         return mv;
     }

@@ -1,11 +1,22 @@
 package com.fatec.grupo3.model.dto;
 
-public class MatriculaDTO {
+import io.swagger.annotations.ApiModelProperty;
 
+public class MatriculaDTO {
+	
+	@ApiModelProperty(value = "Dono da matricula")
     private ProfileDTO usuario;
+	
+	@ApiModelProperty(value = "Status da Matricula")
     private String status;
+	
+	@ApiModelProperty(value = "Progresso da matricula")
     private Double progresso;
+	
+	@ApiModelProperty(value = "Nota que o usuario deu para o curso")
     private Double avaliacaoCurso;
+	
+	@ApiModelProperty(value = "Curso que o aluno está matriculado")
     private CursoDTO curso;
 
     public MatriculaDTO(ProfileDTO usuario, String status, Double progresso, Double avaliacaoCurso, CursoDTO curso) {

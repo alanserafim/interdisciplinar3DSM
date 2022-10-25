@@ -2,12 +2,18 @@ package com.fatec.grupo3.model.dto;
 
 import com.fatec.grupo3.model.entities.Usuario;
 
-public class CursoDTO {
+import io.swagger.annotations.ApiModelProperty;
 
+public class CursoDTO {
+	@ApiModelProperty(value = "Titulo do curso")
     private String titulo;
+	@ApiModelProperty(value = "Descrição do curso")
     private String descricao;
+	@ApiModelProperty(value = "Carga Horaria do curso")
     private String cargaHorario;
+	@ApiModelProperty(value = "Data de Atualização do curso cadastrado")
     private String dataAtualizacao;
+	@ApiModelProperty(value = "Media de Avaliação do curso cadastrado (feedback do alunos)")
     private Double mediaAvaliacao;
 
     public CursoDTO(String titulo, String descricao, String cargaHorario, String dataAtualizacao, Double mediaAvaliacao) {

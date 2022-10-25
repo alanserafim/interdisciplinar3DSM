@@ -30,7 +30,23 @@ public class Usuario implements UserDetails {
 
     @Column(nullable = false)
     private String name;
-
+    
+    @Column(nullable = false)
+    private String dtNascimento;
+    
+    @Column(nullable = true)
+    private Integer ra;
+    
+    @Column(nullable = true)
+    private String cursoMatriculado;
+    
+    @Column(nullable = true)
+    private String anoIngresso;
+    
+    
+    @Column(nullable = false)
+    private String periodo;
+    
     @Column(nullable = false)
     private String lastname;
 
@@ -55,18 +71,84 @@ public class Usuario implements UserDetails {
     public Usuario() {
     }
 
-    public Usuario(Long userId, String username, String email, String cpf, String password, String name, String lastname, List<String> roles) {
-        this.userId = userId;
-        this.username = username;
-        this.email = email;
-        this.cpf = cpf;
-        this.password = password;
-        this.name = name;
-        this.lastname = lastname;
-        this.roles = roles;
-    }
+    public Usuario(Long userId, String username, String email, String cpf, String password, String name,
+			String dtNascimento, Integer ra, String cursoMatriculado, String anoIngresso, String periodo,
+			String lastname, List<String> roles, List<Matricula> matriculas, List<Curso> cursos) {
+		super();
+		this.userId = userId;
+		this.username = username;
+		this.email = email;
+		this.cpf = cpf;
+		this.password = password;
+		this.name = name;
+		this.dtNascimento = dtNascimento;
+		this.ra = ra;
+		this.cursoMatriculado = cursoMatriculado;
+		this.anoIngresso = anoIngresso;
+		this.periodo = periodo;
+		this.lastname = lastname;
+		this.roles = roles;
+		this.matriculas = matriculas;
+		this.cursos = cursos;
+	}
 
-    public Long getUserId() {
+	public String getDtNascimento() {
+		return dtNascimento;
+	}
+
+	public void setDtNascimento(String dtNascimento) {
+		this.dtNascimento = dtNascimento;
+	}
+
+	public Integer getRa() {
+		return ra;
+	}
+
+	public void setRa(Integer ra) {
+		this.ra = ra;
+	}
+
+	public String getCursoMatriculado() {
+		return cursoMatriculado;
+	}
+
+	public void setCursoMatriculado(String cursoMatriculado) {
+		this.cursoMatriculado = cursoMatriculado;
+	}
+
+	public String getAnoIngresso() {
+		return anoIngresso;
+	}
+
+	public void setAnoIngresso(String anoIngresso) {
+		this.anoIngresso = anoIngresso;
+	}
+
+	public String getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(String periodo) {
+		this.periodo = periodo;
+	}
+
+	public List<Matricula> getMatriculas() {
+		return matriculas;
+	}
+
+	public void setMatriculas(List<Matricula> matriculas) {
+		this.matriculas = matriculas;
+	}
+
+	public List<Curso> getCursos() {
+		return cursos;
+	}
+
+	public void setCursos(List<Curso> cursos) {
+		this.cursos = cursos;
+	}
+
+	public Long getUserId() {
         return userId;
     }
 

@@ -10,6 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface MatriculaRepository extends JpaRepository<Matricula, Long> {
-    /*Optional<Matricula> findByUsuario(Usuario usuario);
-    Optional<Matricula> findByUsuario(Optional<Usuario> usuario);*/
+    //Optional<Matricula> findByUsuario(Usuario usuario);
+    //Optional<Matricula> findByUsuarioCpf(String cpf);
 }

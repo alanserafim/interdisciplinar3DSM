@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import com.fatec.grupo3.model.dto.CursoDTO;
 import com.fatec.grupo3.model.dto.SignUpDTO;
 import com.fatec.grupo3.model.entities.Usuario;
@@ -57,7 +59,8 @@ public class CursosServiceImpl implements CursosService {
         Optional<Curso> curso = repository.findCursoByTitulo(titulo);
         return Optional.of(mapper.toDTO(curso.get()));
     }
-
+    
+    @Transactional
     @Override
     public Optional<CursoDTO> save(CursoDTO cursoDTO, String token) {
         Long userId = tokenService.getUserId(token);
@@ -85,14 +88,17 @@ public class CursosServiceImpl implements CursosService {
             repository.deleteById(id);
         }
     }
-
+    
+    @Transactional
     @Override
-    public Optional<CursoDTO> atualiza(CursoDTO cursoDTO, String token) {
+    public Optional<CursoDTO> atualiza(Long id, CursoDTO cursoDTO, String token) {
         Long userId = tokenService.getUserId(token);
 
         Usuario usuario = usuariosRepository.getReferenceById(userId);
-
+        
+        
         Curso curso = mapper.toModel(cursoDTO);
+        curso.setCursoId(id);
         curso.setUsuario(usuario);
         Curso cursoSalvo = repository.save(curso);
 

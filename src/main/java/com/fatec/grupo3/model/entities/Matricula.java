@@ -8,9 +8,10 @@ public class Matricula {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-	@ManyToOne(cascade = { CascadeType.MERGE })
+	@OneToOne
 	@JoinColumn(name = "user_id", nullable = false)
     private Usuario usuario;
+	
     private String status;
     private Double progresso;
     private Double avaliacaoCurso;

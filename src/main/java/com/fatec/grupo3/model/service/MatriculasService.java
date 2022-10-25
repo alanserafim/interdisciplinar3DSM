@@ -1,5 +1,6 @@
 package com.fatec.grupo3.model.service;
 
+import com.fatec.grupo3.model.dto.MatriculaDTO;
 import com.fatec.grupo3.model.entities.Matricula;
 import com.fatec.grupo3.model.entities.Usuario;
 
@@ -8,10 +9,10 @@ import java.util.Optional;
 
 public interface MatriculasService {
 
-    List<Matricula> consultaTodos();
+    List<MatriculaDTO> consultaTodos();
     //Optional<Matricula> consultaPorUsuario(String cpf);
-    Optional<Matricula> consultaPorId(Long id);
-    Optional<Matricula> save(Matricula matricula);
+    Optional<MatriculaDTO> consultaPorId(Long id);
+    Optional<MatriculaDTO> save(MatriculaDTO matricula, Long idCurso, String token);
     void delete (Long id);
-    Optional<Matricula> atualiza(Matricula matricula);
+    Optional<MatriculaDTO> atualiza(Long id, MatriculaDTO matricula, String token);
 }

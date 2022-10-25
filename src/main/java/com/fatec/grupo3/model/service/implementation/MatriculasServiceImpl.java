@@ -1,12 +1,18 @@
 package com.fatec.grupo3.model.service.implementation;
 
+import com.fatec.grupo3.model.dto.CursoDTO;
+import com.fatec.grupo3.model.dto.MatriculaDTO;
 import com.fatec.grupo3.model.entities.Cliente;
 import com.fatec.grupo3.model.entities.Curso;
 import com.fatec.grupo3.model.entities.Matricula;
 import com.fatec.grupo3.model.entities.Usuario;
+import com.fatec.grupo3.model.mapper.MatriculasMapper;
+import com.fatec.grupo3.model.repositories.CursosRepositories;
 import com.fatec.grupo3.model.repositories.MatriculaRepository;
 import com.fatec.grupo3.model.repositories.UsuariosRepository;
 import com.fatec.grupo3.model.service.MatriculasService;
+import com.fatec.grupo3.security.TokenService;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +20,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.transaction.Transactional;
 
 @Service
 public class MatriculasServiceImpl implements MatriculasService {
@@ -25,37 +34,44 @@ public class MatriculasServiceImpl implements MatriculasService {
 
     @Autowired
     private UsuariosRepository usuariosRepository;
-
+    
+    @Autowired
+    private MatriculasMapper mapper = MatriculasMapper.INSTANCE;
+    
+    @Autowired
+    private CursosRepositories cursosRepository;
+    
+    @Autowired
+    private TokenService tokenService;
 
     @Override
-    public List<Matricula> consultaTodos() {
+    public List<MatriculaDTO> consultaTodos() {
         logger.info(">>>>>> servico consultaTodos chamado");
-        return repository.findAll();
+        return repository.findAll()
+                .stream()
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
     }
-
-    /*@Override
-    public Optional<Matricula> consultaPorUsuario(String cpf) {
-        logger.info(">>>>>> servico consultaPorTitulo chamado");
-
-        Usuario usuario = usuariosRepository.findByCpf(cpf);
-
-        return repository.findByUsuario(usuario);
-    }*/
-
+    
+    @Transactional
     @Override
-    public Optional<Matricula> save(Matricula matricula) {
+    public Optional<MatriculaDTO> save(MatriculaDTO matricula, Long idCurso, String token) {
         logger.info(">>>>>> servico save chamado ");
-        /*Optional<Matricula> umMatricula = repository.findById(matricula.getId());
-
-
-        if (umMatricula.isEmpty()) {
-            logger.info(">>>>>> servico save - dados validos");
-
-            return Optional.ofNullable(repository.save(matricula));
-        } else {
-            return Optional.empty();
-        }*/
-        return  Optional.of(repository.save(matricula));
+        
+        Long userId = tokenService.getUserId(token);
+        
+        Usuario usuario = usuariosRepository.getReferenceById(userId);
+        Curso curso = cursosRepository.getReferenceById(idCurso);
+        
+        Matricula matriculaEntity = mapper.toModel(matricula);
+        
+        matriculaEntity.setUsuario(usuario);
+        matriculaEntity.setCurso(curso);
+        
+        Matricula matriculaSalva = repository.save(matriculaEntity);
+        MatriculaDTO matriculaDTO = mapper.toDTO(matriculaSalva);
+        
+        return  Optional.of(matricula);
     }
 
     @Override
@@ -64,23 +80,24 @@ public class MatriculasServiceImpl implements MatriculasService {
     }
 
     @Override
-    public Optional<Matricula> consultaPorId(Long id) {
-        return repository.findById(id);
+    public Optional<MatriculaDTO> consultaPorId(Long id) {
+    	Matricula matricula = repository.getReferenceById(id);
+    	MatriculaDTO matriculaDTO = mapper.toDTO(matricula);
+    	
+        return Optional.of(matriculaDTO);
     }
-
+    
+    @Transactional
     @Override
-    public Optional<Matricula> atualiza(Matricula matricula) {
+    public Optional<MatriculaDTO> atualiza(Long id, MatriculaDTO matricula, String token) {
         logger.info(">>>>>> servico atualiza chamado ");
         //Optional<Matricula> umMatricula = consultaPorUsuario(matricula.getUsuario().getCpf());
-        Optional<Matricula> umMatricula = repository.findById(matricula.getId());
-
-        if (umMatricula.isEmpty()) {
-            logger.info(">>>>>> servico atualiza - dados validos");
-            //curso.setDataAtualizacao(new DateTime());
-
-            return Optional.ofNullable(repository.save(matricula));
-        } else {
-            return Optional.empty();
-        }
+        Matricula matriculaParaSalvar = mapper.toModel(matricula);
+        matriculaParaSalvar.setId(id);
+        
+        Matricula matriculaSalva = repository.save(matriculaParaSalvar);
+        
+        return Optional.of(mapper.toDTO(matriculaSalva));
+        
     }
 }

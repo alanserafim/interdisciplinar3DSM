@@ -30,7 +30,7 @@ public class CursosFrontController {
     CursosService service;
 
     @GetMapping("/cursos")
-    public ModelAndView retornaFormDeConsultaTodosCursos(Curso curso) {
+    public ModelAndView retornaFormDeConsultaTodosCursos(CursoDTO curso) {
         ModelAndView mv = new ModelAndView("consultarCurso");
         mv.addObject("cursos", service.consultaTodos());
 
@@ -38,7 +38,7 @@ public class CursosFrontController {
     }
 
     @GetMapping("/curso")
-    public ModelAndView retornaFormDeCadastroDeCurso(Curso curso) {
+    public ModelAndView retornaFormDeCadastroDeCurso(CursoDTO curso) {
         ModelAndView mv = new ModelAndView("cadastrarCurso");
         mv.addObject("curso", curso);
         return mv;
