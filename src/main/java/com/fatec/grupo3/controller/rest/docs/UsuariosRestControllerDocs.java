@@ -12,12 +12,12 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpStatusCodeException;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,13 +51,44 @@ public interface UsuariosRestControllerDocs {
     @GetMapping("/me")
     public ResponseEntity<SignUpDTO> me(HttpServletRequest request);
     
-    @ApiOperation(value = "Atualizar Usuario", nickname = "updateUsuario", notes = "", response = MatriculaDTO.class, responseContainer = "object", authorizations = {
+    @ApiOperation(value = "Atualizar Usuario", nickname = "updateUsuario", notes = "", response = SignUpDTO.class, responseContainer = "object", authorizations = {
             @Authorization(value = "Authorization") }, tags = { "Usuario", })
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Matricula Atualizada!", response = MatriculaDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 200, message = "Usuario Atualizado!", response = SignUpDTO.class, responseContainer = "object"),
             @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
             @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
             @ApiResponse(code = 404, message = "Usuário não encontrada") })
     @PostMapping
-    public ResponseEntity<Optional<MatriculaDTO>> updateMatricula(HttpServletRequest request, @RequestBody @Valid SignUpDTO usuarioDto) throws Exception;
+    public ResponseEntity<Optional<SignUpDTO>> updateUsuario(HttpServletRequest request, @RequestBody @Valid SignUpDTO usuarioDto) throws Exception;
+
+
+    @ApiOperation(value = "Atualizar Outro Usuario", nickname = "updateOutroUsuario", notes = "", response = SignUpDTO.class, responseContainer = "object", authorizations = {
+            @Authorization(value = "Authorization") }, tags = { "Usuario", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Usuario Atualizado!", response = SignUpDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
+            @ApiResponse(code = 404, message = "Usuário não encontrada") })
+    @PostMapping
+    public ResponseEntity<Optional<SignUpDTO>> updateOutroUsuario(@PathVariable("id") Long id, HttpServletRequest request, @RequestBody @Valid SignUpDTO usuarioDto) throws Exception;
+
+    @ApiOperation(value = "Consultar Usuarios", nickname = "updateUsuario", notes = "", response = SignUpDTO.class, responseContainer = "object", authorizations = {
+            @Authorization(value = "Authorization") }, tags = { "Usuario", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Usuarios Consultados!", response = SignUpDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
+            @ApiResponse(code = 404, message = "Usuário não encontrada") })
+    @PostMapping
+    public ResponseEntity<List<SignUpDTO>> consultarUsuarios(HttpServletRequest request) throws Exception;
+
+    @ApiOperation(value = "Deletar Usuario", nickname = "deleteUsuario", notes = "", authorizations = {
+            @Authorization(value = "Authorization") }, tags = { "Usuario", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Usuario Deletado!", response = HttpStatusCodeException.class, responseContainer = "object"),
+            @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
+            @ApiResponse(code = 404, message = "Usuário não encontrada") })
+    @DeleteMapping
+    public void deletarUsuario(@PathVariable("id")  Long id, HttpServletRequest request) throws Exception;
 }

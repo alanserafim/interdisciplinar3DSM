@@ -13,6 +13,5 @@ public interface CursosService {
     Optional<CursoDTO> save(CursoDTO cursoDTO, String token);
     void delete (Long id, String token);
     Optional<CursoDTO> atualiza (Long id, CursoDTO cursoDTO, String token);
-
     Optional<CursoDTO> consultarPorId(Long id);
 }

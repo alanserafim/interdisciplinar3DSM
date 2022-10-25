@@ -6,10 +6,11 @@ import com.fatec.grupo3.model.entities.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface MatriculaRepository extends JpaRepository<Matricula, Long> {
-    //Optional<Matricula> findByUsuario(Usuario usuario);
-    //Optional<Matricula> findByUsuarioCpf(String cpf);
+    List<Matricula> findAllByUsuario(Usuario usuario);
+    void deleteByUsuarioAndId(Usuario usuario, Long id);
 }

@@ -80,13 +80,12 @@ public class CursosServiceImpl implements CursosService {
     }
 
     @Override
+    @Transactional
     public void delete(Long id, String token) {
         Long userId = tokenService.getUserId(token);
         Usuario usuario = usuariosRepository.getReferenceById(userId);
 
-        if (usuario != null) {
-            repository.deleteById(id);
-        }
+        repository.deleteByUsuarioAndCursoId(usuario, id);
     }
     
     @Transactional

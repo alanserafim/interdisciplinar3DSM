@@ -4,9 +4,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class MatriculaDTO {
 	
-	@ApiModelProperty(value = "Dono da matricula")
-    private ProfileDTO usuario;
-	
 	@ApiModelProperty(value = "Status da Matricula")
     private String status;
 	
@@ -15,24 +12,11 @@ public class MatriculaDTO {
 	
 	@ApiModelProperty(value = "Nota que o usuario deu para o curso")
     private Double avaliacaoCurso;
-	
-	@ApiModelProperty(value = "Curso que o aluno está matriculado")
-    private CursoDTO curso;
 
-    public MatriculaDTO(ProfileDTO usuario, String status, Double progresso, Double avaliacaoCurso, CursoDTO curso) {
-        this.usuario = usuario;
+    public MatriculaDTO(String status, Double progresso, Double avaliacaoCurso) {
         this.status = status;
         this.progresso = progresso;
         this.avaliacaoCurso = avaliacaoCurso;
-        this.curso = curso;
-    }
-
-    public ProfileDTO getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(ProfileDTO usuario) {
-        this.usuario = usuario;
     }
 
     public String getStatus() {
@@ -59,11 +43,4 @@ public class MatriculaDTO {
         this.avaliacaoCurso = avaliacaoCurso;
     }
 
-    public CursoDTO getCurso() {
-        return curso;
-    }
-
-    public void setCurso(CursoDTO curso) {
-        this.curso = curso;
-    }
 }

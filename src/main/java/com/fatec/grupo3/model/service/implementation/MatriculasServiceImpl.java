@@ -45,9 +45,14 @@ public class MatriculasServiceImpl implements MatriculasService {
     private TokenService tokenService;
 
     @Override
-    public List<MatriculaDTO> consultaTodos() {
+    public List<MatriculaDTO> consultaTodos(String token) {
         logger.info(">>>>>> servico consultaTodos chamado");
-        return repository.findAll()
+
+        Long userId = tokenService.getUserId(token);
+
+        Usuario usuario = usuariosRepository.getReferenceById(userId);
+
+        return repository.findAllByUsuario(usuario)
                 .stream()
                 .map(mapper::toDTO)
                 .collect(Collectors.toList());
@@ -67,16 +72,19 @@ public class MatriculasServiceImpl implements MatriculasService {
         
         matriculaEntity.setUsuario(usuario);
         matriculaEntity.setCurso(curso);
+        repository.save(matriculaEntity);
         
-        Matricula matriculaSalva = repository.save(matriculaEntity);
-        MatriculaDTO matriculaDTO = mapper.toDTO(matriculaSalva);
-        
-        return  Optional.of(matricula);
+        return Optional.of(matricula);
     }
 
     @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
+    @Transactional
+    public void delete(Long id, String token) {
+        Long userId = tokenService.getUserId(token);
+
+        Usuario usuario = usuariosRepository.getReferenceById(userId);
+
+        repository.deleteByUsuarioAndId(usuario, id);
     }
 
     @Override
@@ -89,15 +97,20 @@ public class MatriculasServiceImpl implements MatriculasService {
     
     @Transactional
     @Override
-    public Optional<MatriculaDTO> atualiza(Long id, MatriculaDTO matricula, String token) {
+    public Optional<MatriculaDTO> atualiza(Long id, Long idCurso, MatriculaDTO matricula, String token) {
         logger.info(">>>>>> servico atualiza chamado ");
-        //Optional<Matricula> umMatricula = consultaPorUsuario(matricula.getUsuario().getCpf());
+        Long userId = tokenService.getUserId(token);
+
+        Usuario usuario = usuariosRepository.getReferenceById(userId);
+        Curso curso = cursosRepository.getReferenceById(idCurso);
         Matricula matriculaParaSalvar = mapper.toModel(matricula);
         matriculaParaSalvar.setId(id);
+        matriculaParaSalvar.setCurso(curso);
+        matriculaParaSalvar.setUsuario(usuario);
+
+        repository.save(matriculaParaSalvar);
         
-        Matricula matriculaSalva = repository.save(matriculaParaSalvar);
-        
-        return Optional.of(mapper.toDTO(matriculaSalva));
+        return Optional.of(matricula);
         
     }
 }

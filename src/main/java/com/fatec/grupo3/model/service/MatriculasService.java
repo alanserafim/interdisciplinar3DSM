@@ -9,10 +9,9 @@ import java.util.Optional;
 
 public interface MatriculasService {
 
-    List<MatriculaDTO> consultaTodos();
-    //Optional<Matricula> consultaPorUsuario(String cpf);
+    List<MatriculaDTO> consultaTodos(String token);
     Optional<MatriculaDTO> consultaPorId(Long id);
     Optional<MatriculaDTO> save(MatriculaDTO matricula, Long idCurso, String token);
-    void delete (Long id);
-    Optional<MatriculaDTO> atualiza(Long id, MatriculaDTO matricula, String token);
+    void delete (Long id, String token);
+    Optional<MatriculaDTO> atualiza(Long id, Long idCurso, MatriculaDTO matricula, String token);
 }

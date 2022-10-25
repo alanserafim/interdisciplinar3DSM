@@ -7,10 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.fatec.grupo3.model.dto.CursoDTO;
 import com.fatec.grupo3.model.dto.ErrorDTO;
@@ -36,7 +33,7 @@ public interface MatriculasRestControllerDocs {
 	    @PostMapping
 	    public ResponseEntity<Optional<MatriculaDTO>> createMatricula(@Valid @RequestBody MatriculaDTO matricula, @PathVariable Long idCurso, HttpServletRequest request) throws Exception;
 	 
-	 @ApiOperation(value = "Cadastrar Matricula", nickname = "updateMatricula", notes = "", response = MatriculaDTO.class, responseContainer = "object", authorizations = {
+	 @ApiOperation(value = "Atualizar Matricula", nickname = "updateMatricula", notes = "", response = MatriculaDTO.class, responseContainer = "object", authorizations = {
 	            @Authorization(value = "Authorization") }, tags = { "Matriculas", })
 	    @ApiResponses(value = {
 	            @ApiResponse(code = 200, message = "Matricula Atualizada!", response = MatriculaDTO.class, responseContainer = "object"),
@@ -44,16 +41,26 @@ public interface MatriculasRestControllerDocs {
 	            @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
 	            @ApiResponse(code = 404, message = "Usuário não encontrada") })
 	    @PostMapping
-	    public ResponseEntity<Optional<MatriculaDTO>> updateMatricula(@PathVariable Long id, @Valid @RequestBody MatriculaDTO matricula, HttpServletRequest request) throws Exception;
+	    public ResponseEntity<Optional<MatriculaDTO>> updateMatricula(@PathVariable Long id, @PathVariable Long idCurso,  @Valid @RequestBody MatriculaDTO matricula, HttpServletRequest request) throws Exception;
 	 
 	 	
 	 @ApiOperation(value = "Listar Matriculas do Aluno", nickname = "listMatricula", notes = "", response = MatriculaDTO.class, responseContainer = "object", authorizations = {
 	            @Authorization(value = "Authorization") }, tags = { "Matriculas", })
 	    @ApiResponses(value = {
-	            @ApiResponse(code = 200, message = "Emprestimos Listados com sucesso", response = MatriculaDTO.class, responseContainer = "object"),
+	            @ApiResponse(code = 200, message = "Matriculas Listados com sucesso", response = MatriculaDTO.class, responseContainer = "object"),
 	            @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
 	            @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
 	            @ApiResponse(code = 404, message = "Usuário não encontrado") })
 	    @GetMapping
 	    public ResponseEntity<List<MatriculaDTO>> listMatricula(HttpServletRequest request);
+
+	@ApiOperation(value = "Deletar Matricula do Aluno", nickname = "deleteMatricula", notes = "", response = MatriculaDTO.class, responseContainer = "object", authorizations = {
+			@Authorization(value = "Authorization") }, tags = { "Matriculas", })
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Matricula deletada com sucesso", response = MatriculaDTO.class, responseContainer = "object"),
+			@ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
+			@ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
+			@ApiResponse(code = 404, message = "Usuário não encontrado") })
+	@DeleteMapping
+	public void deleteMatricula(@PathVariable("id") Long id, HttpServletRequest request);
 }

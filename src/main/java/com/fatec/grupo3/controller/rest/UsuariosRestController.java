@@ -8,10 +8,12 @@ import com.fatec.grupo3.model.dto.TokenDTO;
 import com.fatec.grupo3.model.entities.Usuario;
 import com.fatec.grupo3.model.service.UsuariosService;
 import com.fatec.grupo3.utils.TokenUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,10 +50,36 @@ public class UsuariosRestController implements UsuariosRestControllerDocs {
     }
 
 	@Override
-	public ResponseEntity<Optional<MatriculaDTO>> updateMatricula(HttpServletRequest request,
+    @PostMapping("/me")
+	public ResponseEntity<Optional<SignUpDTO>> updateUsuario(HttpServletRequest request,
 			@Valid SignUpDTO usuarioDto) throws Exception {
 		String token = TokenUtils.wrapperToken(request);
 		
-		return ResponseEntity.of(service.atualizarPerfil(token, usuarioDto));
+		return ResponseEntity.ok(service.atualizarPerfil(token, usuarioDto));
 	}
+
+    @Override
+    @PostMapping("/{id}")
+    public ResponseEntity<Optional<SignUpDTO>> updateOutroUsuario(@PathVariable("id") Long id, HttpServletRequest request, SignUpDTO usuarioDto) throws Exception {
+        String token = TokenUtils.wrapperToken(request);
+
+        return ResponseEntity.ok(service.atualizarPerfilDeOutroUsuario(id,token, usuarioDto));
+    }
+
+    @Override
+    @GetMapping
+    public ResponseEntity<List<SignUpDTO>> consultarUsuarios(HttpServletRequest request) throws Exception {
+        String token = TokenUtils.wrapperToken(request);
+
+        return ResponseEntity.ok(service.consultarUsuarios(token));
+    }
+
+    @Override
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarUsuario(@PathVariable("id") Long id, HttpServletRequest request) throws Exception {
+        String token = TokenUtils.wrapperToken(request);
+
+        service.deletarUsuario(id, token);
+    }
 }

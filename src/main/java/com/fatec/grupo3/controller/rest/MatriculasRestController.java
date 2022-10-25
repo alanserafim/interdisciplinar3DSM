@@ -7,13 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.fatec.grupo3.controller.rest.docs.MatriculasRestControllerDocs;
 import com.fatec.grupo3.model.dto.CursoDTO;
@@ -30,20 +26,20 @@ public class MatriculasRestController implements MatriculasRestControllerDocs {
 	private MatriculasService service;
 
 	@Override
-	@PostMapping("/matriculas")
-	public ResponseEntity<Optional<MatriculaDTO>> createMatricula(@Valid MatriculaDTO matricula, @PathVariable("id") Long idCurso,  HttpServletRequest request) {
+	@PostMapping("/matriculas/curso/{id}")
+	public ResponseEntity<Optional<MatriculaDTO>> createMatricula(MatriculaDTO matricula, @PathVariable("id") Long idCurso,  HttpServletRequest request) {
 		String token = TokenUtils.wrapperToken(request);
 		
 		return ResponseEntity.ok(service.save(matricula, idCurso, token));
 	}
 
 	@Override
-	@PostMapping("/matriculas/{id}")
-	public ResponseEntity<Optional<MatriculaDTO>> updateMatricula(@PathVariable("id") Long id, @Valid MatriculaDTO matricula,
+	@PostMapping("/matriculas/{id}/curso/{cursoId}")
+	public ResponseEntity<Optional<MatriculaDTO>> updateMatricula(@PathVariable("id") Long id, @PathVariable("cursoId") Long idCurso,  @Valid MatriculaDTO matricula,
 			HttpServletRequest request) throws Exception {
 		String token = TokenUtils.wrapperToken(request);
 		
-		return ResponseEntity.ok(service.atualiza(id, matricula, token));
+		return ResponseEntity.ok(service.atualiza(id, idCurso, matricula, token));
 	}
 
 	@Override
@@ -51,6 +47,15 @@ public class MatriculasRestController implements MatriculasRestControllerDocs {
 	public ResponseEntity<List<MatriculaDTO>> listMatricula(HttpServletRequest request) {
 		String token = TokenUtils.wrapperToken(request);
 		
-		return ResponseEntity.ok(service.consultaTodos());
+		return ResponseEntity.ok(service.consultaTodos(token));
+	}
+
+	@Override
+	@DeleteMapping("/matriculas/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deleteMatricula(@PathVariable("id") Long id, HttpServletRequest request) {
+		String token = TokenUtils.wrapperToken(request);
+
+		service.delete(id, token);
 	}
 }

@@ -25,7 +25,7 @@ public class MatriculasFrontController {
     @GetMapping("/matriculas")
     public ModelAndView retornaFormDeConsultaTodasMatriculas(Matricula matricula) {
         ModelAndView mv = new ModelAndView("consultarMatricula");
-        mv.addObject("matriculas", service.consultaTodos());
+        //mv.addObject("matriculas", service.consultaTodos());
 
         return mv;
     }
@@ -55,11 +55,11 @@ public class MatriculasFrontController {
 
     @GetMapping("/matriculas/id/{id}")
     public ModelAndView excluirNoFormDeConsultaMatriculas(@PathVariable("id") Long id) {
-        service.delete(id);
+       // service.delete(id);
 
         logger.info(">>>>>>>>> servico de exclusão chamado para o id => " + id);
         ModelAndView mv = new ModelAndView("consultarMatricula");
-        mv.addObject("matriculas", service.consultaTodos());
+        mv.addObject("matriculas");
 
         return mv;
     }

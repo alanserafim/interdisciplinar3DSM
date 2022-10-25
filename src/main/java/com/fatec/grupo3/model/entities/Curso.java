@@ -1,6 +1,7 @@
 package com.fatec.grupo3.model.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Curso {
@@ -18,6 +19,10 @@ public class Curso {
     
     private String dataAtualizacao;
     private Double mediaAvaliacao;
+
+    @OneToOne(mappedBy = "curso", fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
+    private Matricula matricula;
+
     public Long getCursoId() {
         return cursoId;
     }

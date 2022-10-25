@@ -1,7 +1,7 @@
 package com.fatec.grupo3.model.service.implementation;
 
+import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.LoginDTO;
-import com.fatec.grupo3.model.dto.ProfileDTO;
 import com.fatec.grupo3.model.dto.SignUpDTO;
 import com.fatec.grupo3.model.dto.TokenDTO;
 import com.fatec.grupo3.model.entities.Usuario;
@@ -15,6 +15,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuariosServiceImpl implements UsuariosService {
@@ -59,7 +63,7 @@ public class UsuariosServiceImpl implements UsuariosService {
     }
 
 	@Override
-	public SignUpDTO atualizarPerfil(String token, SignUpDTO usuarioDTO) {
+	public Optional<SignUpDTO> atualizarPerfil(String token, SignUpDTO usuarioDTO) {
 		Long userId = tokenService.getUserId(token);
 		
 		Usuario usuarioEncontrado = usuariosRepository.getReferenceById(userId);
@@ -75,10 +79,72 @@ public class UsuariosServiceImpl implements UsuariosService {
 		usuarioEncontrado.setCursoMatriculado(usuarioAtualizado.getCursoMatriculado());
 		usuarioEncontrado.setAnoIngresso(usuarioAtualizado.getAnoIngresso());
 		usuarioEncontrado.setPeriodo(usuarioAtualizado.getPeriodo());
-		usuarioEncontrado.setRoles(usuarioAtualizado.getRoles());
-		
+
 		Usuario usuarioSalvo = usuariosRepository.save(usuarioEncontrado);
-		
-		return mapper.toDTO(usuarioSalvo);
+
+        SignUpDTO dto = mapper.toDTO(usuarioSalvo);
+
+		return Optional.of(dto);
 	}
+
+    @Override
+    public List<SignUpDTO> consultarUsuarios(String token) throws AreaProibidaException {
+        Long userId = tokenService.getUserId(token);
+
+        Usuario usuarioEncontrado = usuariosRepository.getReferenceById(userId);
+
+        if (usuarioEncontrado.getRoles().contains("ADMIN")) {
+            return usuariosRepository.findAll()
+                    .stream()
+                    .map(mapper::toDTO)
+                    .collect(Collectors.toList());
+        }
+
+
+
+        throw new AreaProibidaException(usuarioEncontrado.getCpf());
+    }
+
+    @Override
+    public Optional<SignUpDTO> atualizarPerfilDeOutroUsuario(Long id, String token, SignUpDTO usuarioDto) throws AreaProibidaException {
+        Long userId = tokenService.getUserId(token);
+
+        Usuario usuarioEncontrado = usuariosRepository.getReferenceById(userId);
+
+        if (usuarioEncontrado.getRoles().contains("ADMIN")) {
+            Usuario usuarioParaAtualizar = usuariosRepository.getReferenceById(id);
+
+            usuarioParaAtualizar.setCpf(usuarioDto.getCpf());
+            usuarioParaAtualizar.setName(usuarioDto.getName());
+            usuarioParaAtualizar.setLastname(usuarioDto.getLastname());
+            usuarioParaAtualizar.setUsername(usuarioDto.getUsername());
+            usuarioParaAtualizar.setPassword(usuarioDto.getPassword());
+            usuarioParaAtualizar.setDtNascimento(usuarioDto.getDtNascimento());
+            usuarioParaAtualizar.setRa(usuarioDto.getRa());
+            usuarioParaAtualizar.setCursoMatriculado(usuarioDto.getCursoMatriculado());
+            usuarioParaAtualizar.setAnoIngresso(usuarioDto.getAnoIngresso());
+            usuarioParaAtualizar.setPeriodo(usuarioDto.getPeriodo());
+            usuarioParaAtualizar.setRoles(usuarioDto.getRoles());
+            usuarioParaAtualizar.setUserId(id);
+
+            Usuario usuarioSalvo = usuariosRepository.save(usuarioParaAtualizar);
+
+            return Optional.of(mapper.toDTO(usuarioSalvo));
+        }
+
+        throw new AreaProibidaException(usuarioEncontrado.getCpf());
+    }
+
+    @Override
+    public void deletarUsuario(Long id, String token) throws AreaProibidaException {
+        Long userId = tokenService.getUserId(token);
+
+        Usuario usuarioEncontrado = usuariosRepository.getReferenceById(userId);
+
+        if (usuarioEncontrado.getRoles().contains("ADMIN")) {
+            usuariosRepository.deleteById(id);
+        } else {
+            throw new AreaProibidaException(usuarioEncontrado.getCpf());
+        }
+    }
 }
