@@ -42,8 +42,8 @@
 				<tbody>
 				<tr th:each="matricula : ${matriculas}">
 					<td th:text="${matricula.id}"></td>
-					<!--<td th:text="${matricula.usuario}"></td>-->
-					<td th:text="implementar"></td>	
+					<td th:text="${matricula.usuario.getCpf()}"></td>
+					<td th:text="${matricula.curso.getId()}"></td>	
 					<td th:text="${matricula.status}"></td>	
 					<td th:text="${matricula.progresso}"></td>	
 					<td th:text="${matricula.avaliacaoCurso}"></td>

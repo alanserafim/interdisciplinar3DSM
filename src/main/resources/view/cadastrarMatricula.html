@@ -29,49 +29,60 @@
 				<div class="col-md-8">
 					<form action="#" th:action="@{/grupo3/matriculas}" th:object="${matricula}" method="post">
 						<div class="row">
+
 							<div class="form-group col-md-4">
-								<!--<label for="usuario" class="col-form-label">Aluno</label>
-								<input type="text" th:field="*{usuario}" class="form-control" id="usuario"
-									placeholder="Id do usuário">
-								<span th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}" class="text-danger">
-								</span>-->
+								<label for="cpf" class="col-form-label">CPF</label>
+								<input type="text" th:field="*{cpf}" class="form-control" id="cpf" placeholder="cpf">
+								<span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" class="text-danger">
+								</span>
 							</div>
 						</div>
-						
+						<div class="row">
+							<div class="form-group col-md-8">
+								<label for="cursoId" class="col-form-label">Código Curso</label>
+								<input type="text" th:field="*{cursoId}" class="form-control" id="cursoId"
+									placeholder="Código Curso">
+								<span th:if="${#fields.hasErrors('cursoId')}" th:errors="*{cursoId}"
+									class="text-danger"> </span>
+							</div>
+						</div>
 						<div class="row">
 							<div class="form-group col-md-4">
 								<label for="status" class="col-form-label">Status</label>
-                            <select th:field="*{status}">
-                                <option th:each="p : ${lista}" th:value="${p}" th:text="${p}"></option>
-                            </select>
+								<select th:field="*{status}">
+									<option th:each="p : ${lista}" th:value="${p}" th:text="${p}"></option>
+								</select>
 							</div>
 						</div>
-						
-							<div class="row">
+
+						<div class="row">
 							<div class="form-group col-md-4">
 								<label for="progresso" class="col-form-label">Progresso</label>
 								<input type="number" th:field="*{status}" class="form-control" id="progresso"
 									placeholder="progresso no curso">
-								<span th:if="${#fields.hasErrors('progresso')}" th:errors="*{progresso}" class="text-danger">
+								<span th:if="${#fields.hasErrors('progresso')}" th:errors="*{progresso}"
+									class="text-danger">
 								</span>
 							</div>
 						</div>
-						
+
 						<div class="row">
 							<div class="form-group col-md-4">
 								<label for="avaliacaoCurso" class="col-form-label">Avaliação do Curso</label>
-								<input type="number" th:field="*{avaliacaoCurso}" class="form-control" id="avaliacaoCurso"
-									placeholder="Avaliação do curso">
-								<span th:if="${#fields.hasErrors('avaliacaoCurso')}" th:errors="*{avaliacaoCurso}" class="text-danger">
+								<input type="number" th:field="*{avaliacaoCurso}" class="form-control"
+									id="avaliacaoCurso" placeholder="Avaliação do curso">
+								<span th:if="${#fields.hasErrors('avaliacaoCurso')}" th:errors="*{avaliacaoCurso}"
+									class="text-danger">
 								</span>
 							</div>
 						</div>
-						
-						
-						
+
+
+
 						<div class="form-group col-md-8">
 							<input type="submit" class="btn btn-primary" value="Cadastrar Matrícula">
-							<input type="button" class="btn btn-primary" value="Consultar Matrículas" onclick="consulta();">
+							<input type="button" class="btn btn-primary" value="Consultar Matrículas"
+								onclick="consulta();">
 						</div>
 					</form>
 				</div>

@@ -1,5 +1,6 @@
 package com.fatec.grupo3.controller.front;
 
+import com.fatec.grupo3.model.dto.MatriculaDTO;
 import com.fatec.grupo3.model.entities.Matricula;
 import com.fatec.grupo3.model.service.MatriculasService;
 import org.apache.logging.log4j.LogManager;
@@ -11,9 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -26,7 +24,7 @@ public class MatriculasFrontController {
     MatriculasService service;
 
     @GetMapping("/matriculas")
-    public ModelAndView retornaFormDeConsultaTodasMatriculas(Matricula matricula) {
+    public ModelAndView retornaFormDeConsultaTodasMatriculas(MatriculaDTO matricula) {
         ModelAndView mv = new ModelAndView("consultarMatricula");
         mv.addObject("matriculas", service.consultaTodos());
 
@@ -34,10 +32,8 @@ public class MatriculasFrontController {
     }
 
     @GetMapping("/matricula")
-    public ModelAndView retornaFormDeCadastroDeMatricula(Matricula matricula) {
+    public ModelAndView retornaFormDeCadastroDeMatricula(MatriculaDTO matricula) {
         ModelAndView mv = new ModelAndView("cadastrarMatricula");
-       List<String> lista = Arrays.asList("Inscrito","Em progresso","Concluído");
-       mv.addObject("lista",lista);
         mv.addObject("matricula", matricula);
         return mv;
     }
@@ -46,15 +42,13 @@ public class MatriculasFrontController {
     @GetMapping("/matriculas/{id}")
     public ModelAndView retornaFormParaEditarMatricula(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView("atualizarMatricula");
-         List<String> lista = Arrays.asList("Inscrito","Em progresso","Concluído");
-         mv.addObject("lista",lista);
-        Optional<Matricula> curso = service.consultaPorId(id);
 
+        /*Optional<Matricula> curso = service.consultaPorId(id);
         if(curso.isPresent()) {
             mv.addObject("matricula", curso.get());
         } else {
             return new ModelAndView("paginaMenu");
-        }
+        }*/
 
         return mv;
     }
@@ -71,41 +65,32 @@ public class MatriculasFrontController {
     }
 
     @PostMapping("/matriculas")
-    public ModelAndView save(@Valid Matricula matricula, BindingResult result) {
+    public ModelAndView save(@Valid MatriculaDTO matricula, BindingResult result) {
         ModelAndView mv = new ModelAndView("consultarMatricula");
-        if(result.hasErrors()) {
-            List<String> lista = Arrays.asList("Inscrito","Em progresso","Concluído");
-            mv.addObject("lista",lista);
-            mv.setViewName("cadastrarMatricula");
-        } else {
-            if (service.save(matricula).isPresent()) {
-                logger.info(">>>>>> controller chamou cadastrar e consultar todos");
-                mv.addObject("matriculas", service.consultaTodos());
-            } else {
-                logger.info(">>>>>> controller cadastrar com dados invalidos");
-                mv.setViewName("cadastrarMatricula");
-                mv.addObject("message", "Dados invalidos");
-            }
-        }
 
+        if (service.cadastrarMatricula(matricula) != null) {
+        	mv.addObject("matriculas", service.consultaTodos());
+        }else {
+        	mv.setViewName("cadastrarMatricula");
+        	mv.addObject("matricula", matricula);
+        	mv.addObject("message","Dados invalidos");
+        }
         return mv;
     }
 
     @PostMapping("/matriculas/id/{id}")
     public ModelAndView atualizaCurso(@PathVariable("id") Long id, @Valid Matricula matricula, BindingResult result) {
-        ModelAndView mv = new ModelAndView("consultarMatricula");
+        ModelAndView mv = new ModelAndView("atualizarMatricula");
         logger.info(">>>>>> servico para atualizacao de dados chamado para o id => " + id);
 
-        if (result.hasErrors()) {
+        /*if (result.hasErrors()) {
             logger.info(">>>>>> servico para atualizacao de dados com erro => " + result.getFieldError().toString());
             matricula.setId(id);
-
             return new ModelAndView("atualizarMatricula");
         } else {
             service.atualiza(matricula);
-
             mv.addObject("matriculas", service.consultaTodos());
-        }
+        }*/
 
         return mv;
     }

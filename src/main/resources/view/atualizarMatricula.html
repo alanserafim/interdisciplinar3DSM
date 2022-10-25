@@ -30,6 +30,24 @@
 					<form action="#" th:action="@{/grupo3/matriculas/id/{id} (id=${matricula.id}) }"
 						th:object="${matricula}" method="post">
 						<div class="row">
+
+							<div class="form-group col-md-4">
+								<label for="cpf" class="col-form-label">CPF</label>
+								<input type="text" th:field="*{cpf}" class="form-control" id="cpf" placeholder="cpf">
+								<span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" class="text-danger">
+								</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-8">
+								<label for="cursoId" class="col-form-label">Código Curso</label>
+								<input type="text" th:field="*{cursoId}" class="form-control" id="cursoId"
+									placeholder="Código Curso">
+								<span th:if="${#fields.hasErrors('cursoId')}" th:errors="*{cursoId}"
+									class="text-danger"> </span>
+							</div>
+						</div>
+						<div class="row">
 							<div class="form-group col-md-4">
 								<label for="status" class="col-form-label">Status</label>
 	                            <select th:field="*{status}">

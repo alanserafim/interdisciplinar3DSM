@@ -19,4 +19,7 @@ public interface UsuariosRepository extends JpaRepository<Usuario, Long> {
 
     @Query("SELECT e FROM Usuario e JOIN FETCH e.roles WHERE e.cpf = (:cpf)")
     public Usuario findByCpf(@Param("cpf") String cpf);
+    
+    @Query("SELECT e FROM Usuario e JOIN FETCH e.roles WHERE e.cpf = (:cpf)")
+    public Optional<Usuario> findByCpfOptional(@Param("cpf") String cpf);
 }
