@@ -1,6 +1,5 @@
 package com.fatec.grupo3.model.service.implementation;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -8,7 +7,7 @@ import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 
 import com.fatec.grupo3.model.dto.CursoDTO;
-import com.fatec.grupo3.model.dto.SignUpDTO;
+import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.entities.Usuario;
 import com.fatec.grupo3.model.mapper.CursosMapper;
 import com.fatec.grupo3.model.mapper.UsuariosMapper;
@@ -71,7 +70,7 @@ public class CursosServiceImpl implements CursosService {
         curso.setUsuario(usuario);
         Curso cursoSalvo = repository.save(curso);
 
-        SignUpDTO usuarioLogado = usuariosMapper.toDTO(usuario);
+        UsuarioDTO usuarioLogado = usuariosMapper.toDTO(usuario);
 
         logger.info(">>>>>> servico save chamado ");
 
@@ -101,7 +100,7 @@ public class CursosServiceImpl implements CursosService {
         curso.setUsuario(usuario);
         Curso cursoSalvo = repository.save(curso);
 
-        SignUpDTO usuarioLogado = usuariosMapper.toDTO(usuario);
+        UsuarioDTO usuarioLogado = usuariosMapper.toDTO(usuario);
 
         logger.info(">>>>>> servico atualiza chamado ");
 

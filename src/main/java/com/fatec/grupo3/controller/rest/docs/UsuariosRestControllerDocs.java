@@ -2,8 +2,7 @@ package com.fatec.grupo3.controller.rest.docs;
 
 import com.fatec.grupo3.model.dto.ErrorDTO;
 import com.fatec.grupo3.model.dto.LoginDTO;
-import com.fatec.grupo3.model.dto.MatriculaDTO;
-import com.fatec.grupo3.model.dto.SignUpDTO;
+import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.dto.TokenDTO;
 import com.fatec.grupo3.model.entities.Usuario;
 import io.swagger.annotations.Api;
@@ -12,7 +11,6 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
@@ -31,7 +29,7 @@ public interface UsuariosRestControllerDocs {
             @ApiResponse(code = 200, message = "Usuario Cadastrado no sistema", response = Usuario.class, responseContainer = "object"),
             @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object")})
     @PostMapping("/signUp")
-    public ResponseEntity<SignUpDTO> signUp(@RequestBody @Valid SignUpDTO usuarioDto);
+    public ResponseEntity<UsuarioDTO> signUp(@RequestBody @Valid UsuarioDTO usuarioDto);
 
     @ApiOperation(value = "Logar no sistema", nickname = "signIn", notes = "", response = TokenDTO.class, responseContainer = "object", tags = { "Usuario", })
     @ApiResponses(value = {
@@ -49,38 +47,38 @@ public interface UsuariosRestControllerDocs {
             @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
             @ApiResponse(code = 404, message = "Usuário não encontrados") })
     @GetMapping("/me")
-    public ResponseEntity<SignUpDTO> me(HttpServletRequest request);
+    public ResponseEntity<UsuarioDTO> me(HttpServletRequest request);
     
-    @ApiOperation(value = "Atualizar Usuario", nickname = "updateUsuario", notes = "", response = SignUpDTO.class, responseContainer = "object", authorizations = {
+    @ApiOperation(value = "Atualizar Usuario", nickname = "updateUsuario", notes = "", response = UsuarioDTO.class, responseContainer = "object", authorizations = {
             @Authorization(value = "Authorization") }, tags = { "Usuario", })
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Usuario Atualizado!", response = SignUpDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 200, message = "Usuario Atualizado!", response = UsuarioDTO.class, responseContainer = "object"),
             @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
             @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
             @ApiResponse(code = 404, message = "Usuário não encontrada") })
     @PostMapping
-    public ResponseEntity<Optional<SignUpDTO>> updateUsuario(HttpServletRequest request, @RequestBody @Valid SignUpDTO usuarioDto) throws Exception;
+    public ResponseEntity<Optional<UsuarioDTO>> updateUsuario(HttpServletRequest request, @RequestBody @Valid UsuarioDTO usuarioDto) throws Exception;
 
 
-    @ApiOperation(value = "Atualizar Outro Usuario", nickname = "updateOutroUsuario", notes = "", response = SignUpDTO.class, responseContainer = "object", authorizations = {
+    @ApiOperation(value = "Atualizar Outro Usuario", nickname = "updateOutroUsuario", notes = "", response = UsuarioDTO.class, responseContainer = "object", authorizations = {
             @Authorization(value = "Authorization") }, tags = { "Usuario", })
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Usuario Atualizado!", response = SignUpDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 200, message = "Usuario Atualizado!", response = UsuarioDTO.class, responseContainer = "object"),
             @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
             @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
             @ApiResponse(code = 404, message = "Usuário não encontrada") })
     @PostMapping
-    public ResponseEntity<Optional<SignUpDTO>> updateOutroUsuario(@PathVariable("id") Long id, HttpServletRequest request, @RequestBody @Valid SignUpDTO usuarioDto) throws Exception;
+    public ResponseEntity<Optional<UsuarioDTO>> updateOutroUsuario(@PathVariable("id") Long id, HttpServletRequest request, @RequestBody @Valid UsuarioDTO usuarioDto) throws Exception;
 
-    @ApiOperation(value = "Consultar Usuarios", nickname = "updateUsuario", notes = "", response = SignUpDTO.class, responseContainer = "object", authorizations = {
+    @ApiOperation(value = "Consultar Usuarios", nickname = "updateUsuario", notes = "", response = UsuarioDTO.class, responseContainer = "object", authorizations = {
             @Authorization(value = "Authorization") }, tags = { "Usuario", })
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Usuarios Consultados!", response = SignUpDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 200, message = "Usuarios Consultados!", response = UsuarioDTO.class, responseContainer = "object"),
             @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
             @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
             @ApiResponse(code = 404, message = "Usuário não encontrada") })
     @PostMapping
-    public ResponseEntity<List<SignUpDTO>> consultarUsuarios(HttpServletRequest request) throws Exception;
+    public ResponseEntity<List<UsuarioDTO>> consultarUsuarios(HttpServletRequest request) throws Exception;
 
     @ApiOperation(value = "Deletar Usuario", nickname = "deleteUsuario", notes = "", authorizations = {
             @Authorization(value = "Authorization") }, tags = { "Usuario", })

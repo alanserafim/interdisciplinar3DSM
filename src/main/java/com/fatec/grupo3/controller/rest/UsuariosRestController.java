@@ -2,10 +2,8 @@ package com.fatec.grupo3.controller.rest;
 
 import com.fatec.grupo3.controller.rest.docs.UsuariosRestControllerDocs;
 import com.fatec.grupo3.model.dto.LoginDTO;
-import com.fatec.grupo3.model.dto.MatriculaDTO;
-import com.fatec.grupo3.model.dto.SignUpDTO;
+import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.dto.TokenDTO;
-import com.fatec.grupo3.model.entities.Usuario;
 import com.fatec.grupo3.model.service.UsuariosService;
 import com.fatec.grupo3.utils.TokenUtils;
 import org.springframework.http.HttpStatus;
@@ -29,8 +27,8 @@ public class UsuariosRestController implements UsuariosRestControllerDocs {
 
     @Override
     @PostMapping("/signUp")
-    public ResponseEntity<SignUpDTO> signUp(SignUpDTO usuarioDto) {
-        SignUpDTO responseBody = service.cadastrar(usuarioDto);
+    public ResponseEntity<UsuarioDTO> signUp(UsuarioDTO usuarioDto) {
+        UsuarioDTO responseBody = service.cadastrar(usuarioDto);
 
         return ResponseEntity.ok(responseBody);
     }
@@ -43,7 +41,7 @@ public class UsuariosRestController implements UsuariosRestControllerDocs {
 
     @Override
     @GetMapping("/me")
-    public ResponseEntity<SignUpDTO> me(HttpServletRequest request) {
+    public ResponseEntity<UsuarioDTO> me(HttpServletRequest request) {
         String token = TokenUtils.wrapperToken(request);
 
         return ResponseEntity.ok(service.perfil(token));
@@ -51,8 +49,8 @@ public class UsuariosRestController implements UsuariosRestControllerDocs {
 
 	@Override
     @PostMapping("/me")
-	public ResponseEntity<Optional<SignUpDTO>> updateUsuario(HttpServletRequest request,
-			@Valid SignUpDTO usuarioDto) throws Exception {
+	public ResponseEntity<Optional<UsuarioDTO>> updateUsuario(HttpServletRequest request,
+                                                              @Valid UsuarioDTO usuarioDto) throws Exception {
 		String token = TokenUtils.wrapperToken(request);
 		
 		return ResponseEntity.ok(service.atualizarPerfil(token, usuarioDto));
@@ -60,7 +58,7 @@ public class UsuariosRestController implements UsuariosRestControllerDocs {
 
     @Override
     @PostMapping("/{id}")
-    public ResponseEntity<Optional<SignUpDTO>> updateOutroUsuario(@PathVariable("id") Long id, HttpServletRequest request, SignUpDTO usuarioDto) throws Exception {
+    public ResponseEntity<Optional<UsuarioDTO>> updateOutroUsuario(@PathVariable("id") Long id, HttpServletRequest request, UsuarioDTO usuarioDto) throws Exception {
         String token = TokenUtils.wrapperToken(request);
 
         return ResponseEntity.ok(service.atualizarPerfilDeOutroUsuario(id,token, usuarioDto));
@@ -68,7 +66,7 @@ public class UsuariosRestController implements UsuariosRestControllerDocs {
 
     @Override
     @GetMapping
-    public ResponseEntity<List<SignUpDTO>> consultarUsuarios(HttpServletRequest request) throws Exception {
+    public ResponseEntity<List<UsuarioDTO>> consultarUsuarios(HttpServletRequest request) throws Exception {
         String token = TokenUtils.wrapperToken(request);
 
         return ResponseEntity.ok(service.consultarUsuarios(token));

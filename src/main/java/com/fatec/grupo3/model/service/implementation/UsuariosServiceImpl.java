@@ -2,7 +2,7 @@ package com.fatec.grupo3.model.service.implementation;
 
 import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.LoginDTO;
-import com.fatec.grupo3.model.dto.SignUpDTO;
+import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.dto.TokenDTO;
 import com.fatec.grupo3.model.entities.Usuario;
 import com.fatec.grupo3.model.mapper.UsuariosMapper;
@@ -35,7 +35,7 @@ public class UsuariosServiceImpl implements UsuariosService {
     private AuthenticationManager authenticationManager;
 
     @Override
-    public SignUpDTO cadastrar(SignUpDTO usuarioDto) {
+    public UsuarioDTO cadastrar(UsuarioDTO usuarioDto) {
         Usuario usuario = mapper.toModel(usuarioDto);
 
         String pwd = usuario.getPassword();
@@ -56,14 +56,14 @@ public class UsuariosServiceImpl implements UsuariosService {
     }
 
     @Override
-    public SignUpDTO perfil(String token) {
+    public UsuarioDTO perfil(String token) {
         Long userId = tokenService.getUserId(token);
         Usuario usuarioEncontrado = usuariosRepository.getReferenceById(userId);
         return mapper.toDTO(usuarioEncontrado);
     }
 
 	@Override
-	public Optional<SignUpDTO> atualizarPerfil(String token, SignUpDTO usuarioDTO) {
+	public Optional<UsuarioDTO> atualizarPerfil(String token, UsuarioDTO usuarioDTO) {
 		Long userId = tokenService.getUserId(token);
 		
 		Usuario usuarioEncontrado = usuariosRepository.getReferenceById(userId);
@@ -82,13 +82,13 @@ public class UsuariosServiceImpl implements UsuariosService {
 
 		Usuario usuarioSalvo = usuariosRepository.save(usuarioEncontrado);
 
-        SignUpDTO dto = mapper.toDTO(usuarioSalvo);
+        UsuarioDTO dto = mapper.toDTO(usuarioSalvo);
 
 		return Optional.of(dto);
 	}
 
     @Override
-    public List<SignUpDTO> consultarUsuarios(String token) throws AreaProibidaException {
+    public List<UsuarioDTO> consultarUsuarios(String token) throws AreaProibidaException {
         Long userId = tokenService.getUserId(token);
 
         Usuario usuarioEncontrado = usuariosRepository.getReferenceById(userId);
@@ -106,7 +106,7 @@ public class UsuariosServiceImpl implements UsuariosService {
     }
 
     @Override
-    public Optional<SignUpDTO> atualizarPerfilDeOutroUsuario(Long id, String token, SignUpDTO usuarioDto) throws AreaProibidaException {
+    public Optional<UsuarioDTO> atualizarPerfilDeOutroUsuario(Long id, String token, UsuarioDTO usuarioDto) throws AreaProibidaException {
         Long userId = tokenService.getUserId(token);
 
         Usuario usuarioEncontrado = usuariosRepository.getReferenceById(userId);

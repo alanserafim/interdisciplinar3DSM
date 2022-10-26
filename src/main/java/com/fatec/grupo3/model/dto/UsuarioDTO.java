@@ -3,14 +3,13 @@ package com.fatec.grupo3.model.dto;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.br.CPF;
 
-import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-public class SignUpDTO {
+public class UsuarioDTO {
 
     @NotNull
     @ApiModelProperty(value = "Username")
@@ -66,13 +65,13 @@ public class SignUpDTO {
 
 
 
-    public SignUpDTO(@NotNull String username,
-			@Email(message = "Insira um email valido") @Pattern(regexp = ".+@.+\\..+", message = "Insira um email valido") @NotNull String email,
-			@CPF @NotNull String cpf,
-			@Size(min = 8, message = "A senha deve ter no minimo 8 caracteres.") @NotNull String password,
-			@NotNull String name, @NotNull String lastname, List<String> roles, @NotNull String dtNascimento,
-			@NotNull Integer ra, @NotNull String cursoMatriculado, @NotNull String anoIngresso,
-			@NotNull String periodo) {
+    public UsuarioDTO(@NotNull String username,
+                      @Email(message = "Insira um email valido") @Pattern(regexp = ".+@.+\\..+", message = "Insira um email valido") @NotNull String email,
+                      @CPF @NotNull String cpf,
+                      @Size(min = 8, message = "A senha deve ter no minimo 8 caracteres.") @NotNull String password,
+                      @NotNull String name, @NotNull String lastname, List<String> roles, @NotNull String dtNascimento,
+                      @NotNull Integer ra, @NotNull String cursoMatriculado, @NotNull String anoIngresso,
+                      @NotNull String periodo) {
 		super();
 		this.username = username;
 		this.email = email;

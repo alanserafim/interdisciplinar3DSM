@@ -1,6 +1,6 @@
 package com.fatec.grupo3.model.mapper;
 
-import com.fatec.grupo3.model.dto.SignUpDTO;
+import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.entities.Usuario;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -10,7 +10,7 @@ public interface UsuariosMapper {
 
     UsuariosMapper INSTANCE = Mappers.getMapper(UsuariosMapper.class);
 
-    Usuario toModel(SignUpDTO signUpDTO);
+    Usuario toModel(UsuarioDTO usuarioDTO);
 
-    SignUpDTO toDTO(Usuario usuario);
+    UsuarioDTO toDTO(Usuario usuario);
 }

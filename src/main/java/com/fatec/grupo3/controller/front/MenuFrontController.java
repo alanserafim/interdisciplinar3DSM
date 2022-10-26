@@ -1,8 +1,7 @@
 package com.fatec.grupo3.controller.front;
 
 import com.fatec.grupo3.model.dto.LoginDTO;
-import com.fatec.grupo3.model.dto.SignUpDTO;
-import com.fatec.grupo3.model.entities.Usuario;
+import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.service.UsuariosService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -49,14 +48,14 @@ public class MenuFrontController {
 
 
     @GetMapping("/signUp")
-    public ModelAndView signUp(SignUpDTO usuario) {
+    public ModelAndView signUp(UsuarioDTO usuario) {
         ModelAndView mv = new ModelAndView("cadastrarUsuario");
         mv.addObject("usuario", usuario);
         return mv;
     }
 
     @PostMapping("/signUp")
-    public ModelAndView save(@Valid SignUpDTO usuario, BindingResult result) {
+    public ModelAndView save(@Valid UsuarioDTO usuario, BindingResult result) {
         ModelAndView mv = new ModelAndView("consultarUsuario");
         List<String> roles = new ArrayList<>();
         roles.add("ADMIN");
@@ -64,7 +63,7 @@ public class MenuFrontController {
         if (result.hasErrors()) {
             mv.setViewName("cadastrarUsuario");
         } else {
-            SignUpDTO usuarioSaved = service.cadastrar(usuario);
+            UsuarioDTO usuarioSaved = service.cadastrar(usuario);
             if (usuarioSaved != null) {
                 mv.setViewName("paginaLogin");
             } else {

@@ -2,7 +2,7 @@ package com.fatec.grupo3.model.service;
 
 import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.LoginDTO;
-import com.fatec.grupo3.model.dto.SignUpDTO;
+import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.dto.TokenDTO;
 
 import java.util.List;
@@ -10,11 +10,11 @@ import java.util.Optional;
 
 public interface UsuariosService {
 
-    SignUpDTO cadastrar(SignUpDTO usuarioDto);
+    UsuarioDTO cadastrar(UsuarioDTO usuarioDto);
     TokenDTO logar(LoginDTO loginDTO);
-    SignUpDTO perfil(String token);
-    Optional<SignUpDTO> atualizarPerfil(String token, SignUpDTO usuarioDto);
-    List<SignUpDTO> consultarUsuarios(String token) throws AreaProibidaException;
-    Optional<SignUpDTO> atualizarPerfilDeOutroUsuario(Long id, String token, SignUpDTO usuarioDto) throws AreaProibidaException;
+    UsuarioDTO perfil(String token);
+    Optional<UsuarioDTO> atualizarPerfil(String token, UsuarioDTO usuarioDto);
+    List<UsuarioDTO> consultarUsuarios(String token) throws AreaProibidaException;
+    Optional<UsuarioDTO> atualizarPerfilDeOutroUsuario(Long id, String token, UsuarioDTO usuarioDto) throws AreaProibidaException;
     void deletarUsuario(Long id, String token) throws AreaProibidaException;
 }
