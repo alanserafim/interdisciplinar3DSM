@@ -11,6 +11,8 @@ import java.util.List;
 
 public class ListaDTO {
 
+    @NotNull
+    @ApiModelProperty(value = "id")
     private Long id;
 
     @NotNull
@@ -64,4 +66,124 @@ public class ListaDTO {
     @NotNull
     @ApiModelProperty(value = "Periodo que o Aluno realiza o curso que está matriculado")
     private String periodo;
+
+    public ListaDTO(Long id, String username, String email, String cpf, String password, String name, String lastname, List<String> roles, String dtNascimento, Integer ra, String cursoMatriculado, String anoIngresso, String periodo) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.cpf = cpf;
+        this.password = password;
+        this.name = name;
+        this.lastname = lastname;
+        this.roles = roles;
+        this.dtNascimento = dtNascimento;
+        this.ra = ra;
+        this.cursoMatriculado = cursoMatriculado;
+        this.anoIngresso = anoIngresso;
+        this.periodo = periodo;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+
+    public String getDtNascimento() {
+        return dtNascimento;
+    }
+
+    public void setDtNascimento(String dtNascimento) {
+        this.dtNascimento = dtNascimento;
+    }
+
+    public Integer getRa() {
+        return ra;
+    }
+
+    public void setRa(Integer ra) {
+        this.ra = ra;
+    }
+
+    public String getCursoMatriculado() {
+        return cursoMatriculado;
+    }
+
+    public void setCursoMatriculado(String cursoMatriculado) {
+        this.cursoMatriculado = cursoMatriculado;
+    }
+
+    public String getAnoIngresso() {
+        return anoIngresso;
+    }
+
+    public void setAnoIngresso(String anoIngresso) {
+        this.anoIngresso = anoIngresso;
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
