@@ -6,6 +6,7 @@ import com.fatec.grupo3.model.dto.LoginDTO;
 import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.dto.TokenDTO;
 import com.fatec.grupo3.model.entities.Usuario;
+import com.fatec.grupo3.model.mapper.ListaUsuariosMapper;
 import com.fatec.grupo3.model.mapper.UsuariosMapper;
 import com.fatec.grupo3.model.repositories.UsuariosRepository;
 import com.fatec.grupo3.model.service.UsuariosService;
@@ -29,6 +30,9 @@ public class UsuariosServiceImpl implements UsuariosService {
 
     @Autowired
     private UsuariosMapper mapper = UsuariosMapper.INSTANCE;
+
+    @Autowired
+    private ListaUsuariosMapper listaUsuariosMapper = ListaUsuariosMapper.INSTANCE;
 
     @Autowired
     private TokenService tokenService;
@@ -112,7 +116,7 @@ public class UsuariosServiceImpl implements UsuariosService {
         if (usuarioEncontrado.getRoles().contains("ADMIN")) {
             return usuariosRepository.findAll()
                     .stream()
-                    .map(mapper::toListaDTO)
+                    .map(listaUsuariosMapper::toDTO)
                     .collect(Collectors.toList());
         }
 
