@@ -18,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -114,6 +115,7 @@ public class UsuariosServiceImpl implements UsuariosService {
         Usuario usuarioEncontrado = usuariosRepository.getReferenceById(userId);
 
         if (usuarioEncontrado.getRoles().contains("ADMIN")) {
+
             return usuariosRepository.findAll()
                     .stream()
                     .map(listaUsuariosMapper::toDTO)

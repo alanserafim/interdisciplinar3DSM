@@ -13,7 +13,7 @@ public class ListaDTO {
 
     @NotNull
     @ApiModelProperty(value = "id")
-    private Long id;
+    private Long userId;
 
     @NotNull
     @ApiModelProperty(value = "Username")
@@ -67,8 +67,8 @@ public class ListaDTO {
     @ApiModelProperty(value = "Periodo que o Aluno realiza o curso que está matriculado")
     private String periodo;
 
-    public ListaDTO(Long id, String username, String email, String cpf, String password, String name, String lastname, List<String> roles, String dtNascimento, Integer ra, String cursoMatriculado, String anoIngresso, String periodo) {
-        this.id = id;
+    public ListaDTO(Long userId, String username, String email, String cpf, String password, String name, String lastname, List<String> roles, String dtNascimento, Integer ra, String cursoMatriculado, String anoIngresso, String periodo) {
+        this.userId = userId;
         this.username = username;
         this.email = email;
         this.cpf = cpf;
@@ -163,12 +163,12 @@ public class ListaDTO {
         this.periodo = periodo;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
