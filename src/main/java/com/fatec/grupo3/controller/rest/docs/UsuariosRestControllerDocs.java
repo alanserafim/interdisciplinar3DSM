@@ -1,9 +1,6 @@
 package com.fatec.grupo3.controller.rest.docs;
 
-import com.fatec.grupo3.model.dto.ErrorDTO;
-import com.fatec.grupo3.model.dto.LoginDTO;
-import com.fatec.grupo3.model.dto.UsuarioDTO;
-import com.fatec.grupo3.model.dto.TokenDTO;
+import com.fatec.grupo3.model.dto.*;
 import com.fatec.grupo3.model.entities.Usuario;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -78,7 +75,7 @@ public interface UsuariosRestControllerDocs {
             @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
             @ApiResponse(code = 404, message = "Usuário não encontrada") })
     @PostMapping
-    public ResponseEntity<List<UsuarioDTO>> consultarUsuarios(HttpServletRequest request) throws Exception;
+    public ResponseEntity<List<ListaDTO>> consultarUsuarios(HttpServletRequest request) throws Exception;
 
     @ApiOperation(value = "Deletar Usuario", nickname = "deleteUsuario", notes = "", authorizations = {
             @Authorization(value = "Authorization") }, tags = { "Usuario", })

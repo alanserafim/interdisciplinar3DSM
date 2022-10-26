@@ -1,6 +1,7 @@
 package com.fatec.grupo3.model.service.implementation;
 
 import com.fatec.grupo3.exception.AreaProibidaException;
+import com.fatec.grupo3.model.dto.ListaDTO;
 import com.fatec.grupo3.model.dto.LoginDTO;
 import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.dto.TokenDTO;
@@ -103,7 +104,7 @@ public class UsuariosServiceImpl implements UsuariosService {
     }
 
     @Override
-    public List<UsuarioDTO> consultarUsuarios(String token) throws AreaProibidaException {
+    public List<ListaDTO> consultarUsuarios(String token) throws AreaProibidaException {
         Long userId = tokenService.getUserId(token);
 
         Usuario usuarioEncontrado = usuariosRepository.getReferenceById(userId);
@@ -111,7 +112,7 @@ public class UsuariosServiceImpl implements UsuariosService {
         if (usuarioEncontrado.getRoles().contains("ADMIN")) {
             return usuariosRepository.findAll()
                     .stream()
-                    .map(mapper::toDTO)
+                    .map(mapper::toListaDTO)
                     .collect(Collectors.toList());
         }
 

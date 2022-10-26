@@ -1,6 +1,7 @@
 package com.fatec.grupo3.controller.rest;
 
 import com.fatec.grupo3.controller.rest.docs.UsuariosRestControllerDocs;
+import com.fatec.grupo3.model.dto.ListaDTO;
 import com.fatec.grupo3.model.dto.LoginDTO;
 import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.dto.TokenDTO;
@@ -66,7 +67,7 @@ public class UsuariosRestController implements UsuariosRestControllerDocs {
 
     @Override
     @GetMapping
-    public ResponseEntity<List<UsuarioDTO>> consultarUsuarios(HttpServletRequest request) throws Exception {
+    public ResponseEntity<List<ListaDTO>> consultarUsuarios(HttpServletRequest request) throws Exception {
         String token = TokenUtils.wrapperToken(request);
 
         return ResponseEntity.ok(service.consultarUsuarios(token));
