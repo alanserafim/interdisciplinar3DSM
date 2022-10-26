@@ -70,7 +70,7 @@ public interface UsuariosRestControllerDocs {
     @PostMapping
     public ResponseEntity<Optional<UsuarioDTO>> updateOutroUsuario(@PathVariable("id") Long id, HttpServletRequest request, @RequestBody @Valid UsuarioDTO usuarioDto) throws Exception;
 
-    @ApiOperation(value = "Consultar Usuarios", nickname = "updateUsuario", notes = "", response = UsuarioDTO.class, responseContainer = "object", authorizations = {
+    @ApiOperation(value = "Consultar Usuarios", nickname = "consultarUsuarios", notes = "", response = UsuarioDTO.class, responseContainer = "object", authorizations = {
             @Authorization(value = "Authorization") }, tags = { "Usuario", })
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Usuarios Consultados!", response = UsuarioDTO.class, responseContainer = "object"),
@@ -89,4 +89,14 @@ public interface UsuariosRestControllerDocs {
             @ApiResponse(code = 404, message = "Usuário não encontrada") })
     @DeleteMapping
     public void deletarUsuario(@PathVariable("id")  Long id, HttpServletRequest request) throws Exception;
+
+    @ApiOperation(value = "Consultar Usuario", nickname = "consultarUsuario", notes = "", response = UsuarioDTO.class, responseContainer = "object", authorizations = {
+            @Authorization(value = "Authorization") }, tags = { "Usuario", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Usuario Consultados!", response = UsuarioDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
+            @ApiResponse(code = 404, message = "Usuário não encontrada") })
+    @PostMapping
+    public ResponseEntity<UsuarioDTO> consultarUsuario(@PathVariable("id") Long id, HttpServletRequest request) throws Exception;
 }

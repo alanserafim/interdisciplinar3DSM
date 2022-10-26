@@ -14,6 +14,7 @@ public interface UsuariosService {
     TokenDTO logar(LoginDTO loginDTO);
     UsuarioDTO perfil(String token);
     Optional<UsuarioDTO> atualizarPerfil(String token, UsuarioDTO usuarioDto);
+    UsuarioDTO consultarUsuarioPeloId(Long id, String token) throws AreaProibidaException;
     List<UsuarioDTO> consultarUsuarios(String token) throws AreaProibidaException;
     Optional<UsuarioDTO> atualizarPerfilDeOutroUsuario(Long id, String token, UsuarioDTO usuarioDto) throws AreaProibidaException;
     void deletarUsuario(Long id, String token) throws AreaProibidaException;

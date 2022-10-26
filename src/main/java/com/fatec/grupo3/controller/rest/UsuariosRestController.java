@@ -80,4 +80,12 @@ public class UsuariosRestController implements UsuariosRestControllerDocs {
 
         service.deletarUsuario(id, token);
     }
+
+    @Override
+    @GetMapping("/{id}")
+    public ResponseEntity<UsuarioDTO> consultarUsuario(@PathVariable("id") Long id, HttpServletRequest request) throws Exception {
+        String token = TokenUtils.wrapperToken(request);
+
+        return ResponseEntity.ok(service.consultarUsuarioPeloId(id, token));
+    }
 }

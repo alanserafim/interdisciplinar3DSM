@@ -88,6 +88,21 @@ public class UsuariosServiceImpl implements UsuariosService {
 	}
 
     @Override
+    public UsuarioDTO consultarUsuarioPeloId(Long id, String token) throws AreaProibidaException {
+        Long userId = tokenService.getUserId(token);
+
+        Usuario usuarioEncontrado = usuariosRepository.getReferenceById(userId);
+
+        if (usuarioEncontrado.getRoles().contains("ADMIN")) {
+            Usuario usuarioConsultado = usuariosRepository.getReferenceById(id);
+
+            return mapper.toDTO(usuarioConsultado);
+        }
+
+        throw new AreaProibidaException(usuarioEncontrado.getCpf());
+    }
+
+    @Override
     public List<UsuarioDTO> consultarUsuarios(String token) throws AreaProibidaException {
         Long userId = tokenService.getUserId(token);
 
