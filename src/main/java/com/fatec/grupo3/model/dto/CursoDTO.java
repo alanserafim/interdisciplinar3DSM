@@ -1,8 +1,8 @@
 package com.fatec.grupo3.model.dto;
 
-import com.fatec.grupo3.model.entities.Usuario;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.List;
 
 public class CursoDTO {
 	@ApiModelProperty(value = "Titulo do curso")
@@ -16,12 +16,20 @@ public class CursoDTO {
 	@ApiModelProperty(value = "Media de Avaliação do curso cadastrado (feedback do alunos)")
     private Double mediaAvaliacao;
 
-    public CursoDTO(String titulo, String descricao, String cargaHorario, String dataAtualizacao, Double mediaAvaliacao) {
+    @ApiModelProperty(value = "Aulas que serão ministradas")
+    private List<AulaDTO> aulas;
+
+    @ApiModelProperty(value = "Exercicios que serão ministrados")
+    private List<ExercicioDTO> exercicios;
+
+    public CursoDTO(String titulo, String descricao, String cargaHorario, String dataAtualizacao, Double mediaAvaliacao, List<AulaDTO> aulas, List<ExercicioDTO> exercicios) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.cargaHorario = cargaHorario;
         this.dataAtualizacao = dataAtualizacao;
         this.mediaAvaliacao = mediaAvaliacao;
+        this.aulas = aulas;
+        this.exercicios = exercicios;
     }
 
     public String getTitulo() {
@@ -62,5 +70,21 @@ public class CursoDTO {
 
     public void setMediaAvaliacao(Double mediaAvaliacao) {
         this.mediaAvaliacao = mediaAvaliacao;
+    }
+
+    public List<AulaDTO> getAulas() {
+        return aulas;
+    }
+
+    public void setAulas(List<AulaDTO> aulas) {
+        this.aulas = aulas;
+    }
+
+    public List<ExercicioDTO> getExercicios() {
+        return exercicios;
+    }
+
+    public void setExercicios(List<ExercicioDTO> exercicios) {
+        this.exercicios = exercicios;
     }
 }

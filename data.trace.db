@@ -1,0 +1,12 @@
+2022-10-31 17:34:40 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CURSO_AULA" not found; SQL statement:
+select * from curso_aula [42102-214]
+2022-10-31 17:41:56 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AULAS" not found; SQL statement:
+select * from aulas [42102-214]
+2022-10-31 19:06:51 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AULAS" not found; SQL statement:
+select * from aulas [42102-214]
+2022-10-31 19:19:02 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AULAS" not found; SQL statement:
+select * from aulas [42102-214]

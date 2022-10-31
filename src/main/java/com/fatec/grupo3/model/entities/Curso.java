@@ -16,12 +16,17 @@ public class Curso {
     @ManyToOne(cascade = { CascadeType.MERGE })
     @JoinColumn(name = "user_id", nullable = false)
     private Usuario usuario;
-    
     private String dataAtualizacao;
     private Double mediaAvaliacao;
 
     @OneToOne(mappedBy = "curso", fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
     private Matricula matricula;
+
+    @OneToMany
+    private List<Aula> aulas;
+
+    @OneToMany
+    private List<Exercicio> exercicios;
 
     public Long getCursoId() {
         return cursoId;
@@ -31,10 +36,7 @@ public class Curso {
         super();
     }
 
-
-    public Curso(Long cursoId, String titulo, String descricao, String cargaHorario, Usuario usuario,
-                 String dataAtualizacao, Double mediaAvaliacao) {
-        super();
+    public Curso(Long cursoId, String titulo, String descricao, String cargaHorario, Usuario usuario, String dataAtualizacao, Double mediaAvaliacao, Matricula matricula, List<Aula> aulas, List<Exercicio> exercicios) {
         this.cursoId = cursoId;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -42,6 +44,9 @@ public class Curso {
         this.usuario = usuario;
         this.dataAtualizacao = dataAtualizacao;
         this.mediaAvaliacao = mediaAvaliacao;
+        this.matricula = matricula;
+        this.aulas = aulas;
+        this.exercicios = exercicios;
     }
 
     public void setCursoId(Long cursoId) {
@@ -82,5 +87,29 @@ public class Curso {
     }
     public void setMediaAvaliacao(Double mediaAvaliacao) {
         this.mediaAvaliacao = mediaAvaliacao;
+    }
+
+    public Matricula getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(Matricula matricula) {
+        this.matricula = matricula;
+    }
+
+    public List<Aula> getAulas() {
+        return aulas;
+    }
+
+    public void setAulas(List<Aula> aulas) {
+        this.aulas = aulas;
+    }
+
+    public List<Exercicio> getExercicios() {
+        return exercicios;
+    }
+
+    public void setExercicios(List<Exercicio> exercicios) {
+        this.exercicios = exercicios;
     }
 }

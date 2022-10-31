@@ -8,9 +8,15 @@ import javax.transaction.Transactional;
 
 import com.fatec.grupo3.model.dto.CursoDTO;
 import com.fatec.grupo3.model.dto.UsuarioDTO;
+import com.fatec.grupo3.model.entities.Aula;
+import com.fatec.grupo3.model.entities.Exercicio;
 import com.fatec.grupo3.model.entities.Usuario;
+import com.fatec.grupo3.model.mapper.AulasMapper;
 import com.fatec.grupo3.model.mapper.CursosMapper;
+import com.fatec.grupo3.model.mapper.ExerciciosMapper;
 import com.fatec.grupo3.model.mapper.UsuariosMapper;
+import com.fatec.grupo3.model.repositories.AulasRepository;
+import com.fatec.grupo3.model.repositories.ExercicioRepository;
 import com.fatec.grupo3.model.repositories.UsuariosRepository;
 import com.fatec.grupo3.security.TokenService;
 import org.apache.logging.log4j.LogManager;
@@ -32,6 +38,12 @@ public class CursosServiceImpl implements CursosService {
     private CursosRepositories repository;
 
     @Autowired
+    private AulasRepository aulasRepository;
+
+    @Autowired
+    private ExercicioRepository exercicioRepository;
+
+    @Autowired
     private UsuariosRepository usuariosRepository;
 
     @Autowired
@@ -42,6 +54,12 @@ public class CursosServiceImpl implements CursosService {
 
     @Autowired
     private UsuariosMapper usuariosMapper = UsuariosMapper.INSTANCE;
+
+    @Autowired
+    private AulasMapper aulasMapper = AulasMapper.INSTANCE;
+
+    @Autowired
+    private ExerciciosMapper exerciciosMapper = ExerciciosMapper.INSTANCE;
 
     @Override
     public List<CursoDTO> consultaTodos() {
@@ -67,13 +85,25 @@ public class CursosServiceImpl implements CursosService {
         Usuario usuario = usuariosRepository.getReferenceById(userId);
 
         Curso curso = mapper.toModel(cursoDTO);
+
+
+        if (curso.getAulas() != null) {
+            for(Aula aula : curso.getAulas()) {
+                aulasRepository.save(aula);
+            }
+        }
+
+        if (curso.getExercicios() != null) {
+            for(Exercicio exercicio : curso.getExercicios()) {
+                exercicioRepository.save(exercicio);
+            }
+        }
         curso.setUsuario(usuario);
         Curso cursoSalvo = repository.save(curso);
 
-        UsuarioDTO usuarioLogado = usuariosMapper.toDTO(usuario);
+        //UsuarioDTO usuarioLogado = usuariosMapper.toDTO(usuario);
 
         logger.info(">>>>>> servico save chamado ");
-
 
         return Optional.ofNullable(mapper.toDTO(cursoSalvo));
     }
@@ -86,21 +116,39 @@ public class CursosServiceImpl implements CursosService {
 
         repository.deleteByUsuarioAndCursoId(usuario, id);
     }
-    
-    @Transactional
+
     @Override
+    @Transactional
     public Optional<CursoDTO> atualiza(Long id, CursoDTO cursoDTO, String token) {
         Long userId = tokenService.getUserId(token);
 
         Usuario usuario = usuariosRepository.getReferenceById(userId);
         
-        
         Curso curso = mapper.toModel(cursoDTO);
+
+        Curso cursoFounded = repository.getReferenceById(id);
+
+        if (cursoFounded.getAulas() != null) {
+
+            for(Aula aula : cursoFounded.getAulas()) {
+
+                aulasRepository.save(aula);
+            }
+        }
+
+        if (cursoFounded.getExercicios() != null) {
+
+            for(Exercicio exercicio : cursoFounded.getExercicios()) {
+
+                exercicioRepository.save(exercicio);
+            }
+        }
+
         curso.setCursoId(id);
         curso.setUsuario(usuario);
         Curso cursoSalvo = repository.save(curso);
 
-        UsuarioDTO usuarioLogado = usuariosMapper.toDTO(usuario);
+        //UsuarioDTO usuarioLogado = usuariosMapper.toDTO(usuario);
 
         logger.info(">>>>>> servico atualiza chamado ");
 
