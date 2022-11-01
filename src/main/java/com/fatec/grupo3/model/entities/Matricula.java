@@ -13,7 +13,7 @@ public class Matricula {
     private Usuario usuario;
 	
     private String status;
-    private Double progresso;
+    private Double nota;
     private Double avaliacaoCurso;
 
 	@OneToOne
@@ -22,11 +22,11 @@ public class Matricula {
     public Matricula() {
     }
 
-	public Matricula(Long id, Usuario usuario, String status, Double progresso, Double avaliacaoCurso, Curso curso) {
+	public Matricula(Long id, Usuario usuario, String status, Double nota, Double avaliacaoCurso, Curso curso) {
 		this.id = id;
 		this.usuario = usuario;
 		this.status = status;
-		this.progresso = progresso;
+		this.nota = nota;
 		this.avaliacaoCurso = avaliacaoCurso;
 		this.curso = curso;
 	}
@@ -48,13 +48,13 @@ public class Matricula {
 		this.status = status;
 	}
 
-	public Double getProgresso() {
-		return progresso;
+	public Double getNota() {
+		return nota;
 	}
 
 
-	public void setProgresso(Double progresso) {
-		this.progresso = progresso;
+	public void setNota(Double nota) {
+		this.nota = nota;
 	}
 
 

@@ -7,15 +7,15 @@ public class MatriculaDTO {
 	@ApiModelProperty(value = "Status da Matricula")
     private String status;
 	
-	@ApiModelProperty(value = "Progresso da matricula")
-    private Double progresso;
+	@ApiModelProperty(value = "Nota do aluno matriculado")
+    private Double nota;
 	
 	@ApiModelProperty(value = "Nota que o usuario deu para o curso")
     private Double avaliacaoCurso;
 
-    public MatriculaDTO(String status, Double progresso, Double avaliacaoCurso) {
+    public MatriculaDTO(String status, Double nota, Double avaliacaoCurso) {
         this.status = status;
-        this.progresso = progresso;
+        this.nota = nota;
         this.avaliacaoCurso = avaliacaoCurso;
     }
 
@@ -27,12 +27,12 @@ public class MatriculaDTO {
         this.status = status;
     }
 
-    public Double getProgresso() {
-        return progresso;
+    public Double getNota() {
+        return nota;
     }
 
-    public void setProgresso(Double progresso) {
-        this.progresso = progresso;
+    public void setNota(Double nota) {
+        this.nota = nota;
     }
 
     public Double getAvaliacaoCurso() {
