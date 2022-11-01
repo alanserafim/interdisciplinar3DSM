@@ -2,19 +2,23 @@ package com.fatec.grupo3.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
-public class CursoDTO {
+public class ListaCursoDTO {
+    @NotNull
+    @ApiModelProperty(value = "id")
+    private Long cursoId;
 
-	@ApiModelProperty(value = "Titulo do curso")
+    @ApiModelProperty(value = "Titulo do curso")
     private String titulo;
-	@ApiModelProperty(value = "Descrição do curso")
+    @ApiModelProperty(value = "Descrição do curso")
     private String descricao;
-	@ApiModelProperty(value = "Carga Horaria do curso")
+    @ApiModelProperty(value = "Carga Horaria do curso")
     private String cargaHorario;
-	@ApiModelProperty(value = "Data de Atualização do curso cadastrado")
+    @ApiModelProperty(value = "Data de Atualização do curso cadastrado")
     private String dataAtualizacao;
-	@ApiModelProperty(value = "Media de Avaliação do curso cadastrado (feedback do alunos)")
+    @ApiModelProperty(value = "Media de Avaliação do curso cadastrado (feedback do alunos)")
     private Double mediaAvaliacao;
 
     @ApiModelProperty(value = "Aulas que serão ministradas")
@@ -23,7 +27,8 @@ public class CursoDTO {
     @ApiModelProperty(value = "Exercicios que serão ministrados")
     private List<ExercicioDTO> exercicios;
 
-    public CursoDTO(String titulo, String descricao, String cargaHorario, String dataAtualizacao, Double mediaAvaliacao, List<AulaDTO> aulas, List<ExercicioDTO> exercicios) {
+    public ListaCursoDTO(Long cursoId, String titulo, String descricao, String cargaHorario, String dataAtualizacao, Double mediaAvaliacao, List<AulaDTO> aulas, List<ExercicioDTO> exercicios) {
+        this.cursoId = cursoId;
         this.titulo = titulo;
         this.descricao = descricao;
         this.cargaHorario = cargaHorario;
@@ -31,6 +36,14 @@ public class CursoDTO {
         this.mediaAvaliacao = mediaAvaliacao;
         this.aulas = aulas;
         this.exercicios = exercicios;
+    }
+
+    public Long getCursoId() {
+        return cursoId;
+    }
+
+    public void setCursoId(Long cursoId) {
+        this.cursoId = cursoId;
     }
 
     public String getTitulo() {

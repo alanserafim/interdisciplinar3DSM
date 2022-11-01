@@ -8,14 +8,12 @@ import javax.transaction.Transactional;
 
 import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.CursoDTO;
+import com.fatec.grupo3.model.dto.ListaCursoDTO;
 import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.entities.Aula;
 import com.fatec.grupo3.model.entities.Exercicio;
 import com.fatec.grupo3.model.entities.Usuario;
-import com.fatec.grupo3.model.mapper.AulasMapper;
-import com.fatec.grupo3.model.mapper.CursosMapper;
-import com.fatec.grupo3.model.mapper.ExerciciosMapper;
-import com.fatec.grupo3.model.mapper.UsuariosMapper;
+import com.fatec.grupo3.model.mapper.*;
 import com.fatec.grupo3.model.repositories.AulasRepository;
 import com.fatec.grupo3.model.repositories.ExercicioRepository;
 import com.fatec.grupo3.model.repositories.UsuariosRepository;
@@ -54,20 +52,15 @@ public class CursosServiceImpl implements CursosService {
     private CursosMapper mapper = CursosMapper.INSTANCE;
 
     @Autowired
-    private UsuariosMapper usuariosMapper = UsuariosMapper.INSTANCE;
-
-    @Autowired
-    private AulasMapper aulasMapper = AulasMapper.INSTANCE;
-
-    @Autowired
-    private ExerciciosMapper exerciciosMapper = ExerciciosMapper.INSTANCE;
+    private ListaCursosMapper listaCursosMapper = ListaCursosMapper.INSTANCE;
 
     @Override
-    public List<CursoDTO> consultaTodos() {
+    public List<ListaCursoDTO> consultaTodos() {
         logger.info(">>>>>> servico consultaTodos chamado");
+
         return repository.findAll()
                 .stream()
-                .map(mapper::toDTO)
+                .map(listaCursosMapper::toDto)
                 .collect(Collectors.toList());
     }
 
