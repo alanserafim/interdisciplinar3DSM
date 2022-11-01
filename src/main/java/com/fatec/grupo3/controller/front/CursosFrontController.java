@@ -49,13 +49,13 @@ public class CursosFrontController {
     public ModelAndView retornaFormParaEditarCurso(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView("atualizarCurso");
 
-        Optional<CursoDTO> curso = service.consultarPorId(id);
+        /*Optional<CursoDTO> curso = service.consultarPorId(id);
 
         if(curso.isPresent()) {
             mv.addObject("curso", curso.get());
         } else {
             return new ModelAndView("paginaMenu");
-        }
+        }*/
 
         return mv;
     }

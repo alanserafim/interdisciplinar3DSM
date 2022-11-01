@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.CursoDTO;
 import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.entities.Aula;
@@ -156,9 +157,17 @@ public class CursosServiceImpl implements CursosService {
     }
 
     @Override
-    public Optional<CursoDTO> consultarPorId(Long id) {
-        Optional<Curso> curso = repository.findById(id);
-        return Optional.of(mapper.toDTO(curso.get()));
+    public Optional<CursoDTO> consultarPorId(Long id, String token) throws AreaProibidaException {
+        Long userId = tokenService.getUserId(token);
+
+        Usuario usuario = usuariosRepository.getReferenceById(userId);
+
+        if (usuario.getRoles().contains("INSTRUTOR")) {
+            Optional<Curso> curso = repository.findById(id);
+            return Optional.of(mapper.toDTO(curso.get()));
+        }
+
+        throw new AreaProibidaException(usuario.getCpf());
     }
 
 }

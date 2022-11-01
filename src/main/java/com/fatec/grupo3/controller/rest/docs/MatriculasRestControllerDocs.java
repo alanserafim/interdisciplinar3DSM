@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import com.fatec.grupo3.exception.AreaProibidaException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,4 +64,14 @@ public interface MatriculasRestControllerDocs {
 			@ApiResponse(code = 404, message = "Usuário não encontrado") })
 	@DeleteMapping
 	public void deleteMatricula(@PathVariable("id") Long id, HttpServletRequest request);
+
+	@ApiOperation(value = "Consultar Matricula do Aluno", nickname = "consultaMatricula", notes = "", response = MatriculaDTO.class, responseContainer = "object", authorizations = {
+			@Authorization(value = "Authorization") }, tags = { "Matriculas", })
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Matricula consultada com sucesso", response = MatriculaDTO.class, responseContainer = "object"),
+			@ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
+			@ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
+			@ApiResponse(code = 404, message = "Usuário não encontrado") })
+	@GetMapping
+	public ResponseEntity<Optional<MatriculaDTO>> consultaMatricula(@PathVariable("id") Long id, HttpServletRequest request) throws AreaProibidaException;
 }

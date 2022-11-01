@@ -1,5 +1,6 @@
 package com.fatec.grupo3.model.service.implementation;
 
+import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.CursoDTO;
 import com.fatec.grupo3.model.dto.MatriculaDTO;
 import com.fatec.grupo3.model.entities.Cliente;
@@ -88,11 +89,20 @@ public class MatriculasServiceImpl implements MatriculasService {
     }
 
     @Override
-    public Optional<MatriculaDTO> consultaPorId(Long id) {
-    	Matricula matricula = repository.getReferenceById(id);
-    	MatriculaDTO matriculaDTO = mapper.toDTO(matricula);
+    public Optional<MatriculaDTO> consultaPorId(Long id, String token) throws AreaProibidaException {
+
+        Long userId = tokenService.getUserId(token);
+
+        Usuario usuario = usuariosRepository.getReferenceById(userId);
+
+    	if (usuario.getRoles().contains("ALUNO") || usuario.getRoles().contains("ADMIN") || usuario.getRoles().contains("INSTRUTOR")) {
+            Matricula matricula = repository.getReferenceById(id);
+            MatriculaDTO matriculaDTO = mapper.toDTO(matricula);
+
+            return Optional.of(matriculaDTO);
+        }
     	
-        return Optional.of(matriculaDTO);
+        throw new AreaProibidaException(usuario.getCpf());
     }
     
     @Transactional

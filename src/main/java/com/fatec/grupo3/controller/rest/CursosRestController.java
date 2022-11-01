@@ -1,6 +1,7 @@
 package com.fatec.grupo3.controller.rest;
 
 import com.fatec.grupo3.controller.rest.docs.CursosRestControllerDocs;
+import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.CursoDTO;
 import com.fatec.grupo3.model.dto.MatriculaDTO;
 import com.fatec.grupo3.model.entities.Curso;
@@ -55,5 +56,13 @@ public class CursosRestController implements CursosRestControllerDocs {
 		String token = TokenUtils.wrapperToken(request);
 
 		service.delete(id, token);
+	}
+
+	@Override
+	@GetMapping("/cursos/{id}")
+	public ResponseEntity<Optional<CursoDTO>> consultaCurso(@PathVariable("id") Long id, HttpServletRequest request) throws AreaProibidaException {
+		String token = TokenUtils.wrapperToken(request);
+
+		return ResponseEntity.ok(service.consultarPorId(id, token));
 	}
 }

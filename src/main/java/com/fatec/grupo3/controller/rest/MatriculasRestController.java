@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import com.fatec.grupo3.exception.AreaProibidaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,5 +58,13 @@ public class MatriculasRestController implements MatriculasRestControllerDocs {
 		String token = TokenUtils.wrapperToken(request);
 
 		service.delete(id, token);
+	}
+
+	@Override
+	@GetMapping("/matriculas/{id}")
+	public ResponseEntity<Optional<MatriculaDTO>> consultaMatricula(@PathVariable("id") Long id, HttpServletRequest request) throws AreaProibidaException {
+		String token = TokenUtils.wrapperToken(request);
+
+		return ResponseEntity.ok(service.consultaPorId(id, token));
 	}
 }
