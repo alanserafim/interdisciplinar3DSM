@@ -13,14 +13,19 @@ public class Aula {
     private String video;
     private String conteudo;
 
+    @ManyToOne(cascade = { CascadeType.MERGE })
+    @JoinColumn(name = "curso_id", nullable = false)
+    private Curso curso;
+
     public Aula() {
     }
 
-    public Aula(Long aulaId, String titulo, String video, String conteudo) {
+    public Aula(Long aulaId, String titulo, String video, String conteudo, Curso curso) {
         this.aulaId = aulaId;
         this.titulo = titulo;
         this.video = video;
         this.conteudo = conteudo;
+        this.curso = curso;
     }
 
     public Long getAulaId() {
@@ -53,5 +58,13 @@ public class Aula {
 
     public void setConteudo(String conteudo) {
         this.conteudo = conteudo;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 }

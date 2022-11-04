@@ -29,7 +29,7 @@ public interface CursosRestControllerDocs {
     @PostMapping
     public ResponseEntity<Optional<CursoDTO>> createCurso(@Valid @RequestBody CursoDTO curso, HttpServletRequest request) throws Exception;
     
-    @ApiOperation(value = "Cadastrar Curso", nickname = "updateCurso", notes = "", response = CursoDTO.class, responseContainer = "object", authorizations = {
+    @ApiOperation(value = "Atualizar Curso", nickname = "updateCurso", notes = "", response = CursoDTO.class, responseContainer = "object", authorizations = {
             @Authorization(value = "Authorization") }, tags = { "Cursos", })
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Curso Atualizado!", response = CursoDTO.class, responseContainer = "object"),

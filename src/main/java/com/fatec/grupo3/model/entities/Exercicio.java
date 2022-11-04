@@ -19,15 +19,20 @@ public class Exercicio {
     private List<String> afirmativas;
     private String resposta;
 
+    @ManyToOne(cascade = { CascadeType.MERGE })
+    @JoinColumn(name = "curso_id", nullable = false)
+    private Curso curso;
+
     public Exercicio() {
     }
 
-    public Exercicio(Long exercicioId, String titulo, String enunciado, List<String> afirmativas, String resposta) {
+    public Exercicio(Long exercicioId, String titulo, String enunciado, List<String> afirmativas, String resposta, Curso curso) {
         this.exercicioId = exercicioId;
         this.titulo = titulo;
         this.enunciado = enunciado;
         this.afirmativas = afirmativas;
         this.resposta = resposta;
+        this.curso = curso;
     }
 
     public Long getExercicioId() {
@@ -68,5 +73,13 @@ public class Exercicio {
 
     public void setResposta(String resposta) {
         this.resposta = resposta;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 }

@@ -12,6 +12,7 @@ public class Curso {
     private String titulo;
     private String descricao;
     private String cargaHorario;
+    private String categoria;
 
     @ManyToOne(cascade = { CascadeType.MERGE })
     @JoinColumn(name = "user_id", nullable = false)
@@ -22,10 +23,10 @@ public class Curso {
     @OneToOne(mappedBy = "curso", fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
     private Matricula matricula;
 
-    @OneToMany
+    @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
     private List<Aula> aulas;
 
-    @OneToMany
+    @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
     private List<Exercicio> exercicios;
 
     public Long getCursoId() {
@@ -36,11 +37,12 @@ public class Curso {
         super();
     }
 
-    public Curso(Long cursoId, String titulo, String descricao, String cargaHorario, Usuario usuario, String dataAtualizacao, Double mediaAvaliacao, Matricula matricula, List<Aula> aulas, List<Exercicio> exercicios) {
+    public Curso(Long cursoId, String titulo, String descricao, String cargaHorario, String categoria, Usuario usuario, String dataAtualizacao, Double mediaAvaliacao, Matricula matricula, List<Aula> aulas, List<Exercicio> exercicios) {
         this.cursoId = cursoId;
         this.titulo = titulo;
         this.descricao = descricao;
         this.cargaHorario = cargaHorario;
+        this.categoria = categoria;
         this.usuario = usuario;
         this.dataAtualizacao = dataAtualizacao;
         this.mediaAvaliacao = mediaAvaliacao;
@@ -111,5 +113,13 @@ public class Curso {
 
     public void setExercicios(List<Exercicio> exercicios) {
         this.exercicios = exercicios;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

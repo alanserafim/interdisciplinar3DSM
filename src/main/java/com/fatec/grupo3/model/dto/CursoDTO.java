@@ -16,21 +16,22 @@ public class CursoDTO {
     private String dataAtualizacao;
 	@ApiModelProperty(value = "Media de Avaliação do curso cadastrado (feedback do alunos)")
     private Double mediaAvaliacao;
+    @ApiModelProperty(value = "Categoria onde o curso se encontra")
+    private String categoria;
 
-    @ApiModelProperty(value = "Aulas que serão ministradas")
+    /*@ApiModelProperty(value = "Aulas que serão ministradas")
     private List<AulaDTO> aulas;
 
     @ApiModelProperty(value = "Exercicios que serão ministrados")
-    private List<ExercicioDTO> exercicios;
+    private List<ExercicioDTO> exercicios;*/
 
-    public CursoDTO(String titulo, String descricao, String cargaHorario, String dataAtualizacao, Double mediaAvaliacao, List<AulaDTO> aulas, List<ExercicioDTO> exercicios) {
+    public CursoDTO(String titulo, String descricao, String cargaHorario, String dataAtualizacao, Double mediaAvaliacao, List<AulaDTO> aulas, List<ExercicioDTO> exercicios, String categoria) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.cargaHorario = cargaHorario;
         this.dataAtualizacao = dataAtualizacao;
         this.mediaAvaliacao = mediaAvaliacao;
-        this.aulas = aulas;
-        this.exercicios = exercicios;
+        this.categoria = categoria;
     }
 
     public String getTitulo() {
@@ -73,19 +74,11 @@ public class CursoDTO {
         this.mediaAvaliacao = mediaAvaliacao;
     }
 
-    public List<AulaDTO> getAulas() {
-        return aulas;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setAulas(List<AulaDTO> aulas) {
-        this.aulas = aulas;
-    }
-
-    public List<ExercicioDTO> getExercicios() {
-        return exercicios;
-    }
-
-    public void setExercicios(List<ExercicioDTO> exercicios) {
-        this.exercicios = exercicios;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

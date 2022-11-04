@@ -37,12 +37,6 @@ public class CursosServiceImpl implements CursosService {
     private CursosRepositories repository;
 
     @Autowired
-    private AulasRepository aulasRepository;
-
-    @Autowired
-    private ExercicioRepository exercicioRepository;
-
-    @Autowired
     private UsuariosRepository usuariosRepository;
 
     @Autowired
@@ -80,22 +74,8 @@ public class CursosServiceImpl implements CursosService {
 
         Curso curso = mapper.toModel(cursoDTO);
 
-
-        if (curso.getAulas() != null) {
-            for(Aula aula : curso.getAulas()) {
-                aulasRepository.save(aula);
-            }
-        }
-
-        if (curso.getExercicios() != null) {
-            for(Exercicio exercicio : curso.getExercicios()) {
-                exercicioRepository.save(exercicio);
-            }
-        }
         curso.setUsuario(usuario);
         Curso cursoSalvo = repository.save(curso);
-
-        //UsuarioDTO usuarioLogado = usuariosMapper.toDTO(usuario);
 
         logger.info(">>>>>> servico save chamado ");
 
@@ -120,29 +100,9 @@ public class CursosServiceImpl implements CursosService {
         
         Curso curso = mapper.toModel(cursoDTO);
 
-        Curso cursoFounded = repository.getReferenceById(id);
-
-        if (cursoFounded.getAulas() != null) {
-
-            for(Aula aula : cursoFounded.getAulas()) {
-
-                aulasRepository.save(aula);
-            }
-        }
-
-        if (cursoFounded.getExercicios() != null) {
-
-            for(Exercicio exercicio : cursoFounded.getExercicios()) {
-
-                exercicioRepository.save(exercicio);
-            }
-        }
-
         curso.setCursoId(id);
         curso.setUsuario(usuario);
         Curso cursoSalvo = repository.save(curso);
-
-        //UsuarioDTO usuarioLogado = usuariosMapper.toDTO(usuario);
 
         logger.info(">>>>>> servico atualiza chamado ");
 
