@@ -1,0 +1,31 @@
+// cursoId: 9
+{
+    "aulaId": 12,
+    "titulo": "Aula 1",
+    "video": "https://www.youtube.com/watch?v=J76MeYAGaH8",
+    "conteudo": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,"
+  },
+  {
+    "aulaId": 13,
+    "titulo": "Aula 2",
+    "video": "https://www.youtube.com/watch?v=z6HypYBQiNI",
+    "conteudo": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,"
+  },
+  {
+    "aulaId": 14,
+    "titulo": "Aula 3",
+    "video": "https://www.youtube.com/watch?v=xby5467EbdU",
+    "conteudo": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,"
+  },
+  {
+    "aulaId": 15,
+    "titulo": "Aula 4",
+    "video": "https://www.youtube.com/watch?v=xby5467EbdU",
+    "conteudo": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,"
+  },
+  {
+    "aulaId": 16,
+    "titulo": "Aula 5",
+    "video": "https://www.youtube.com/watch?v=oi3QmAmrG6M",
+    "conteudo": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,"
+  }

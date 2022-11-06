@@ -1,0 +1,396 @@
+// cursoId: 9
+
+{
+    "exercicioId": 23,
+    "titulo": "Adivinha a alternativa - nª 1",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa C"
+  },
+  {
+    "exercicioId": 24,
+    "titulo": "Adivinha a alternativa - nª 2",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa A"
+  },
+  {
+    "exercicioId": 25,
+    "titulo": "Adivinha a alternativa - nª 3",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa E"
+  },
+  {
+    "exercicioId": 26,
+    "titulo": "Adivinha a alternativa - nª 4",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa C"
+  },
+  {
+    "exercicioId": 27,
+    "titulo": "Adivinha a alternativa - nª 5",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa D"
+  },
+  {
+    "exercicioId": 28,
+    "titulo": "Adivinha a alternativa - nª 6",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa A"
+  },
+  {
+    "exercicioId": 29,
+    "titulo": "Adivinha a alternativa - nª 7",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa E"
+  },
+  {
+    "exercicioId": 30,
+    "titulo": "Adivinha a alternativa - nª 8",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa A"
+  },
+  {
+    "exercicioId": 31,
+    "titulo": "Adivinha a alternativa - nª 9",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa C"
+  },
+  {
+    "exercicioId": 32,
+    "titulo": "Adivinha a alternativa - nª 10",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa E"
+  }
+
+// cursoId: 10
+{
+    "exercicioId": 33,
+    "titulo": "Adivinha a alternativa - nª 1",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa E"
+  },
+  {
+    "exercicioId": 34,
+    "titulo": "Adivinha a alternativa - nª 2",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa E"
+  },
+  {
+    "exercicioId": 35,
+    "titulo": "Adivinha a alternativa - nª 3",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa E"
+  },
+  {
+    "exercicioId": 36,
+    "titulo": "Adivinha a alternativa - nª 4",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa E"
+  },
+  {
+    "exercicioId": 37,
+    "titulo": "Adivinha a alternativa - nª 5",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa E"
+  },
+  {
+    "exercicioId": 38,
+    "titulo": "Adivinha a alternativa - nª 6",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa E"
+  },
+  {
+    "exercicioId": 39,
+    "titulo": "Adivinha a alternativa - nª 7",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa E"
+  },
+  {
+    "exercicioId": 40,
+    "titulo": "Adivinha a alternativa - nª 8",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa E"
+  },
+  {
+    "exercicioId": 41,
+    "titulo": "Adivinha a alternativa - nª 9",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa E"
+  },
+  {
+    "exercicioId": 42,
+    "titulo": "Adivinha a alternativa - nª 10",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa E"
+  }
+
+//cursoId: 11
+{
+    "exercicioId": 43,
+    "titulo": "Adivinha a alternativa - nª 1",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa A"
+  },
+  {
+    "exercicioId": 44,
+    "titulo": "Adivinha a alternativa - nª 2",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa A"
+  },
+  {
+    "exercicioId": 45,
+    "titulo": "Adivinha a alternativa - nª 3",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa A"
+  },
+  {
+    "exercicioId": 46,
+    "titulo": "Adivinha a alternativa - nª 4",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa A"
+  },
+  {
+    "exercicioId": 47,
+    "titulo": "Adivinha a alternativa - nª 5",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa A"
+  },
+  {
+    "exercicioId": 48,
+    "titulo": "Adivinha a alternativa - nª 6",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa A"
+  },
+  {
+    "exercicioId": 49,
+    "titulo": "Adivinha a alternativa - nª 7",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa A"
+  },
+  {
+    "exercicioId": 50,
+    "titulo": "Adivinha a alternativa - nª 8",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa A"
+  },
+  {
+    "exercicioId": 51,
+    "titulo": "Adivinha a alternativa - nª 9",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa A"
+  },
+  {
+    "exercicioId": 52,
+    "titulo": "Adivinha a alternativa - nª 10",
+    "enunciado": "Qual a alternativa correta?",
+    "afirmativas": [
+      "Alternativa A",
+      "Alternativa B",
+      "Alternativa C",
+      "Alternativa D",
+      "Alternativa E"
+    ],
+    "resposta": "Alternativa A"
+  }

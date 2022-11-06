@@ -49,7 +49,7 @@ public class UsuarioDTO {
     
     @NotNull
     @ApiModelProperty(value = "Ra do Aluno")
-    private Integer ra;
+    private Long ra;
 
     @NotNull
     @ApiModelProperty(value = "Curso que o Aluno está Matriculado")
@@ -70,7 +70,7 @@ public class UsuarioDTO {
                       @CPF @NotNull String cpf,
                       @Size(min = 8, message = "A senha deve ter no minimo 8 caracteres.") @NotNull String password,
                       @NotNull String name, @NotNull String lastname, List<String> roles, @NotNull String dtNascimento,
-                      @NotNull Integer ra, @NotNull String cursoMatriculado, @NotNull String anoIngresso,
+                      @NotNull Long ra, @NotNull String cursoMatriculado, @NotNull String anoIngresso,
                       @NotNull String periodo) {
 		super();
 		this.username = username;
@@ -99,13 +99,13 @@ public class UsuarioDTO {
 
 
 
-	public Integer getRa() {
+	public Long getRa() {
 		return ra;
 	}
 
 
 
-	public void setRa(Integer ra) {
+	public void setRa(Long ra) {
 		this.ra = ra;
 	}
 

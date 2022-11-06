@@ -1,4 +1,4 @@
-package mapper;
+package com.fatec.grupo3.model.mapper;
 
 import com.fatec.grupo3.model.dto.ListaDTO;
 import com.fatec.grupo3.model.dto.UsuarioDTO;

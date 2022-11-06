@@ -35,7 +35,7 @@ public class Usuario implements UserDetails {
     private String dtNascimento;
     
     @Column(nullable = true)
-    private Integer ra;
+    private Long ra;
     
     @Column(nullable = true)
     private String cursoMatriculado;
@@ -72,7 +72,7 @@ public class Usuario implements UserDetails {
     }
 
     public Usuario(Long userId, String username, String email, String cpf, String password, String name,
-			String dtNascimento, Integer ra, String cursoMatriculado, String anoIngresso, String periodo,
+			String dtNascimento, Long ra, String cursoMatriculado, String anoIngresso, String periodo,
 			String lastname, List<String> roles, List<Matricula> matriculas, List<Curso> cursos) {
 		super();
 		this.userId = userId;
@@ -100,11 +100,11 @@ public class Usuario implements UserDetails {
 		this.dtNascimento = dtNascimento;
 	}
 
-	public Integer getRa() {
+	public Long getRa() {
 		return ra;
 	}
 
-	public void setRa(Integer ra) {
+	public void setRa(Long ra) {
 		this.ra = ra;
 	}
 

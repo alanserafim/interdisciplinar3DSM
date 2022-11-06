@@ -5,7 +5,7 @@ import com.fatec.grupo3.model.dto.MatriculaDTO;
 import com.fatec.grupo3.model.entities.Curso;
 import com.fatec.grupo3.model.entities.Matricula;
 import com.fatec.grupo3.model.entities.Usuario;
-import mapper.MatriculasMapper;
+import com.fatec.grupo3.model.mapper.MatriculasMapper;
 import com.fatec.grupo3.model.repositories.CursosRepositories;
 import com.fatec.grupo3.model.repositories.MatriculaRepository;
 import com.fatec.grupo3.model.repositories.UsuariosRepository;

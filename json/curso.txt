@@ -1,0 +1,31 @@
+// id: 9
+{
+  "cargaHorario": "90 Horas",
+  "categoria": "Front End",
+  "dataAtualizacao": "05/11/2022",
+  "descricao": "Angular 14: framework para desenvolver front end.",
+  "mediaAvaliacao": 0,
+  "titulo": "Angular 14"
+}
+
+// id: 11
+{
+  "cargaHorario": "200 Horas",
+  "categoria": "Back End",
+  "dataAtualizacao": "05/11/2022",
+  "descricao": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis",
+  "mediaAvaliacao": 0,
+  "titulo": "Spring boot: Java"
+}
+
+// id: 10
+{
+  "cargaHorario": "90 Horas",
+  "categoria": "Back End",
+  "dataAtualizacao": "05/11/2022",
+  "descricao": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis",
+  "mediaAvaliacao": 0,
+  "titulo": "NodeJS"
+}
+
+
