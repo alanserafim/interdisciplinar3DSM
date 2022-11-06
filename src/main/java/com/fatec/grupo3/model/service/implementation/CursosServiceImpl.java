@@ -111,7 +111,7 @@ public class CursosServiceImpl implements CursosService {
 
         Usuario usuario = usuariosRepository.getReferenceById(userId);
 
-        if (usuario.getRoles().contains("INSTRUTOR") && usuario.getRoles().contains("ALUNO") && usuario.getRoles().contains("ADMIN")) {
+        if (usuario.getRoles().contains("INSTRUTOR") || usuario.getRoles().contains("ALUNO") || usuario.getRoles().contains("ADMIN")) {
             Optional<Curso> curso = repository.findById(id);
             return Optional.of(mapper.toDTO(curso.get()));
         }
