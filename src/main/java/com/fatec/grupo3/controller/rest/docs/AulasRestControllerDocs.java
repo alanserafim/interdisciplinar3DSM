@@ -1,10 +1,7 @@
 package com.fatec.grupo3.controller.rest.docs;
 
 import com.fatec.grupo3.exception.AreaProibidaException;
-import com.fatec.grupo3.model.dto.AulaDTO;
-import com.fatec.grupo3.model.dto.CursoDTO;
-import com.fatec.grupo3.model.dto.ErrorDTO;
-import com.fatec.grupo3.model.dto.ListaCursoDTO;
+import com.fatec.grupo3.model.dto.*;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +43,7 @@ public interface AulasRestControllerDocs {
             @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
             @ApiResponse(code = 404, message = "Usuário não encontrada") })
     @PostMapping
-    public ResponseEntity<List<AulaDTO>> listAula(@PathVariable Long cursoId);
+    public ResponseEntity<List<ListaAulaDTO>> listAula(@PathVariable Long cursoId);
 
     @ApiOperation(value = "Deletar uma Aula", nickname = "deleteAula", notes = "", response = AulaDTO.class, responseContainer = "object", authorizations = {
             @Authorization(value = "Authorization") }, tags = { "Aula", })

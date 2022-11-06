@@ -6,8 +6,8 @@ import com.fatec.grupo3.model.dto.LoginDTO;
 import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.dto.TokenDTO;
 import com.fatec.grupo3.model.entities.Usuario;
-import com.fatec.grupo3.model.mapper.ListaUsuariosMapper;
-import com.fatec.grupo3.model.mapper.UsuariosMapper;
+import mapper.ListaUsuariosMapper;
+import mapper.UsuariosMapper;
 import com.fatec.grupo3.model.repositories.UsuariosRepository;
 import com.fatec.grupo3.model.service.UsuariosService;
 import com.fatec.grupo3.security.TokenService;
@@ -18,7 +18,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

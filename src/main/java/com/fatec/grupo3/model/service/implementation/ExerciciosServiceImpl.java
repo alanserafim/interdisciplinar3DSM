@@ -1,13 +1,12 @@
 package com.fatec.grupo3.model.service.implementation;
 
-import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.exception.NotFoundException;
 import com.fatec.grupo3.model.dto.ExercicioDTO;
-import com.fatec.grupo3.model.entities.Aula;
+import com.fatec.grupo3.model.dto.ListaExercicioDTO;
 import com.fatec.grupo3.model.entities.Curso;
 import com.fatec.grupo3.model.entities.Exercicio;
-import com.fatec.grupo3.model.mapper.AulasMapper;
-import com.fatec.grupo3.model.mapper.ExerciciosMapper;
+import mapper.ExerciciosMapper;
+import mapper.ListaExerciciosMapper;
 import com.fatec.grupo3.model.repositories.CursosRepositories;
 import com.fatec.grupo3.model.repositories.ExercicioRepository;
 import com.fatec.grupo3.model.service.ExerciciosService;
@@ -34,14 +33,17 @@ public class ExerciciosServiceImpl implements ExerciciosService {
     @Autowired
     private ExerciciosMapper mapper = ExerciciosMapper.INSTANCE;
 
+    @Autowired
+    private ListaExerciciosMapper listaExerciciosMapper = ListaExerciciosMapper.INSTANCE;
+
     @Override
-    public List<ExercicioDTO> consultaTodos(Long cursoId) {
+    public List<ListaExercicioDTO> consultaTodos(Long cursoId) {
 
         Curso curso = cursosRepositories.getReferenceById(cursoId);
 
         return repository.findByCurso(curso)
                 .stream()
-                .map(mapper::toDto)
+                .map(listaExerciciosMapper::toDto)
                 .collect(Collectors.toList());
     }
 

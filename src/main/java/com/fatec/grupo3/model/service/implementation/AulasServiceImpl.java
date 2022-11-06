@@ -1,18 +1,15 @@
 package com.fatec.grupo3.model.service.implementation;
 
-import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.exception.NotFoundException;
 import com.fatec.grupo3.model.dto.AulaDTO;
-import com.fatec.grupo3.model.dto.CursoDTO;
+import com.fatec.grupo3.model.dto.ListaAulaDTO;
 import com.fatec.grupo3.model.entities.Aula;
 import com.fatec.grupo3.model.entities.Curso;
-import com.fatec.grupo3.model.entities.Usuario;
-import com.fatec.grupo3.model.mapper.AulasMapper;
+import mapper.AulasMapper;
+import mapper.ListaAulasMapper;
 import com.fatec.grupo3.model.repositories.AulasRepository;
 import com.fatec.grupo3.model.repositories.CursosRepositories;
-import com.fatec.grupo3.model.repositories.UsuariosRepository;
 import com.fatec.grupo3.model.service.AulasService;
-import com.fatec.grupo3.security.TokenService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,15 +33,18 @@ public class AulasServiceImpl implements AulasService {
     @Autowired
     private AulasMapper mapper = AulasMapper.INSTANCE;
 
+    @Autowired
+    private ListaAulasMapper listaAulasMapper = ListaAulasMapper.INSTANCE;
+
     @Override
-    public List<AulaDTO> consultaTodos(Long cursoId) {
+    public List<ListaAulaDTO> consultaTodos(Long cursoId) {
         logger.info(">>>>>> servico consultaTodos chamado");
 
         Curso curso = cursosRepositories.getReferenceById(cursoId);
 
         return repository.findByCurso(curso)
                 .stream()
-                .map(mapper::toDto)
+                .map(listaAulasMapper::toDTO)
                 .collect(Collectors.toList());
     }
 

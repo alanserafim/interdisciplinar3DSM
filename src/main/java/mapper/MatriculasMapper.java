@@ -1,4 +1,4 @@
-package com.fatec.grupo3.model.mapper;
+package mapper;
 
 import com.fatec.grupo3.model.dto.MatriculaDTO;
 import com.fatec.grupo3.model.entities.Matricula;

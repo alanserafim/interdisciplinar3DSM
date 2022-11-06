@@ -3,6 +3,7 @@ package com.fatec.grupo3.controller.rest;
 import com.fatec.grupo3.controller.rest.docs.AulasRestControllerDocs;
 import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.AulaDTO;
+import com.fatec.grupo3.model.dto.ListaAulaDTO;
 import com.fatec.grupo3.model.service.AulasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +36,7 @@ public class AulasRestController implements AulasRestControllerDocs {
 
     @Override
     @GetMapping("/aulas/curso/{cursoId}")
-    public ResponseEntity<List<AulaDTO>> listAula(@PathVariable("cursoId") Long cursoId) {
+    public ResponseEntity<List<ListaAulaDTO>> listAula(@PathVariable("cursoId") Long cursoId) {
         return ResponseEntity.ok(service.consultaTodos(cursoId));
     }
 

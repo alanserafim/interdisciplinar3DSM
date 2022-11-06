@@ -1,13 +1,11 @@
 package com.fatec.grupo3.model.service.implementation;
 
 import com.fatec.grupo3.exception.AreaProibidaException;
-import com.fatec.grupo3.model.dto.CursoDTO;
 import com.fatec.grupo3.model.dto.MatriculaDTO;
-import com.fatec.grupo3.model.entities.Cliente;
 import com.fatec.grupo3.model.entities.Curso;
 import com.fatec.grupo3.model.entities.Matricula;
 import com.fatec.grupo3.model.entities.Usuario;
-import com.fatec.grupo3.model.mapper.MatriculasMapper;
+import mapper.MatriculasMapper;
 import com.fatec.grupo3.model.repositories.CursosRepositories;
 import com.fatec.grupo3.model.repositories.MatriculaRepository;
 import com.fatec.grupo3.model.repositories.UsuariosRepository;

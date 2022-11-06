@@ -3,6 +3,7 @@ package com.fatec.grupo3.controller.rest;
 import com.fatec.grupo3.controller.rest.docs.ExerciciosRestControllerDocs;
 import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.ExercicioDTO;
+import com.fatec.grupo3.model.dto.ListaExercicioDTO;
 import com.fatec.grupo3.model.service.ExerciciosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +36,7 @@ public class ExerciciosRestController implements ExerciciosRestControllerDocs {
 
     @Override
     @GetMapping("/exercicios/curso/{cursoId}")
-    public ResponseEntity<List<ExercicioDTO>> listExercicio(@PathVariable("cursoId") Long cursoId) {
+    public ResponseEntity<List<ListaExercicioDTO>> listExercicio(@PathVariable("cursoId") Long cursoId) {
         return ResponseEntity.ok(service.consultaTodos(cursoId));
     }
 

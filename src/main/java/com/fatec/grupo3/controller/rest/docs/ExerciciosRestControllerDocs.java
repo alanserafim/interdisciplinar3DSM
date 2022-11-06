@@ -3,6 +3,7 @@ package com.fatec.grupo3.controller.rest.docs;
 import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.ExercicioDTO;
 import com.fatec.grupo3.model.dto.ErrorDTO;
+import com.fatec.grupo3.model.dto.ListaExercicioDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +44,7 @@ public interface ExerciciosRestControllerDocs {
             @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
             @ApiResponse(code = 404, message = "Usuário não encontrada") })
     @PostMapping
-    public ResponseEntity<List<ExercicioDTO>> listExercicio(@PathVariable Long cursoId);
+    public ResponseEntity<List<ListaExercicioDTO>> listExercicio(@PathVariable Long cursoId);
 
     @ApiOperation(value = "Deletar uma Exercicio", nickname = "deleteExercicio", notes = "", response = ExercicioDTO.class, responseContainer = "object", authorizations = {
             @Authorization(value = "Authorization") }, tags = { "Exercicio", })
