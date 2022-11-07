@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import com.fatec.grupo3.exception.AreaProibidaException;
+import com.fatec.grupo3.model.dto.HistoricoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -66,5 +67,13 @@ public class MatriculasRestController implements MatriculasRestControllerDocs {
 		String token = TokenUtils.wrapperToken(request);
 
 		return ResponseEntity.ok(service.consultaPorId(id, token));
+	}
+
+	@Override
+	@GetMapping("/matriculas/historico")
+	public ResponseEntity<List<HistoricoDTO>> listHistorico(HttpServletRequest request) {
+		String token = TokenUtils.wrapperToken(request);
+
+		return ResponseEntity.ok(service.consultarHistorico(token));
 	}
 }

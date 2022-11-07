@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import com.fatec.grupo3.exception.AreaProibidaException;
+import com.fatec.grupo3.model.dto.HistoricoDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -74,4 +75,14 @@ public interface MatriculasRestControllerDocs {
 			@ApiResponse(code = 404, message = "Usuário não encontrado") })
 	@GetMapping
 	public ResponseEntity<Optional<MatriculaDTO>> consultaMatricula(@PathVariable("id") Long id, HttpServletRequest request) throws AreaProibidaException;
+
+	@ApiOperation(value = "Listar Historico do Aluno", nickname = "listHistorico", notes = "", response = MatriculaDTO.class, responseContainer = "object", authorizations = {
+			@Authorization(value = "Authorization") }, tags = { "Matriculas", })
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Historico gerado com sucesso", response = MatriculaDTO.class, responseContainer = "object"),
+			@ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
+			@ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
+			@ApiResponse(code = 404, message = "Usuário não encontrado") })
+	@GetMapping
+	public ResponseEntity<List<HistoricoDTO>> listHistorico(HttpServletRequest request);
 }
