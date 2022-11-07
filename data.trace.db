@@ -1,0 +1,12 @@
+2022-11-06 14:47:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRICAO CHARACTER VARYING(255)": "'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolo... (865)"; SQL statement:
+insert into curso (carga_horario, categoria, data_atualizacao, descricao, media_avaliacao, titulo, user_id, curso_id) values (?, ?, ?, ?, ?, ?, ?, ?) [22001-214]
+2022-11-06 14:47:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRICAO CHARACTER VARYING(255)": "'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolo... (567)"; SQL statement:
+insert into curso (carga_horario, categoria, data_atualizacao, descricao, media_avaliacao, titulo, user_id, curso_id) values (?, ?, ?, ?, ?, ?, ?, ?) [22001-214]
+2022-11-06 14:48:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRICAO CHARACTER VARYING(255)": "'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ... (445)"; SQL statement:
+insert into curso (carga_horario, categoria, data_atualizacao, descricao, media_avaliacao, titulo, user_id, curso_id) values (?, ?, ?, ?, ?, ?, ?, ?) [22001-214]
+2022-11-06 14:49:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRICAO CHARACTER VARYING(255)": "'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ... (334)"; SQL statement:
+insert into curso (carga_horario, categoria, data_atualizacao, descricao, media_avaliacao, titulo, user_id, curso_id) values (?, ?, ?, ?, ?, ?, ?, ?) [22001-214]

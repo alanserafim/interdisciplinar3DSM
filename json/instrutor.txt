@@ -1,0 +1,16 @@
+{
+  "anoIngresso": "2021",
+  "cpf": "43781145859",
+  "cursoMatriculado": "Desenvolvimento de Software Multiplataforma",
+  "dtNascimento": "02/01/2000",
+  "email": "instrutor@fatec.sp.gov.br",
+  "lastname": "de Tal",
+  "name": "Sicrano",
+  "password": "12345678",
+  "periodo": "Manhã",
+  "ra": 111123334,
+  "roles": [
+    "INSTRUTOR"
+  ],
+  "username": "instrutor"
+}

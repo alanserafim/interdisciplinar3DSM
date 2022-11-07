@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Sistema Gestão de Cursos - E-learning Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}" />
+</head>
+
+
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header"><a class="navbar-brand" href="#">FatecFlix</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a th:href="@{/grupo3/cliente}">Gestão de Usuários</a></li>
+				<li><a th:href="@{/grupo3/curso}">Gestão de Cursos</a></li>
+				<li><a th:href="@{/grupo3/matricula}">Gestão de Matrículas</a></li>
+				<li><a th:href="@{/?logout}">Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="conteudo">
+		<div class="titulo">
+			<h1>Fatecflix - E-learning Management</h1>
+			<h2></h2>
+		</div>
+		<div class="informacoes">
+			<p>Centro Paula Souza - Curso de Desenvolimento de Software Multiplataforma</p>
+			<p>2022 2o. Semestre.</p>
+			<p th:inline="text">Usuário - [[${#httpServletRequest.remoteUser}]]</p>
+		</div>
+	</div>
+	<footer th:replace="fragments/footer :: rodape">
+		<div>footer</div>
+	</footer>
+</body>
+
+</html>

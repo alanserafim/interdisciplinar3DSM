@@ -1,0 +1,18 @@
+{
+  "anoIngresso": "2022",
+  "cpf": "43781145859",
+  "cursoMatriculado": "Desenvolvimento de Software Multiplataforma",
+  "dtNascimento": "01/02/1999",
+  "email": "god@fatec.sp.gov.br",
+  "lastname": "Amoroso",
+  "name": "Amado",
+  "password": "12345678",
+  "periodo": "Manhã",
+  "ra": 111133224,
+  "roles": [
+    "ADMIN",
+    "ALUNO",
+    "INSTRUTOR"
+  ],
+  "username": "godlike"
+}

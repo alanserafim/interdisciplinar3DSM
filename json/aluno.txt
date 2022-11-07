@@ -1,0 +1,16 @@
+{
+  "anoIngresso": "2022",
+  "cpf": "43781145859",
+  "cursoMatriculado": "Desenvolvimento de Software Multiplataforma",
+  "dtNascimento": "01/01/1999",
+  "email": "aluno@fatec.sp.gov.br",
+  "lastname": "de Tal",
+  "name": "Fulano",
+  "password": "12345678",
+  "periodo": "Manhã",
+  "ra": 1111123445,
+  "roles": [
+    "ALUNO"
+  ],
+  "username": "aluno"
+}
