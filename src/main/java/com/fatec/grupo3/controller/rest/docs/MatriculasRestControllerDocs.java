@@ -76,10 +76,10 @@ public interface MatriculasRestControllerDocs {
 	@GetMapping
 	public ResponseEntity<Optional<MatriculaDTO>> consultaMatricula(@PathVariable("id") Long id, HttpServletRequest request) throws AreaProibidaException;
 
-	@ApiOperation(value = "Listar Historico do Aluno", nickname = "listHistorico", notes = "", response = MatriculaDTO.class, responseContainer = "object", authorizations = {
+	@ApiOperation(value = "Listar Historico do Aluno", nickname = "listHistorico", notes = "", response = HistoricoDTO.class, responseContainer = "object", authorizations = {
 			@Authorization(value = "Authorization") }, tags = { "Matriculas", })
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Historico gerado com sucesso", response = MatriculaDTO.class, responseContainer = "object"),
+			@ApiResponse(code = 200, message = "Historico gerado com sucesso", response = HistoricoDTO.class, responseContainer = "object"),
 			@ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
 			@ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
 			@ApiResponse(code = 404, message = "Usuário não encontrado") })
