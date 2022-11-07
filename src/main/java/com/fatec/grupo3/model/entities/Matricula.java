@@ -1,6 +1,7 @@
 package com.fatec.grupo3.model.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Matricula {
@@ -19,6 +20,7 @@ public class Matricula {
 	@OneToOne
 	@JoinColumn(name = "curso_id", nullable = false)
     private Curso curso;
+
     public Matricula() {
     }
 

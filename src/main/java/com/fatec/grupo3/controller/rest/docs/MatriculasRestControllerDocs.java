@@ -42,7 +42,7 @@ public interface MatriculasRestControllerDocs {
 	            @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
 	            @ApiResponse(code = 404, message = "Usuário não encontrada") })
 	    @PostMapping
-	    public ResponseEntity<Optional<MatriculaDTO>> updateMatricula(@PathVariable Long id, @PathVariable Long idCurso,  @Valid @RequestBody MatriculaDTO matricula, HttpServletRequest request) throws Exception;
+	    public ResponseEntity<Optional<MatriculaDTO>> updateMatricula(@PathVariable Long id, @PathVariable Long idCurso,  @PathVariable("exercicioId") Long idExercicio, @PathVariable("resposta") String resposta, HttpServletRequest request) throws Exception;
 	 
 	 	
 	 @ApiOperation(value = "Listar Matriculas do Aluno", nickname = "listMatricula", notes = "", response = MatriculaDTO.class, responseContainer = "object", authorizations = {
