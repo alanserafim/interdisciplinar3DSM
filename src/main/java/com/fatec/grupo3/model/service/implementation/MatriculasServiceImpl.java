@@ -137,6 +137,8 @@ public class MatriculasServiceImpl implements MatriculasService {
 
 
             if (matricula.getNota() >= 6) {
+                matricula.setStatus("Concluido");
+
                 if (!historicoFounded.isPresent()) {
                     Historico historico = new Historico();
 

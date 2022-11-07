@@ -36,7 +36,7 @@ public class MatriculasRestController implements MatriculasRestControllerDocs {
 	}
 
 	@Override
-	@PostMapping("/matriculas/{id}/curso/{cursoId}/exercicio/{exercicioId}/{resposta}")
+	@PostMapping("/matriculas/{id}/curso/{cursoId}/exercicio/{exercicioId}/resposta/{resposta}")
 	public ResponseEntity<Optional<MatriculaDTO>> updateMatricula(@PathVariable("id") Long id, @PathVariable("cursoId") Long idCurso, @PathVariable("exercicioId") Long idExercicio, @PathVariable("resposta") String resposta,
 			HttpServletRequest request) throws Exception {
 		String token = TokenUtils.wrapperToken(request);
