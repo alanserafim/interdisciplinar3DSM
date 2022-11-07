@@ -1,0 +1,6 @@
+footer{
+	background-color: #333;
+	color: #fefefe;
+	height: 80px;
+	flex-shrink: 0;
+}
