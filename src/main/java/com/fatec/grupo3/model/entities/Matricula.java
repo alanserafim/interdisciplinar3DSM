@@ -1,13 +1,12 @@
 package com.fatec.grupo3.model.entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Matricula {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long matriculaId;
 
 	@OneToOne
 	@JoinColumn(name = "user_id", nullable = false)
@@ -24,8 +23,8 @@ public class Matricula {
     public Matricula() {
     }
 
-	public Matricula(Long id, Usuario usuario, String status, Double nota, Double avaliacaoCurso, Curso curso) {
-		this.id = id;
+	public Matricula(Long matriculaId, Usuario usuario, String status, Double nota, Double avaliacaoCurso, Curso curso) {
+		this.matriculaId = matriculaId;
 		this.usuario = usuario;
 		this.status = status;
 		this.nota = nota;
@@ -33,12 +32,12 @@ public class Matricula {
 		this.curso = curso;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getMatriculaId() {
+		return matriculaId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setMatriculaId(Long matriculaId) {
+		this.matriculaId = matriculaId;
 	}
 
 	public String getStatus() {

@@ -13,7 +13,7 @@ public class Historico {
     private Double nota;
 
     @OneToOne
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "matricula_id", nullable = false)
     private Matricula matricula;
 
     @OneToOne

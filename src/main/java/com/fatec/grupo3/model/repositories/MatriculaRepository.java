@@ -12,5 +12,5 @@ import java.util.Optional;
 @Repository
 public interface MatriculaRepository extends JpaRepository<Matricula, Long> {
     List<Matricula> findAllByUsuario(Usuario usuario);
-    void deleteByUsuarioAndId(Usuario usuario, Long id);
+    void deleteByUsuarioAndMatriculaId(Usuario usuario, Long id);
 }

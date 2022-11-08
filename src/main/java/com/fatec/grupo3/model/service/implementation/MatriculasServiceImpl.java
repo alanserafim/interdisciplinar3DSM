@@ -90,7 +90,7 @@ public class MatriculasServiceImpl implements MatriculasService {
 
         Usuario usuario = usuariosRepository.getReferenceById(userId);
 
-        repository.deleteByUsuarioAndId(usuario, id);
+        repository.deleteByUsuarioAndMatriculaId(usuario, id);
     }
 
     @Override
@@ -126,7 +126,7 @@ public class MatriculasServiceImpl implements MatriculasService {
         if (exercicio.getResposta().equals(resposta)) {
             matricula.setUsuario(usuario);
             matricula.setCurso(curso);
-            matricula.setId(id);
+            matricula.setMatriculaId(id);
 
             Double soma = matricula.getNota() + 1.0;
 

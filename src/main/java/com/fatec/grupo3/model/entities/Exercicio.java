@@ -19,7 +19,7 @@ public class Exercicio {
     private List<String> afirmativas;
     private String resposta;
 
-    @ManyToOne(cascade = { CascadeType.MERGE })
+    @ManyToOne
     @JoinColumn(name = "curso_id", nullable = false)
     private Curso curso;
 

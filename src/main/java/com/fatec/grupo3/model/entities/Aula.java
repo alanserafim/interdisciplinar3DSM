@@ -13,7 +13,7 @@ public class Aula {
     private String video;
     private String conteudo;
 
-    @ManyToOne(cascade = { CascadeType.MERGE })
+    @ManyToOne
     @JoinColumn(name = "curso_id", nullable = false)
     private Curso curso;
 

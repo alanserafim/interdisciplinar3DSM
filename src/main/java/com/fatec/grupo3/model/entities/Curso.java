@@ -1,6 +1,7 @@
 package com.fatec.grupo3.model.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,10 +25,10 @@ public class Curso {
     private Matricula matricula;
 
     @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
-    private List<Aula> aulas;
+    private List<Aula> aulas = new ArrayList<>();
 
     @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
-    private List<Exercicio> exercicios;
+    private List<Exercicio> exercicios = new ArrayList<>();
 
     public Long getCursoId() {
         return cursoId;
