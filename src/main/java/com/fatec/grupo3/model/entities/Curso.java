@@ -21,8 +21,8 @@ public class Curso {
     private String dataAtualizacao;
     private Double mediaAvaliacao;
 
-    @OneToOne(mappedBy = "curso", fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
-    private Matricula matricula;
+    /*@OneToOne(mappedBy = "curso", fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
+    private Matricula matricula;*/
 
     @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
     private List<Aula> aulas = new ArrayList<>();
@@ -47,7 +47,7 @@ public class Curso {
         this.usuario = usuario;
         this.dataAtualizacao = dataAtualizacao;
         this.mediaAvaliacao = mediaAvaliacao;
-        this.matricula = matricula;
+        //this.matricula = matricula;
         this.aulas = aulas;
         this.exercicios = exercicios;
     }
@@ -92,13 +92,13 @@ public class Curso {
         this.mediaAvaliacao = mediaAvaliacao;
     }
 
-    public Matricula getMatricula() {
+    /*public Matricula getMatricula() {
         return matricula;
     }
 
     public void setMatricula(Matricula matricula) {
         this.matricula = matricula;
-    }
+    }*/
 
     public List<Aula> getAulas() {
         return aulas;
