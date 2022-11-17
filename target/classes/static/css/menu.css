@@ -1,0 +1,36 @@
+.navbar {
+	background-color: #b01b15 !important;
+	border: 0;
+	border-radius: 0;
+}
+
+.nav a {
+	color: #fefefe !important;
+}
+
+ .active a {
+	background-color: #8C1A0F !important;
+	box-shadow: inset 5em 1em #8C1A0F !important;
+}
+
+.navbar-brand {
+	color: #fefefe !important;
+}
+
+.conteudo {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex: 1 0 auto;
+	padding: 1em;
+}
+
+body{
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.informacoes {
+	font-size:1em;
+}
