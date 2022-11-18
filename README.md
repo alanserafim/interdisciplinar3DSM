@@ -1,30 +1,42 @@
-# Plataforma de cursos online da Fatec Zona Leste
+# Fatecflix - Plataforma de cursos online da Fatec Zona Leste
+
+## Projeto Interdisciplinar
+
+### Curso: 
+* Desenvolvimento de Software Multiplaforma da Fatec Zona Leste (3º Semestre)
+
+### Disciplinas: 
+* Desenvolvimento Web III
+* Interação Humano Computador 
+* Banco de Dados Não Relacional. 
+
+
 <fig>
 <img src="https://rockcontent.com/br/wp-content/uploads/sites/2/elementor/thumbs/modelo-de-projeto-p2he6clp7uhmwqd16ikv9jgz30a5liixoon908hej0.png" alt="Uma imagem relacionada ao projeto">
 <figcaption>Uma imagem relacionada ao projeto</figcaption>
 </fig>
+
 
 ## Inicialização
 Para executar o projeto, utilize as ferramentas descritas na sessão *Ferramentas*.
 
 ## Ferramentas
 * Spring Boot - Spring Tools for Eclipse IDE (https://spring.io/projects/spring-boot) - IDE para desenvolvimento.
+* Visual Studio Code (https://code.visualstudio.com/docs) - Editor de código utilizado na camada cliente.
 
 ## Links importantes
-* [Spring Boot Rest API](https://medium.com/better-programming/building-a-spring-boot-rest-api-a-php-developers-view-part-i-6add2e794646) -  API com Spring Boot - camada servidor.
+* [Spring Boot Rest API](https://medium.com/better-programming/building-a-spring-boot-rest-api-a-php-developers-view-part-i-6add2e794646) -  API com Spring Boot - Framework da camada servidor.
 
-* [Angular Framework](https://angular.io/) - camada cliente.
+* [Angular Framework](https://angular.io/) - Framework da camada cliente.
 
 # FatecFlix
 
 ## Introdução
 
 Este projeto possui o objetivo principal **implementar uma plataforma de cursos online da Fatec Zona Leste**.  
-<<<<<<< HEAD
-Com os objetivos gerais de gerenciamento cursos voltados para o nivelamento de alunos ingressantes da graduação.
-=======
-Com os objetivos gerais de gerenciamento cursos voltados para o nivelamento de alunos ingressantes da graduação. 
->>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
+
+Com os objetivos gerais de gerenciamento cursos voltados para os alunos dos cursos de graduação.
+
 
 ## Análise técnica
 
