@@ -1,4 +1,4 @@
-# Fatecflix - Plataforma de cursos online da Fatec Zona Leste
+# [Fatecflix - Plataforma de cursos online da Fatec Zona Leste](https://alanserafim.github.io/fatecflix-angular/home)
 
 ## Projeto Interdisciplinar
 
@@ -13,7 +13,6 @@
 
 <fig>
 <img src="https://rockcontent.com/br/wp-content/uploads/sites/2/elementor/thumbs/modelo-de-projeto-p2he6clp7uhmwqd16ikv9jgz30a5liixoon908hej0.png" alt="Uma imagem relacionada ao projeto">
-<figcaption>Uma imagem relacionada ao projeto</figcaption>
 </fig>
 
 
@@ -29,7 +28,7 @@ Para executar o projeto, utilize as ferramentas descritas na sessão *Ferramenta
 
 * [Angular Framework](https://angular.io/) - Framework da camada cliente.
 
-# FatecFlix
+# [FatecFlix](https://alanserafim.github.io/fatecflix-angular/home)
 
 ## Introdução
 
@@ -42,23 +41,15 @@ Com os objetivos gerais de gerenciamento cursos voltados para os alunos dos curs
 
 ### Descrição do ambiente técnico
 
-O sistema é composto por um banco de dados, uma interface web e um sistema embarcado. Funcionalidades principais:
-> Indique os grandes blocos do sistema.
+O sistema é composto por uma API REST e um banco de dados relacional na camada servidor; uma interface web na camada cliente. Funcionalidades principais:
 
-* **F1** - Nome da funcionalidade 1.
-* **F2** - Nome da funcionalidade 2.
-* **F3** - Nome da funcionalidade 3.
-> Coloque somente o nome principal, por exemplo: Controle de usuários.
+* **F1** - Controle de usuários.
+* **F2** - Controle de cursos.
+* **F3** - Controle de aulas.
+* **F4** - Controle de exercícios.
+* **F5** - Controle de matriculas.
 
-As ferramentas utilizadas para o desenvolvimento incluem **< linguagem para back-end >** que é uma linguagem de programação utilizada para o Back-end, para front-end foi utilizado **< linguagem para o front-end >** . **< Banco de dados >** atuando como sistema gerenciador de banco de dados relacional e **< gerenciador de container >** para utilizar o ambiente em container.
-
-<<<<<<< HEAD
-### Levantamento de requisitos
-=======
-### Levantamento de requisitos  
->>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
-Os requisitos devem ser validados com a cliente e aprovados.
-> Aprovar os requisitos com o cliente é o mais importante, se não for validado o documento não será válido.
+As ferramentas utilizadas para o desenvolvimento incluem **Java** que é uma linguagem de programação utilizada para o Back-end, para front-end foi utilizado **TypeScript, HTML5, CSS**. Com **MySQL** atuando como sistema gerenciador de banco de dados relacional.
 
 ### Requisitos Funcionais
 Respeitando a proposta, o sistema deverá atender os seguintes requisitos:
@@ -69,25 +60,7 @@ Respeitando a proposta, o sistema deverá atender os seguintes requisitos:
 
 ## Regras de Negócio
 
-<<<<<<< HEAD
-_Solicitação_
-
 **RGN1** -  O cliente só fará a solicitação se estiver cadastrado e logado.
-
-_Agendamento_
-
-**RGN2** - O cliente só fará a agendamento se estiver 2 anos no sistema.
-=======
-_Solicitação_  
-
-**RGN1** -  O cliente só fará a solicitação se estiver cadastrado e logado.  
-
-_Agendamento_  
-
-**RGN2** - O cliente só fará a agendamento se estiver 2 anos no sistema.   
->>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
-
-> As regras de negócio estão relacionadas as dependencias do sistema, por exemplo "depois de x tempo" ou "para clientes de x perfil".
 
 ## Especificação de Requisitos: Estórias de usuário
 
@@ -109,37 +82,19 @@ _Agendamento_
     Como – usuário
     Eu quero – alterar os meus dados
     De maneira que – seja possível atualizar informações inconsistentes
-<<<<<<< HEAD
 
-
-=======
- 
- 
->>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
 **REQ04** - *Excluir perfil*
 
     Como – usuário
     Eu quero –  excluir o meu perfil
     De maneira que – os dados sejam deletados permanentemente do sistema
-<<<<<<< HEAD
 
-
-=======
-    
-    
->>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
 **REQ05** - *Cadastrar curso*
 
     Como – instrutor
     Eu quero –  criar um curso
     De maneira que –  seja possível para outros usuários matricularem-se e visualizar a trilha do curso
-<<<<<<< HEAD
 
-
-=======
-    
-    
->>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
 **REQ06** - *Consultar curso*
 
     Como – usuário
@@ -159,13 +114,7 @@ _Agendamento_
     Como – instrutor
     Eu quero –  realizar matrícula nos cursos disponíveis na plataforma
     De maneira que –  o curso seja deletado permanentemente do sistema
-<<<<<<< HEAD
 
-
-=======
-    
-    
->>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
 **REQ09** - *Realizar matrícula*
 
     Como – usuário
@@ -176,29 +125,61 @@ _Agendamento_
 **REQ10** - *Realizar Login*
 
     Como – usuário
-    Eu quero –   realizar loginDTO na plataforma
+    Eu quero –   realizar login na plataforma
     De maneira que –  – seja possível ter acesso a página principal da aplicação
 
 
+### Diagrama de Classes de Domínio
 
-> Imagine que fosse necessário enviar um email sempre que realizado o loginDTO, esse email deveria estar no fluxograma. Esse fluxograma pode ser mais simples, apenas com o objetivo de validar com o cliente que as dependências de negócio estão validadas em cada caso de negócio.
+* Inserir imagem do diagrama
+
+### Wireframe
+
+* Inserir imagem do wireframe
+
+### Links do Projeto
+
+* Documentação da API Rest (https://fatecflix.herokuapp.com/swagger-ui.html)
+* Interface Web (https://alanserafim.github.io/fatecflix-angular/home)
 
 ### Mensagens internas
 
 Rotas utilizadas pela aplicação web para executar metodos de **POST** e **GET** no banco de dados. Onde o retorno de cada uma das funções estara contido em uma sessão para renderização de páginas web.
 
-> Aqui ficam descritos os endpoints, que podem estar em outra documentação também.  
-> É interessante colocar essa documentação aqui quando a API é pequena.
-
-| Nome | Funcionalidade|
-|------|--------------|
-|```GET``` /listarUsuario|Informa todos usuários registrados no banco.|
-|```POST``` /insereUsuario|Insere um novo usuário.|
-|```PUT``` /atualizaUsuario|Atualiza o usuário.|
+* [SWAGGER](https://fatecflix.herokuapp.com/swagger-ui.html)
 
 ## Conceitos básicos
-<<<<<<< HEAD
-* [Design pattern](https://www.opus-software.com.br/design-patterns/) - Design Patterns ou padrões de projetos são soluções generalistas para problemas recorrentes durante o desenvolvimento de um software. Mais informações no [catalogo de design pattern](https://refactoring.guru/design-patterns). 
-=======
-* [Design pattern](https://www.opus-software.com.br/design-patterns/) - Design Patterns ou padrões de projetos são soluções generalistas para problemas recorrentes durante o desenvolvimento de um software. Mais informações no [catalogo de design pattern](https://refactoring.guru/design-patterns). 
->>>>>>> ce21c7dc02117b822430e24805d93f0ab6fab6fa
+
+##### Processo de Desenvolvimento de Software - PDS
+
+> O PDS segue uma abordagem interativa incremental adaptada do Processo Unificado (Larman, 2006 - cap02). Cada atividade da interação tem uma definição de pronto estabelecida com objetivo de controlar a qualidade. 
+
+![ciclo de desenvolvimento up](https://user-images.githubusercontent.com/68782201/180198367-01b275f2-1bf1-409c-a7b7-46f231e4ff6e.png) 
+
+* 1 - Concepção – visão aproximada, casos de uso de negócio, escopo e estimativas vagas (fase de estudo de viabilidade) 
+* 2 - Elaboração – visão refinada, a arquitetura central é iterativamente implementada e os problemas de alto risco são mitigados, identificação da maioria dos requisitos e do escopo e estimativas mais realistas. 
+O projeto de software é iniciado logo que os requisitos de software tenham sido analisados e modelados e prepara a equipe para a transição entre a análise e o código. O projeto arquitetural define os relacionamentos entre os principais 
+elementos estruturais do software (PRESSMAN, 6ed. p. 187). O projeto arquitetural pode ser apresentado na forma de múltiplas perspectivas. Krutchen (1995) sugere 4 visões: visão lógica, visão de implementação, visão de processo e visão de 
+instalação. Adicionalmente as 4 visões existe os cenários que determinam a dinâmica e o comportamento da aplicação. Cada cenário descreve como os vários componentes arquiteturais colaboram para manipular uma operação de sistema. 
+* 3 - Construção – mapeamento do projeto para o código, implementação iterativa dos elementos restantes de menor risco e preparação para implantação. No início da interação a equipe se reúne para garantir que existe um entendimento comum 
+entre os envolvidos sobre o comportamento do software. Esta atividade será considerada concluída quando os exemplos de uso são discutidos e existe um "de acordo" no entendimento. Os requisitos serão documentados utilizando "estórias de 
+usuário". Os requisitos serão priorizados (alto, médio ou baixo) de acordo com a complexidade para o desenvolvimento (funções mais complexas são mais sujeitas a falhas) e o perfil operacional de uso (funções mais utilizadas tem um impacto 
+alto na falha). Exemplos de uso da aplicação servem como base na especificação dos casos de teste. 
+* 4 - Transição – beta testes e implantação 
+
+> A definição de "pronto" estabelece como a qualidade será atingida 
+
+| Fase | Definição de pronto estabelecida para cada fase - critério de aceitação | 
+| ------------ | ------------------------------------------------------------------------ | 
+| Concepção | Uma análise de viabilidade técnica e econômica é realizada para apoiar a tomada de decisão continua ou declina do projeto | 
+| Elaboração | Esta atividade será considerada concluída quando o Diagrama de Classes de Domínio (DCD) (LARMAN, 2006) e um esboço da visão lógica da arquitetura (KRUTCHEN, 2005) for definido e uma análise de rastreabilidade entre o DCD e o documento de requisitos não identificarem inconsistências | 
+| Codificação |Será considerada concluída quando a análise de rastreabilidade entre o código e as funções solicitadas no documento de requisitos não identificarem inconsistências | 
+| Teste | Será considerada concluída quando 100% dos casos de teste prioritários (complexidade, funções mais utilizadas) rastreáveis para os requisitos obtiverem satisfatório | 
+
+
+>Referencias 
+- [1] KRUCHTEN, Philippe. Reference: Title: Architectural blueprints—the “4+ 1” view model of software architecture. IEEE software, v. 12, n. 6, 1995. 
+- [2] RICHARDSON, Chris. Microservices patterns: with examples in Java. Simon and Schuster, 2018. 
+- [3] ERL, Thomas. SOA principles of service design (the Prentice Hall service-oriented computing series from Thomas Erl). Prentice Hall PTR, 2007. 
+- [4] LARMAN, Craig. Utilizando UML e padrões. 2aed., Porto Alegre: Bookman Editora, 2006.
+
