@@ -21,19 +21,23 @@ public class ListaCursoDTO {
     @ApiModelProperty(value = "Media de Avaliação do curso cadastrado (feedback do alunos)")
     private Double mediaAvaliacao;
 
+    @ApiModelProperty(value = "Categoria do curso")
+    private String categoria;
+
     @ApiModelProperty(value = "Aulas que serão ministradas")
     private List<AulaDTO> aulas;
 
     @ApiModelProperty(value = "Exercicios que serão ministrados")
     private List<ExercicioDTO> exercicios;
 
-    public ListaCursoDTO(Long cursoId, String titulo, String descricao, String cargaHorario, String dataAtualizacao, Double mediaAvaliacao, List<AulaDTO> aulas, List<ExercicioDTO> exercicios) {
+    public ListaCursoDTO(Long cursoId, String titulo, String descricao, String cargaHorario, String dataAtualizacao, Double mediaAvaliacao, String categoria, List<AulaDTO> aulas, List<ExercicioDTO> exercicios) {
         this.cursoId = cursoId;
         this.titulo = titulo;
         this.descricao = descricao;
         this.cargaHorario = cargaHorario;
         this.dataAtualizacao = dataAtualizacao;
         this.mediaAvaliacao = mediaAvaliacao;
+        this.categoria = categoria;
         this.aulas = aulas;
         this.exercicios = exercicios;
     }
@@ -100,5 +104,13 @@ public class ListaCursoDTO {
 
     public void setExercicios(List<ExercicioDTO> exercicios) {
         this.exercicios = exercicios;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

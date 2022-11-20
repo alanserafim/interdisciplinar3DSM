@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-20T11:41:44-0300",
+    date = "2022-11-20T12:30:01-0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.3 (Eclipse Adoptium)"
 )
 @Component
@@ -35,6 +35,7 @@ public class ListaCursosMapperImpl implements ListaCursosMapper {
         curso.setMediaAvaliacao( dto.getMediaAvaliacao() );
         curso.setAulas( aulaDTOListToAulaList( dto.getAulas() ) );
         curso.setExercicios( exercicioDTOListToExercicioList( dto.getExercicios() ) );
+        curso.setCategoria( dto.getCategoria() );
 
         return curso;
     }
@@ -53,6 +54,7 @@ public class ListaCursosMapperImpl implements ListaCursosMapper {
         Double mediaAvaliacao = null;
         List<AulaDTO> aulas = null;
         List<ExercicioDTO> exercicios = null;
+        String categoria = null;
 
         cursoId = model.getCursoId();
         titulo = model.getTitulo();
@@ -62,8 +64,9 @@ public class ListaCursosMapperImpl implements ListaCursosMapper {
         mediaAvaliacao = model.getMediaAvaliacao();
         aulas = aulaListToAulaDTOList( model.getAulas() );
         exercicios = exercicioListToExercicioDTOList( model.getExercicios() );
+        categoria = model.getCategoria();
 
-        ListaCursoDTO listaCursoDTO = new ListaCursoDTO( cursoId, titulo, descricao, cargaHorario, dataAtualizacao, mediaAvaliacao, aulas, exercicios );
+        ListaCursoDTO listaCursoDTO = new ListaCursoDTO( cursoId, titulo, descricao, cargaHorario, dataAtualizacao, mediaAvaliacao, categoria, aulas, exercicios );
 
         return listaCursoDTO;
     }
