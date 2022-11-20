@@ -44,7 +44,7 @@ public class MatriculasRestController implements MatriculasRestControllerDocs {
 
 	@Override
 	@GetMapping("/matriculas")
-	public ResponseEntity<List<MatriculaDTO>> listMatricula(HttpServletRequest request) {
+	public ResponseEntity<List<MatriculasDTO>> listMatricula(HttpServletRequest request) {
 		String token = TokenUtils.wrapperToken(request);
 		
 		return ResponseEntity.ok(service.consultaTodos(token));

@@ -62,7 +62,7 @@ public class MatriculasServiceImpl implements MatriculasService {
     private TokenService tokenService;
 
     @Override
-    public List<MatriculaDTO> consultaTodos(String token) {
+    public List<MatriculasDTO> consultaTodos(String token) {
         logger.info(">>>>>> servico consultaTodos chamado");
 
         Long userId = tokenService.getUserId(token);
@@ -71,7 +71,7 @@ public class MatriculasServiceImpl implements MatriculasService {
 
         return repository.findAllByUsuario(usuario)
                 .stream()
-                .map(mapper::toDTO)
+                .map(listaMatriculasMapper::toDto)
                 .collect(Collectors.toList());
     }
     

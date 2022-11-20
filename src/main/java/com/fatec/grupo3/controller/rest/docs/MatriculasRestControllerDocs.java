@@ -51,7 +51,7 @@ public interface MatriculasRestControllerDocs {
 	            @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
 	            @ApiResponse(code = 404, message = "Usuário não encontrado") })
 	    @GetMapping
-	    public ResponseEntity<List<MatriculaDTO>> listMatricula(HttpServletRequest request);
+	    public ResponseEntity<List<MatriculasDTO>> listMatricula(HttpServletRequest request);
 
 	@ApiOperation(value = "Lista Usuarios Matriculados em um curso", nickname = "listUsuariosMatriculado", notes = "", response = MatriculaDTO.class, responseContainer = "object", authorizations = {
 			@Authorization(value = "Authorization") }, tags = { "Matriculas", })

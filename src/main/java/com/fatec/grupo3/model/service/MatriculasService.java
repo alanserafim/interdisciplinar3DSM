@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public interface MatriculasService {
 
-    List<MatriculaDTO> consultaTodos(String token);
+    List<MatriculasDTO> consultaTodos(String token);
     Optional<MatriculasDTO> consultaPorId(Long id, String token) throws AreaProibidaException;
     Optional<MatriculaDTO> save(MatriculaDTO matricula, Long idCurso, String token);
     void delete (Long id, String token);
