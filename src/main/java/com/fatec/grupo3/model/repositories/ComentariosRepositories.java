@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Repository
 public interface ComentariosRepositories extends JpaRepository<Comentario, Long> {
+
     @Query("SELECT NEW com.fatec.grupo3.model.dto.ComentariosDTO(c.id, c.comentario, u.username, u.name, u.lastname) FROM Comentario c INNER JOIN c.usuario u WHERE c.aula.aulaId = (:aulaId)")
     List<ComentariosDTO> findAllByAula(@Param("aulaId") Long aulaId);
 }

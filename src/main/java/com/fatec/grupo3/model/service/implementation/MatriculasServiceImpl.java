@@ -3,9 +3,11 @@ package com.fatec.grupo3.model.service.implementation;
 import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.HistoricoDTO;
 import com.fatec.grupo3.model.dto.MatriculaDTO;
+import com.fatec.grupo3.model.dto.MatriculasDTO;
 import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.entities.*;
 import com.fatec.grupo3.model.mapper.HistoricosMapper;
+import com.fatec.grupo3.model.mapper.ListaMatriculasMapper;
 import com.fatec.grupo3.model.mapper.MatriculasMapper;
 import com.fatec.grupo3.model.mapper.UsuariosMapper;
 import com.fatec.grupo3.model.repositories.*;
@@ -43,6 +45,9 @@ public class MatriculasServiceImpl implements MatriculasService {
 
     @Autowired
     private UsuariosMapper usuariosMapper = UsuariosMapper.INSTANCE;
+
+    @Autowired
+    private ListaMatriculasMapper listaMatriculasMapper = ListaMatriculasMapper.INSTANCE;
     
     @Autowired
     private ExercicioRepository exercicioRepository;
@@ -100,7 +105,7 @@ public class MatriculasServiceImpl implements MatriculasService {
     }
 
     @Override
-    public Optional<MatriculaDTO> consultaPorId(Long id, String token) throws AreaProibidaException {
+    public Optional<MatriculasDTO> consultaPorId(Long id, String token) throws AreaProibidaException {
 
         Long userId = tokenService.getUserId(token);
 
@@ -108,7 +113,7 @@ public class MatriculasServiceImpl implements MatriculasService {
 
     	if (usuario.getRoles().contains("ALUNO") || usuario.getRoles().contains("ADMIN") || usuario.getRoles().contains("INSTRUTOR")) {
             Matricula matricula = repository.getReferenceById(id);
-            MatriculaDTO matriculaDTO = mapper.toDTO(matricula);
+            MatriculasDTO matriculaDTO = listaMatriculasMapper.toDto(matricula);
 
             return Optional.of(matriculaDTO);
         }
@@ -118,7 +123,7 @@ public class MatriculasServiceImpl implements MatriculasService {
     
     @Transactional
     @Override
-    public Optional<MatriculaDTO> atualiza(Long id, Long idCurso, Long idExercicios, String resposta, String token) throws AreaProibidaException {
+    public Optional<MatriculaDTO> atualiza(Long id, Long idCurso, Double nota, String token) throws AreaProibidaException {
         logger.info(">>>>>> servico atualiza chamado ");
         Long userId = tokenService.getUserId(token);
 
@@ -127,53 +132,38 @@ public class MatriculasServiceImpl implements MatriculasService {
 
         Matricula matricula = repository.getReferenceById(id);
 
-        Exercicio exercicio = exercicioRepository.getReferenceById(idExercicios);
 
-        if (exercicio.getResposta().equals(resposta)) {
-            matricula.setUsuario(usuario);
-            matricula.setCurso(curso);
-            matricula.setMatriculaId(id);
+        matricula.setUsuario(usuario);
+        matricula.setCurso(curso);
+        matricula.setMatriculaId(id);
+        matricula.setNota(nota);
+        matricula.setStatus("Concluido");
 
-            Double soma = matricula.getNota() + 1.0;
+        Optional<Historico> historicoFounded = historicosRepository.findByMatricula(matricula);
 
-            matricula.setNota(soma);
+        if (!historicoFounded.isPresent()) {
+            Historico historico = new Historico();
 
+            historico.setMatricula(matricula);
+            historico.setDuracaoCurso(curso.getCargaHorario());
+            historico.setNomeCurso(curso.getTitulo());
+            historico.setNota(matricula.getNota());
+            historico.setUsuario(usuario);
 
-            Optional<Historico> historicoFounded = historicosRepository.findByMatricula(matricula);
+            historicosRepository.save(historico);
+        } else {
+            Historico historico = historicoFounded.get();
 
+            historico.setMatricula(matricula);
+            historico.setDuracaoCurso(curso.getCargaHorario());
+            historico.setNomeCurso(curso.getTitulo());
+            historico.setNota(matricula.getNota());
+            historico.setUsuario(usuario);
 
-            if (matricula.getNota() >= 6) {
-                matricula.setStatus("Concluido");
-
-                if (!historicoFounded.isPresent()) {
-                    Historico historico = new Historico();
-
-                    historico.setMatricula(matricula);
-                    historico.setDuracaoCurso(curso.getCargaHorario());
-                    historico.setNomeCurso(curso.getTitulo());
-                    historico.setNota(matricula.getNota());
-                    historico.setUsuario(usuario);
-
-                    historicosRepository.save(historico);
-                } else {
-                    Historico historico = historicoFounded.get();
-
-                    historico.setMatricula(matricula);
-                    historico.setDuracaoCurso(curso.getCargaHorario());
-                    historico.setNomeCurso(curso.getTitulo());
-                    historico.setNota(matricula.getNota());
-                    historico.setUsuario(usuario);
-
-                    historicosRepository.save(historico);
-                }
-
-
-            }
-
-            return Optional.of(mapper.toDTO(repository.save(matricula)));
+            historicosRepository.save(historico);
         }
 
-        throw new AreaProibidaException(usuario.getCpf());
+        return Optional.of(mapper.toDTO(repository.save(matricula)));
     }
 
     @Override
@@ -198,4 +188,14 @@ public class MatriculasServiceImpl implements MatriculasService {
                 .map(usuariosMapper::toDTO)
                 .collect(Collectors.toList());
     }
+
+    /*@Override
+    public List<MatriculasDTO> consultarCursoPorMatriculaId(Long id) {
+        return repository.findCursoByMatriculaId(id)
+                .stream()
+                .map(listaMatriculasMapper::toDto)
+                .collect(Collectors.toList());
+    }*/
+
+
 }

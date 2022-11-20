@@ -40,8 +40,8 @@ public interface MatriculasRestControllerDocs {
 	            @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
 	            @ApiResponse(code = 404, message = "Usuário não encontrada") })
 	    @PostMapping
-	    public ResponseEntity<Optional<MatriculaDTO>> updateMatricula(@PathVariable Long id, @PathVariable Long idCurso,  @PathVariable("exercicioId") Long idExercicio, @PathVariable("resposta") String resposta, HttpServletRequest request) throws Exception;
-	 
+	    public ResponseEntity<Optional<MatriculaDTO>> updateMatricula(@PathVariable Long id, @PathVariable Long idCurso,  @PathVariable("nota") Double nota, HttpServletRequest request) throws Exception;
+
 	 	
 	 @ApiOperation(value = "Listar Matriculas do Aluno", nickname = "listMatricula", notes = "", response = MatriculaDTO.class, responseContainer = "object", authorizations = {
 	            @Authorization(value = "Authorization") }, tags = { "Matriculas", })
@@ -81,7 +81,7 @@ public interface MatriculasRestControllerDocs {
 			@ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
 			@ApiResponse(code = 404, message = "Usuário não encontrado") })
 	@GetMapping
-	public ResponseEntity<Optional<MatriculaDTO>> consultaMatricula(@PathVariable("id") Long id, HttpServletRequest request) throws AreaProibidaException;
+	public ResponseEntity<Optional<MatriculasDTO>> consultaMatricula(@PathVariable("id") Long id, HttpServletRequest request) throws AreaProibidaException;
 
 	@ApiOperation(value = "Listar Historico do Aluno", nickname = "listHistorico", notes = "", response = HistoricoDTO.class, responseContainer = "object", authorizations = {
 			@Authorization(value = "Authorization") }, tags = { "Matriculas", })

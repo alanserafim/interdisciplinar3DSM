@@ -3,7 +3,7 @@ package com.fatec.grupo3.model.dto;
 import io.swagger.annotations.ApiModelProperty;
 
 public class MatriculaDTO {
-	
+
 	@ApiModelProperty(value = "Status da Matricula")
     private String status;
 	
@@ -17,6 +17,7 @@ public class MatriculaDTO {
         this.status = status;
         this.nota = nota;
         this.avaliacaoCurso = avaliacaoCurso;
+
     }
 
     public String getStatus() {
@@ -42,5 +43,4 @@ public class MatriculaDTO {
     public void setAvaliacaoCurso(Double avaliacaoCurso) {
         this.avaliacaoCurso = avaliacaoCurso;
     }
-
 }
