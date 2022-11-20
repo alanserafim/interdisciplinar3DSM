@@ -77,6 +77,6 @@ public interface CursosRestControllerDocs {
             @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
             @ApiResponse(code = 404, message = "Usuário não encontrado") })
     @GetMapping
-    public ResponseEntity<Optional<CursoDTO>> consultaCursoPelaCategoria(@PathVariable("categoria") String categoria);
+    public ResponseEntity<List<ListaCursoDTO>> consultaCursoPelaCategoria(@PathVariable("categoria") String categoria);
 
 }

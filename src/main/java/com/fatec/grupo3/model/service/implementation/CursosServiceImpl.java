@@ -55,10 +55,12 @@ public class CursosServiceImpl implements CursosService {
     }
 
     @Override
-    public Optional<CursoDTO> consultaPorCategoria(String categoria) {
+    public List<ListaCursoDTO> consultaPorCategoria(String categoria) {
         logger.info(">>>>>> servico consultaPorCategoria chamado");
-        Optional<Curso> curso = repository.findCursoByCategoria(categoria);
-        return Optional.of(mapper.toDTO(curso.get()));
+        return repository.findAllByCategoria(categoria)
+                .stream()
+                .map(listaCursosMapper::toDto)
+                .collect(Collectors.toList());
     }
     
     @Transactional

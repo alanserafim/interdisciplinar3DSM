@@ -68,8 +68,8 @@ public class CursosRestController implements CursosRestControllerDocs {
 	}
 
 	@Override
-	@GetMapping("/cursos/{categoria}")
-	public ResponseEntity<Optional<CursoDTO>> consultaCursoPelaCategoria(@PathVariable("categoria") String categoria) {
+	@GetMapping("/cursos/categoria/{categoria}")
+	public ResponseEntity<List<ListaCursoDTO>> consultaCursoPelaCategoria(@PathVariable("categoria") String categoria) {
 		return ResponseEntity.ok(service.consultaPorCategoria(categoria));
 	}
 }

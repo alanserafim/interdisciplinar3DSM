@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.fatec.grupo3.Grupo3ApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 61.006 s - in com.fatec.grupo3.Grupo3ApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.011 s - in com.fatec.grupo3.Grupo3ApplicationTests
