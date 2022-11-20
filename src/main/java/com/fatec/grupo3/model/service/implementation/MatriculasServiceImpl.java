@@ -3,9 +3,11 @@ package com.fatec.grupo3.model.service.implementation;
 import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.HistoricoDTO;
 import com.fatec.grupo3.model.dto.MatriculaDTO;
+import com.fatec.grupo3.model.dto.UsuarioDTO;
 import com.fatec.grupo3.model.entities.*;
 import com.fatec.grupo3.model.mapper.HistoricosMapper;
 import com.fatec.grupo3.model.mapper.MatriculasMapper;
+import com.fatec.grupo3.model.mapper.UsuariosMapper;
 import com.fatec.grupo3.model.repositories.*;
 import com.fatec.grupo3.model.service.MatriculasService;
 import com.fatec.grupo3.security.TokenService;
@@ -37,6 +39,10 @@ public class MatriculasServiceImpl implements MatriculasService {
 
     @Autowired
     private HistoricosMapper historicosMapper = HistoricosMapper.INSTANCE;
+
+
+    @Autowired
+    private UsuariosMapper usuariosMapper = UsuariosMapper.INSTANCE;
     
     @Autowired
     private ExercicioRepository exercicioRepository;
@@ -181,6 +187,15 @@ public class MatriculasServiceImpl implements MatriculasService {
         return historicosRepository.findAllByUsuario(usuario)
                 .stream()
                 .map(historicosMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<UsuarioDTO> consultarUsuariosMatriculados(Long cursoId) {
+
+        return repository.findUsuariosByCursoId(cursoId)
+                .stream()
+                .map(usuariosMapper::toDTO)
                 .collect(Collectors.toList());
     }
 }

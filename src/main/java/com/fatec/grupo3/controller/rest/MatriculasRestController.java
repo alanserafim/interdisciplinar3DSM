@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.HistoricoDTO;
+import com.fatec.grupo3.model.dto.UsuarioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,6 +51,12 @@ public class MatriculasRestController implements MatriculasRestControllerDocs {
 		String token = TokenUtils.wrapperToken(request);
 		
 		return ResponseEntity.ok(service.consultaTodos(token));
+	}
+
+	@Override
+	@GetMapping("/matriculas/usuario/curso/{cursoId}")
+	public ResponseEntity<List<UsuarioDTO>> listMatriculaByCursoId(@PathVariable("cursoId") Long cursoId) {
+		return ResponseEntity.ok(service.consultarUsuariosMatriculados(cursoId));
 	}
 
 	@Override

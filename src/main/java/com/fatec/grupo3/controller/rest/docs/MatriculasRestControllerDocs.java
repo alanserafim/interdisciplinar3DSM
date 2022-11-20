@@ -7,13 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import com.fatec.grupo3.exception.AreaProibidaException;
-import com.fatec.grupo3.model.dto.HistoricoDTO;
+import com.fatec.grupo3.model.dto.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.fatec.grupo3.model.dto.CursoDTO;
-import com.fatec.grupo3.model.dto.ErrorDTO;
-import com.fatec.grupo3.model.dto.MatriculaDTO;
 import com.fatec.grupo3.model.entities.Curso;
 
 import io.swagger.annotations.Api;
@@ -55,6 +52,16 @@ public interface MatriculasRestControllerDocs {
 	            @ApiResponse(code = 404, message = "Usuário não encontrado") })
 	    @GetMapping
 	    public ResponseEntity<List<MatriculaDTO>> listMatricula(HttpServletRequest request);
+
+	@ApiOperation(value = "Lista Usuarios Matriculados em um curso", nickname = "listUsuariosMatriculado", notes = "", response = MatriculaDTO.class, responseContainer = "object", authorizations = {
+			@Authorization(value = "Authorization") }, tags = { "Matriculas", })
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Matriculas Listados com sucesso", response = MatriculaDTO.class, responseContainer = "object"),
+			@ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
+			@ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
+			@ApiResponse(code = 404, message = "Usuário não encontrado") })
+	@GetMapping
+	public ResponseEntity<List<UsuarioDTO>> listMatriculaByCursoId(Long cursoId);
 
 	@ApiOperation(value = "Deletar Matricula do Aluno", nickname = "deleteMatricula", notes = "", response = MatriculaDTO.class, responseContainer = "object", authorizations = {
 			@Authorization(value = "Authorization") }, tags = { "Matriculas", })
