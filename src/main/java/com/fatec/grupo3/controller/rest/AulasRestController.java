@@ -30,7 +30,7 @@ public class AulasRestController implements AulasRestControllerDocs {
 
     @Override
     @PostMapping("/aulas/{id}/curso/{cursoId}")
-    public ResponseEntity<Optional<AulaDTO>> updateAula(@PathVariable("cursoId") Long cursoId, @PathVariable("id") Long id, AulaDTO aulaDTO) throws Exception {
+    public ResponseEntity<Optional<AulaDTO>> updateAula(@PathVariable("cursoId") Long cursoId, @PathVariable("id") Long id, @RequestBody AulaDTO aulaDTO) throws Exception {
         return ResponseEntity.ok(service.atualiza(cursoId, id, aulaDTO));
     }
 

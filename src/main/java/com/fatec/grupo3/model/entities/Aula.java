@@ -1,6 +1,8 @@
 package com.fatec.grupo3.model.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Aula {
@@ -17,15 +19,19 @@ public class Aula {
     @JoinColumn(name = "curso_id", nullable = false)
     private Curso curso;
 
+    @OneToMany(mappedBy = "aula", fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
+    private List<Comentario> comentarios = new ArrayList<>();
+
     public Aula() {
     }
 
-    public Aula(Long aulaId, String titulo, String video, String conteudo, Curso curso) {
+    public Aula(Long aulaId, String titulo, String video, String conteudo, Curso curso, List<Comentario> comentarios) {
         this.aulaId = aulaId;
         this.titulo = titulo;
         this.video = video;
         this.conteudo = conteudo;
         this.curso = curso;
+        this.comentarios = comentarios;
     }
 
     public Long getAulaId() {
@@ -66,5 +72,13 @@ public class Aula {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
     }
 }

@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface CursosService {
 
     List<ListaCursoDTO> consultaTodos();
-    Optional<CursoDTO> consultaPorTitulo(String titulo);
+    Optional<CursoDTO> consultaPorCategoria(String categoria);
     Optional<CursoDTO> save(CursoDTO cursoDTO, String token);
     void delete (Long id, String token);
     Optional<CursoDTO> atualiza (Long id, CursoDTO cursoDTO, String token);

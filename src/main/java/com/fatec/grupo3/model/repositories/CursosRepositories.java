@@ -11,6 +11,6 @@ import com.fatec.grupo3.model.entities.Curso;
 @Repository
 public interface CursosRepositories extends JpaRepository<Curso, Long> {
     Optional<Curso> findCursoByTitulo(String titulo);
-
+    Optional<Curso> findCursoByCategoria(String categoria);
     void deleteByUsuarioAndCursoId(Usuario usuario, Long cursoId);
 }

@@ -69,4 +69,14 @@ public interface CursosRestControllerDocs {
     @GetMapping
     public ResponseEntity<Optional<CursoDTO>> consultaCurso(@PathVariable("id") Long id, HttpServletRequest request) throws AreaProibidaException;
 
+    @ApiOperation(value = "Consultar um curso pela categoria", nickname = "consultaCursoByCategoria", notes = "", response = CursoDTO.class, responseContainer = "object", authorizations = {
+            @Authorization(value = "Authorization") }, tags = { "Cursos", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Cursos consultadp com sucesso", response = CursoDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
+            @ApiResponse(code = 404, message = "Usuário não encontrado") })
+    @GetMapping
+    public ResponseEntity<Optional<CursoDTO>> consultaCursoPelaCategoria(@PathVariable("categoria") String categoria);
+
 }
