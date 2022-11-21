@@ -20,8 +20,8 @@
 Para executar o projeto, utilize as ferramentas descritas na sessão *Ferramentas*.
 
 ## Ferramentas
-* Spring Boot - Spring Tools for Eclipse IDE (https://spring.io/projects/spring-boot) - IDE para desenvolvimento.
-* Visual Studio Code (https://code.visualstudio.com/docs) - Editor de código utilizado na camada cliente.
+* Spring Boot - Spring Tools for Eclipse IDE (https://spring.io/projects/spring-boot) - IDE para desenvolvimento da camada servidor.
+* Visual Studio Code (https://code.visualstudio.com/docs) - Editor de código utilizado no desenvolvimento da camada cliente.
 
 ## Links importantes
 * [Spring Boot Rest API](https://medium.com/better-programming/building-a-spring-boot-rest-api-a-php-developers-view-part-i-6add2e794646) -  API com Spring Boot - Framework da camada servidor.
