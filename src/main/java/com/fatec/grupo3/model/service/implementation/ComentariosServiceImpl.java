@@ -73,6 +73,13 @@ public class ComentariosServiceImpl implements ComentariosService {
     }
 
     @Override
+    public Optional<ComentariosDTO> consultaPorId(Long aulaId) {
+        Optional<Comentario> comentario = repository.findById(aulaId);
+
+        return Optional.of(listaComentariosMapper.toDto(comentario.get()));
+    }
+
+    @Override
     public void delete(Long id) {
         repository.deleteById(id);
     }

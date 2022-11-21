@@ -1,5 +1,6 @@
 package com.fatec.grupo3.controller.rest.docs;
 
+import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.*;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -41,4 +42,14 @@ public interface ComentariosRestControllerDocs {
             @ApiResponse(code = 404, message = "Usuário não encontrado") })
     @DeleteMapping
     public void deleteComentario(@PathVariable("id") Long id);
+
+    @ApiOperation(value = "Consultar um comentario", nickname = "consultaComentario", notes = "", response = ComentariosDTO.class, responseContainer = "object", authorizations = {
+            @Authorization(value = "Authorization") }, tags = { "Comentarios", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Comentario consultadp com sucesso", response = ComentariosDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 401, message = "Usuário sem permissão para acessar o recurso"),
+            @ApiResponse(code = 404, message = "Usuário não encontrado") })
+    @GetMapping
+    public ResponseEntity<Optional<ComentariosDTO>> consultaComentario(@PathVariable("id") Long id);
 }

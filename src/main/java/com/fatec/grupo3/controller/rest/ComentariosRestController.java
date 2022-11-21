@@ -1,6 +1,7 @@
 package com.fatec.grupo3.controller.rest;
 
 import com.fatec.grupo3.controller.rest.docs.ComentariosRestControllerDocs;
+import com.fatec.grupo3.exception.AreaProibidaException;
 import com.fatec.grupo3.model.dto.ComentarioDTO;
 import com.fatec.grupo3.model.dto.ComentariosDTO;
 import com.fatec.grupo3.model.service.ComentariosService;
@@ -43,5 +44,11 @@ public class ComentariosRestController implements ComentariosRestControllerDocs 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteComentario(@PathVariable("id") Long id) {
         service.delete(id);
+    }
+
+    @Override
+    @GetMapping("/comentarios/{id}")
+    public ResponseEntity<Optional<ComentariosDTO>> consultaComentario(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(service.consultaPorId(id));
     }
 }

@@ -11,6 +11,7 @@ public interface ComentariosService {
 
     List<ComentariosDTO> consultaTodos(Long aulaId);
     Optional<ComentarioDTO> save(ComentarioDTO comentarioDTO, Long aulaId, String token);
+    Optional<ComentariosDTO> consultaPorId(Long aulaId);
     void delete (Long id);
     Optional<ComentarioDTO> atualiza (Long id, Long aulaId, ComentarioDTO comentarioDTO, String token);
 }
