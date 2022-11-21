@@ -1,7 +1,7 @@
 package com.fatec.grupo3.model.dto;
 
 public class ComentariosDTO {
-    private Long id;
+    private Long comentarioId;
     private String comentario;
     private String username;
     private String name;
@@ -10,20 +10,20 @@ public class ComentariosDTO {
     public ComentariosDTO() {
     }
 
-    public ComentariosDTO(Long id, String comentario, String username, String name, String lastname) {
-        this.id = id;
+    public ComentariosDTO(Long comentarioId, String comentario, String username, String name, String lastname) {
+        this.comentarioId = comentarioId;
         this.comentario = comentario;
         this.username = username;
         this.name = name;
         this.lastname = lastname;
     }
 
-    public Long getId() {
-        return id;
+    public Long getComentarioId() {
+        return comentarioId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setComentarioId(Long comentarioId) {
+        this.comentarioId = comentarioId;
     }
 
     public String getComentario() {
