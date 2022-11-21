@@ -148,6 +148,7 @@ public class MatriculasServiceImpl implements MatriculasService {
             historico.setDuracaoCurso(curso.getCargaHorario());
             historico.setNomeCurso(curso.getTitulo());
             historico.setNota(matricula.getNota());
+            historico.setEmailInstrutor(curso.getUsuario().getEmail());
             historico.setUsuario(usuario);
 
             historicosRepository.save(historico);
@@ -158,6 +159,7 @@ public class MatriculasServiceImpl implements MatriculasService {
             historico.setDuracaoCurso(curso.getCargaHorario());
             historico.setNomeCurso(curso.getTitulo());
             historico.setNota(matricula.getNota());
+            historico.setEmailInstrutor(curso.getUsuario().getEmail());
             historico.setUsuario(usuario);
 
             historicosRepository.save(historico);

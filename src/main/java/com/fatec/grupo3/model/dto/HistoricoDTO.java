@@ -5,15 +5,19 @@ public class HistoricoDTO {
     private Long historicoId;
     private String nomeCurso;
     private String duracaoCurso;
+
+    private String emailInstrutor;
+
     private Double nota;
 
     public HistoricoDTO() {
     }
 
-    public HistoricoDTO(Long historicoId, String nomeCurso, String duracaoCurso, Double nota) {
+    public HistoricoDTO(Long historicoId, String nomeCurso, String duracaoCurso, String emailInstrutor, Double nota) {
         this.historicoId = historicoId;
         this.nomeCurso = nomeCurso;
         this.duracaoCurso = duracaoCurso;
+        this.emailInstrutor = emailInstrutor;
         this.nota = nota;
     }
 
@@ -47,5 +51,13 @@ public class HistoricoDTO {
 
     public void setNota(Double nota) {
         this.nota = nota;
+    }
+
+    public String getEmailInstrutor() {
+        return emailInstrutor;
+    }
+
+    public void setEmailInstrutor(String emailInstrutor) {
+        this.emailInstrutor = emailInstrutor;
     }
 }

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-20T18:06:41-0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.3 (Eclipse Adoptium)"
+    date = "2022-11-21T13:39:50-0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.2 (Eclipse Adoptium)"
 )
 @Component
 public class HistoricosMapperImpl implements HistoricosMapper {
@@ -25,6 +25,7 @@ public class HistoricosMapperImpl implements HistoricosMapper {
         historicoDTO.setNomeCurso( model.getNomeCurso() );
         historicoDTO.setDuracaoCurso( model.getDuracaoCurso() );
         historicoDTO.setNota( model.getNota() );
+        historicoDTO.setEmailInstrutor( model.getEmailInstrutor() );
 
         return historicoDTO;
     }
@@ -41,6 +42,7 @@ public class HistoricosMapperImpl implements HistoricosMapper {
         historico.setNomeCurso( dto.getNomeCurso() );
         historico.setDuracaoCurso( dto.getDuracaoCurso() );
         historico.setNota( dto.getNota() );
+        historico.setEmailInstrutor( dto.getEmailInstrutor() );
 
         return historico;
     }

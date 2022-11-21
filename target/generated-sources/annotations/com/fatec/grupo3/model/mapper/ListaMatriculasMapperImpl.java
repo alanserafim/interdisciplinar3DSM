@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-20T18:06:41-0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.3 (Eclipse Adoptium)"
+    date = "2022-11-21T13:39:49-0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.2 (Eclipse Adoptium)"
 )
 @Component
 public class ListaMatriculasMapperImpl implements ListaMatriculasMapper {
@@ -33,6 +33,7 @@ public class ListaMatriculasMapperImpl implements ListaMatriculasMapper {
         matricula.setStatus( dto.getStatus() );
         matricula.setNota( dto.getNota() );
         matricula.setAvaliacaoCurso( dto.getAvaliacaoCurso() );
+        matricula.setCurso( listaCursoDTOToCurso( dto.getCurso() ) );
 
         return matricula;
     }
@@ -58,6 +59,84 @@ public class ListaMatriculasMapperImpl implements ListaMatriculasMapper {
         MatriculasDTO matriculasDTO = new MatriculasDTO( matriculaId, status, nota, avaliacaoCurso, curso );
 
         return matriculasDTO;
+    }
+
+    protected Aula aulaDTOToAula(AulaDTO aulaDTO) {
+        if ( aulaDTO == null ) {
+            return null;
+        }
+
+        Aula aula = new Aula();
+
+        aula.setTitulo( aulaDTO.getTitulo() );
+        aula.setVideo( aulaDTO.getVideo() );
+        aula.setConteudo( aulaDTO.getConteudo() );
+
+        return aula;
+    }
+
+    protected List<Aula> aulaDTOListToAulaList(List<AulaDTO> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<Aula> list1 = new ArrayList<Aula>( list.size() );
+        for ( AulaDTO aulaDTO : list ) {
+            list1.add( aulaDTOToAula( aulaDTO ) );
+        }
+
+        return list1;
+    }
+
+    protected Exercicio exercicioDTOToExercicio(ExercicioDTO exercicioDTO) {
+        if ( exercicioDTO == null ) {
+            return null;
+        }
+
+        Exercicio exercicio = new Exercicio();
+
+        exercicio.setTitulo( exercicioDTO.getTitulo() );
+        exercicio.setEnunciado( exercicioDTO.getEnunciado() );
+        List<String> list = exercicioDTO.getAfirmativas();
+        if ( list != null ) {
+            exercicio.setAfirmativas( new ArrayList<String>( list ) );
+        }
+        exercicio.setResposta( exercicioDTO.getResposta() );
+
+        return exercicio;
+    }
+
+    protected List<Exercicio> exercicioDTOListToExercicioList(List<ExercicioDTO> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<Exercicio> list1 = new ArrayList<Exercicio>( list.size() );
+        for ( ExercicioDTO exercicioDTO : list ) {
+            list1.add( exercicioDTOToExercicio( exercicioDTO ) );
+        }
+
+        return list1;
+    }
+
+    protected Curso listaCursoDTOToCurso(ListaCursoDTO listaCursoDTO) {
+        if ( listaCursoDTO == null ) {
+            return null;
+        }
+
+        Curso curso = new Curso();
+
+        curso.setCursoId( listaCursoDTO.getCursoId() );
+        curso.setTitulo( listaCursoDTO.getTitulo() );
+        curso.setDescricao( listaCursoDTO.getDescricao() );
+        curso.setCargaHorario( listaCursoDTO.getCargaHorario() );
+        curso.setDataAtualizacao( listaCursoDTO.getDataAtualizacao() );
+        curso.setMediaAvaliacao( listaCursoDTO.getMediaAvaliacao() );
+        curso.setAulas( aulaDTOListToAulaList( listaCursoDTO.getAulas() ) );
+        curso.setExercicios( exercicioDTOListToExercicioList( listaCursoDTO.getExercicios() ) );
+        curso.setCategoria( listaCursoDTO.getCategoria() );
+
+        return curso;
     }
 
     protected AulaDTO aulaToAulaDTO(Aula aula) {

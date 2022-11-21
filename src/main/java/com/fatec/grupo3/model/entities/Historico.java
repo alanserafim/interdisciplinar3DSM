@@ -10,6 +10,9 @@ public class Historico {
     private Long historicoId;
     private String nomeCurso;
     private String duracaoCurso;
+
+    private String emailInstrutor;
+
     private Double nota;
 
     @OneToOne
@@ -23,10 +26,11 @@ public class Historico {
     public Historico() {
     }
 
-    public Historico(Long historicoId, String nomeCurso, String duracaoCurso, Double nota, Matricula matricula, Usuario usuario) {
+    public Historico(Long historicoId, String nomeCurso, String duracaoCurso, String emailInstrutor, Double nota, Matricula matricula, Usuario usuario) {
         this.historicoId = historicoId;
         this.nomeCurso = nomeCurso;
         this.duracaoCurso = duracaoCurso;
+        this.emailInstrutor = emailInstrutor;
         this.nota = nota;
         this.matricula = matricula;
         this.usuario = usuario;
@@ -78,5 +82,13 @@ public class Historico {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getEmailInstrutor() {
+        return emailInstrutor;
+    }
+
+    public void setEmailInstrutor(String emailInstrutor) {
+        this.emailInstrutor = emailInstrutor;
     }
 }
