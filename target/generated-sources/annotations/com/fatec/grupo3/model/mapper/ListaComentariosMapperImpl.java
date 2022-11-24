@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-21T13:39:49-0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.2 (Eclipse Adoptium)"
+    date = "2022-11-24T14:40:05-0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.3 (Eclipse Adoptium)"
 )
 @Component
 public class ListaComentariosMapperImpl implements ListaComentariosMapper {
@@ -21,6 +21,7 @@ public class ListaComentariosMapperImpl implements ListaComentariosMapper {
 
         Comentario comentario = new Comentario();
 
+        comentario.setComentarioId( dto.getComentarioId() );
         comentario.setComentario( dto.getComentario() );
 
         return comentario;
@@ -34,6 +35,7 @@ public class ListaComentariosMapperImpl implements ListaComentariosMapper {
 
         ComentariosDTO comentariosDTO = new ComentariosDTO();
 
+        comentariosDTO.setComentarioId( comentario.getComentarioId() );
         comentariosDTO.setComentario( comentario.getComentario() );
 
         return comentariosDTO;
